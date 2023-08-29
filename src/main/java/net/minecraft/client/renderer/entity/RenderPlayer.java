@@ -1,5 +1,7 @@
 package net.minecraft.client.renderer.entity;
 
+import dev.sakey.mist.Mist;
+import dev.sakey.mist.modules.impl.render.Chams;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.model.ModelPlayer;
@@ -17,10 +19,10 @@ import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
 {
-    /** this field is used to indicate the 3-pixel wide arms */
     private boolean smallArms;
 
     public RenderPlayer(RenderManager renderManager)
@@ -45,9 +47,6 @@ public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
         return (ModelPlayer)super.getMainModel();
     }
 
-    /**
-     * Renders the desired {@code T} type Entity.
-     */
     public void doRender(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         if (!entity.isUser() || this.renderManager.livingPlayer == entity)
@@ -60,7 +59,76 @@ public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
             }
 
             this.setModelVisibilities(entity);
-            super.doRender(entity, x, d0, z, entityYaw, partialTicks);
+
+            if(Mist.instance.getModuleManager().getModule(Chams.class).isEnabled()) {
+
+                if(((Chams) Mist.instance.getModuleManager().getModule(Chams.class)).mode.getMode() == "Normal") {
+                    GL11.glDisable(GL11.GL_LIGHTING);
+                    GL11.glDisable(GL11.GL_DEPTH_TEST);
+                    GL11.glEnable(GL11.GL_TEXTURE_2D);
+
+
+                    GL11.glEnable(GL11.GL_CULL_FACE);
+                    GL11.glCullFace(GL11.GL_BACK);
+                    GL11.glFrontFace(GL11.GL_CW);
+
+
+                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
+
+
+                    GL11.glCullFace(GL11.GL_BACK);
+                    GL11.glFrontFace(GL11.GL_CCW);
+                    GL11.glDisable(GL11.GL_CULL_FACE);
+
+
+                    GL11.glEnable(GL11.GL_DEPTH_TEST);
+                    GL11.glEnable(GL11.GL_LIGHTING);
+                    GL11.glColor4f(255F, 255F, 255F, 1F);
+                }
+                else if(((Chams) Mist.instance.getModuleManager().getModule(Chams.class)).mode.getMode() == "Solid") {
+                    GL11.glDisable(GL11.GL_LIGHTING);
+                    GL11.glDisable(GL11.GL_DEPTH_TEST);
+                    GL11.glColor4f(255F, 0F, 0F, 1F);
+                    GL11.glDisable(GL11.GL_TEXTURE_2D);
+                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
+                    GL11.glEnable(GL11.GL_LIGHTING);
+                    GL11.glEnable(GL11.GL_TEXTURE_2D);
+                    GL11.glEnable(GL11.GL_DEPTH_TEST);
+                    GL11.glColor4f(255F, 255F, 255F, 1F);
+                }
+
+                else if(((Chams) Mist.instance.getModuleManager().getModule(Chams.class)).mode.getMode() == "Behind") {
+                    GL11.glDisable(GL11.GL_LIGHTING);
+                    GL11.glDisable(GL11.GL_DEPTH_TEST);
+                    GL11.glColor4f(255F, 0F, 0F, 1F);
+                    GL11.glDisable(GL11.GL_TEXTURE_2D);
+                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
+                    GL11.glEnable(GL11.GL_DEPTH_TEST);
+                    GL11.glColor4f(0F, 255F, 0F, 1F);
+                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
+                    GL11.glEnable(GL11.GL_LIGHTING);
+                    GL11.glEnable(GL11.GL_TEXTURE_2D);
+                    GL11.glColor4f(255F, 255F, 255F, 1F);
+                }
+
+                else if(((Chams) Mist.instance.getModuleManager().getModule(Chams.class)).mode.getMode() == "Outline") {
+                    GL11.glDisable(GL11.GL_LIGHTING);
+                    GL11.glDisable(GL11.GL_DEPTH_TEST);
+                    GL11.glColor4f(255F, 255F, 255F, 1F);
+                    GL11.glDisable(GL11.GL_TEXTURE_2D);
+                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
+                    GL11.glEnable(GL11.GL_DEPTH_TEST);
+                    GL11.glEnable(GL11.GL_TEXTURE_2D);
+                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
+                    GL11.glEnable(GL11.GL_LIGHTING);
+                    GL11.glColor4f(255F, 255F, 255F, 1F);
+                }
+
+            }
+            else {
+                super.doRender(entity, x, d0, z, entityYaw, partialTicks);
+            }
+
         }
     }
 
@@ -113,9 +181,6 @@ public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
         }
     }
 
-    /**
-     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
-     */
     protected ResourceLocation getEntityTexture(AbstractClientPlayer entity)
     {
         return entity.getLocationSkin();
@@ -126,10 +191,6 @@ public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
         GlStateManager.translate(0.0F, 0.1875F, 0.0F);
     }
 
-    /**
-     * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
-     * entityLiving, partialTickTime
-     */
     protected void preRenderCallback(AbstractClientPlayer entitylivingbaseIn, float partialTickTime)
     {
         float f = 0.9375F;
@@ -178,9 +239,6 @@ public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
         modelplayer.renderLeftArm();
     }
 
-    /**
-     * Sets a simple glTranslate on a LivingEntity.
-     */
     protected void renderLivingAt(AbstractClientPlayer entityLivingBaseIn, double x, double y, double z)
     {
         if (entityLivingBaseIn.isEntityAlive() && entityLivingBaseIn.isPlayerSleeping())

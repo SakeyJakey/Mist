@@ -1,9 +1,13 @@
 package net.minecraft.world;
 
 import com.google.common.collect.Lists;
+
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockPattern;
@@ -17,10 +21,8 @@ import net.minecraft.util.MathHelper;
 public class Teleporter
 {
     private final WorldServer worldServerInstance;
-
-    /** A private Random() function in Teleporter */
     private final Random random;
-    private final LongHashMap<Teleporter.PortalPosition> destinationCoordinateCache = new LongHashMap();
+    private final HashMap<Long, BlockPos> destinationCoordinateCache = new HashMap<>();
     private final List<Long> destinationCoordinateKeys = Lists.<Long>newArrayList();
 
     public Teleporter(WorldServer worldIn)
@@ -45,7 +47,6 @@ public class Teleporter
             int j = MathHelper.floor_double(entityIn.posY) - 1;
             int k = MathHelper.floor_double(entityIn.posZ);
             int l = 1;
-            int i1 = 0;
 
             for (int j1 = -2; j1 <= 2; ++j1)
             {
@@ -53,9 +54,11 @@ public class Teleporter
                 {
                     for (int l1 = -1; l1 < 3; ++l1)
                     {
-                        int i2 = i + k1 * l + j1 * i1;
+                        //int i2 = i + k1 * l + j1 * i1;
+                        int i2 = i + k1 * l;
                         int j2 = j + l1;
-                        int k2 = k + k1 * i1 - j1 * l;
+                        //int k2 = k + k1 * i1 - j1 * l;
+                        int k2 = k - j1 * l;
                         boolean flag = l1 < 0;
                         this.worldServerInstance.setBlockState(new BlockPos(i2, j2, k2), flag ? Blocks.obsidian.getDefaultState() : Blocks.air.getDefaultState());
                     }
@@ -69,7 +72,6 @@ public class Teleporter
 
     public boolean placeInExistingPortal(Entity entityIn, float rotationYaw)
     {
-        int i = 128;
         double d0 = -1.0D;
         int j = MathHelper.floor_double(entityIn.posX);
         int k = MathHelper.floor_double(entityIn.posZ);
@@ -77,12 +79,12 @@ public class Teleporter
         BlockPos blockpos = BlockPos.ORIGIN;
         long l = ChunkCoordIntPair.chunkXZ2Int(j, k);
 
-        if (this.destinationCoordinateCache.containsItem(l))
+        if (this.destinationCoordinateCache.containsKey(l))
         {
-            Teleporter.PortalPosition teleporter$portalposition = (Teleporter.PortalPosition)this.destinationCoordinateCache.getValueByKey(l);
+            BlockPos teleporter$portalposition = this.destinationCoordinateCache.get(l);
             d0 = 0.0D;
             blockpos = teleporter$portalposition;
-            teleporter$portalposition.lastUpdateTime = this.worldServerInstance.getTotalWorldTime();
+            l = this.worldServerInstance.getTotalWorldTime();
             flag = false;
         }
         else
@@ -123,8 +125,8 @@ public class Teleporter
         {
             if (flag)
             {
-                this.destinationCoordinateCache.add(l, new Teleporter.PortalPosition(blockpos, this.worldServerInstance.getTotalWorldTime()));
-                this.destinationCoordinateKeys.add(Long.valueOf(l));
+                this.destinationCoordinateCache.put(this.worldServerInstance.getTotalWorldTime(), blockpos);
+                this.destinationCoordinateKeys.add(l);
             }
 
             double d5 = (double)blockpos.getX() + 0.5D;
@@ -189,7 +191,7 @@ public class Teleporter
         }
     }
 
-    public boolean makePortal(Entity entityIn)
+    public void makePortal(Entity entityIn)
     {
         int i = 16;
         double d0 = -1.0D;
@@ -389,13 +391,8 @@ public class Teleporter
             }
         }
 
-        return true;
     }
 
-    /**
-     * called periodically to remove out-of-date portal locations from the cache list. Argument par1 is a
-     * WorldServer.getTotalWorldTime() value.
-     */
     public void removeStalePortalLocations(long worldTime)
     {
         if (worldTime % 100L == 0L)
@@ -406,18 +403,18 @@ public class Teleporter
             while (iterator.hasNext())
             {
                 Long olong = (Long)iterator.next();
-                Teleporter.PortalPosition teleporter$portalposition = (Teleporter.PortalPosition)this.destinationCoordinateCache.getValueByKey(olong.longValue());
+                BlockPos teleporter$portalposition = (BlockPos)this.destinationCoordinateCache.get(olong);
 
-                if (teleporter$portalposition == null || teleporter$portalposition.lastUpdateTime < i)
+                if (teleporter$portalposition == null || olong < i)
                 {
                     iterator.remove();
-                    this.destinationCoordinateCache.remove(olong.longValue());
+                    this.destinationCoordinateCache.remove(olong);
                 }
             }
         }
     }
 
-    public class PortalPosition extends BlockPos
+/*    public static class PortalPosition extends BlockPos
     {
         public long lastUpdateTime;
 
@@ -426,5 +423,5 @@ public class Teleporter
             super(pos.getX(), pos.getY(), pos.getZ());
             this.lastUpdateTime = lastUpdate;
         }
-    }
+    }*/
 }

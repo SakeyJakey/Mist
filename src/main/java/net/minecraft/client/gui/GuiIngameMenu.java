@@ -1,8 +1,14 @@
 package net.minecraft.client.gui;
 
 import java.io.IOException;
+
+import dev.sakey.mist.Mist;
+import dev.sakey.mist.ui.menus.MainMenu;
+import dev.sakey.mist.utils.client.NetworkingUtils;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
+import net.minecraft.client.multiplayer.GuiConnecting;
+import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.realms.RealmsBridge;
@@ -12,10 +18,7 @@ public class GuiIngameMenu extends GuiScreen
     private int field_146445_a;
     private int field_146444_f;
 
-    /**
-     * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
-     * window resizes, the buttonList is cleared beforehand.
-     */
+    private GuiButton reconnect;
     public void initGui()
     {
         this.field_146445_a = 0;
@@ -29,6 +32,11 @@ public class GuiIngameMenu extends GuiScreen
             ((GuiButton)this.buttonList.get(0)).displayString = I18n.format("menu.disconnect", new Object[0]);
         }
 
+        buttonList.add(reconnect = new GuiButton(10, this.width / 2 - 100, this.height / 4 + 72 + i, "Reconnect"));
+
+        if(Mist.instance.destructed || mc.isSingleplayer())
+            reconnect.visible = false;
+
         this.buttonList.add(new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + i, I18n.format("menu.returnToGame", new Object[0])));
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + i, 98, 20, I18n.format("menu.options", new Object[0])));
         GuiButton guibutton;
@@ -38,9 +46,6 @@ public class GuiIngameMenu extends GuiScreen
         guibutton.enabled = this.mc.isSingleplayer() && !this.mc.getIntegratedServer().getPublic();
     }
 
-    /**
-     * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
-     */
     protected void actionPerformed(GuiButton button) throws IOException
     {
         switch (button.id)
@@ -58,16 +63,25 @@ public class GuiIngameMenu extends GuiScreen
 
                 if (flag)
                 {
-                    this.mc.displayGuiScreen(new GuiMainMenu());
+                    if(Mist.instance.destructed)
+                        this.mc.displayGuiScreen(new GuiMainMenu());
+                    else
+                        this.mc.displayGuiScreen(new MainMenu());
                 }
                 else if (flag1)
                 {
                     RealmsBridge realmsbridge = new RealmsBridge();
-                    realmsbridge.switchToRealms(new GuiMainMenu());
+                    if(Mist.instance.destructed)
+                        realmsbridge.switchToRealms(new GuiMainMenu());
+                    else
+                        realmsbridge.switchToRealms(new MainMenu());
                 }
                 else
                 {
-                    this.mc.displayGuiScreen(new GuiMultiplayer(new GuiMainMenu()));
+                    if(Mist.instance.destructed)
+                        this.mc.displayGuiScreen(new GuiMultiplayer(new GuiMainMenu()));
+                    else
+                        this.mc.displayGuiScreen(new GuiMultiplayer(new MainMenu()));
                 }
 
             case 2:
@@ -90,21 +104,22 @@ public class GuiIngameMenu extends GuiScreen
 
             case 7:
                 this.mc.displayGuiScreen(new GuiShareToLan(this));
+                break;
+            case 10:
+                NetworkingUtils.Reconnect();
+                break;
         }
     }
 
-    /**
-     * Called from the main game loop to update the screen.
-     */
     public void updateScreen()
     {
         super.updateScreen();
+
+        if(Mist.instance.destructed || mc.isSingleplayer())
+            reconnect.visible = false;
         ++this.field_146444_f;
     }
 
-    /**
-     * Draws the screen and all the components in it. Args : mouseX, mouseY, renderPartialTicks
-     */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         this.drawDefaultBackground();

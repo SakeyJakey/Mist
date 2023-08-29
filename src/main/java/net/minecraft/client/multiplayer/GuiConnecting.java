@@ -4,11 +4,16 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import dev.sakey.mist.Mist;
+import dev.sakey.mist.utils.render.Shader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiDisconnected;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.network.NetHandlerLoginClient;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.network.EnumConnectionState;
 import net.minecraft.network.NetworkManager;
@@ -18,6 +23,8 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 
 public class GuiConnecting extends GuiScreen
 {
@@ -62,6 +69,7 @@ public class GuiConnecting extends GuiScreen
                     }
 
                     inetaddress = InetAddress.getByName(ip);
+
                     GuiConnecting.this.networkManager = NetworkManager.createNetworkManagerAndConnect(inetaddress, port, GuiConnecting.this.mc.gameSettings.isUsingNativeTransport());
                     GuiConnecting.this.networkManager.setNetHandler(new NetHandlerLoginClient(GuiConnecting.this.networkManager, GuiConnecting.this.mc, GuiConnecting.this.previousGuiScreen));
                     GuiConnecting.this.networkManager.sendPacket(new C00Handshake(47, ip, port, EnumConnectionState.LOGIN));
@@ -99,9 +107,6 @@ public class GuiConnecting extends GuiScreen
         }).start();
     }
 
-    /**
-     * Called from the main game loop to update the screen.
-     */
     public void updateScreen()
     {
         if (this.networkManager != null)
@@ -117,27 +122,23 @@ public class GuiConnecting extends GuiScreen
         }
     }
 
-    /**
-     * Fired when a key is typed (except F11 which toggles full screen). This is the equivalent of
-     * KeyListener.keyTyped(KeyEvent e). Args : character (character on the key), keyCode (lwjgl Keyboard key code)
-     */
     protected void keyTyped(char typedChar, int keyCode) throws IOException
     {
     }
 
-    /**
-     * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
-     * window resizes, the buttonList is cleared beforehand.
-     */
     public void initGui()
     {
+
+        try {
+            bg = new Shader("loading");
+        } catch (IOException e) {
+
+        }
+
         this.buttonList.clear();
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 120 + 12, I18n.format("gui.cancel", new Object[0])));
     }
 
-    /**
-     * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
-     */
     protected void actionPerformed(GuiButton button) throws IOException
     {
         if (button.id == 0)
@@ -153,12 +154,33 @@ public class GuiConnecting extends GuiScreen
         }
     }
 
-    /**
-     * Draws the screen and all the components in it. Args : mouseX, mouseY, renderPartialTicks
-     */
+    Shader bg;
+    long initTime = System.currentTimeMillis();
+
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+        ScaledResolution sr = new ScaledResolution(mc);
+
         this.drawDefaultBackground();
+
+        if(!Mist.instance.destructed) {
+            GlStateManager.disableCull();
+
+            bg.useShader(sr.getScaledWidth(), sr.getScaledHeight(), mouseX, mouseY, (System.currentTimeMillis() - initTime) / 1000f);
+
+            GL11.glBegin(GL11.GL_QUADS);
+
+            GL11.glVertex2f(-1f, -1f);
+            GL11.glVertex2f(-1f, 1f);
+            GL11.glVertex2f(1f, 1f);
+            GL11.glVertex2f(1f, -1f);
+
+            GL11.glEnd();
+
+            // Unbind shader
+            GL20.glUseProgram(0);
+
+        }
 
         if (this.networkManager == null)
         {
