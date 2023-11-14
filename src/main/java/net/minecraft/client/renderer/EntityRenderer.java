@@ -13,6 +13,7 @@ import java.util.concurrent.Callable;
 
 import dev.sakey.mist.Mist;
 import dev.sakey.mist.events.impl.render.EventRenderWorld;
+import dev.sakey.mist.modules.impl.combat.Reach;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;
@@ -273,7 +274,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
         }
     }
 
-    private void loadShader(ResourceLocation resourceLocationIn)
+    public void loadShader(ResourceLocation resourceLocationIn)
     {
         if (OpenGlHelper.isFramebufferEnabled())
         {
@@ -649,7 +650,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
         }
     }
 
-    private void orientCamera(float partialTicks)
+    public void orientCamera(float partialTicks)
     {
         Entity entity = this.mc.getRenderViewEntity();
         float f = entity.getEyeHeight();

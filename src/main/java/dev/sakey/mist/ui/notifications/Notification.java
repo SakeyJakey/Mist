@@ -13,10 +13,7 @@ public class Notification {
 	private final long timeEnd;
 	public int length;
 	
-	ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-	
-	public double y = sr.getScaledHeight() - 30 - (NotificationManager.notifications.size() * 30);
-	public double h = sr.getScaledHeight() - (NotificationManager.notifications.size() * 30);
+	public double y = NotificationManager.renderer.initY();
 
 	public Notification(String title, String description, NotificationType type, int length) {
 		this.title = title;
@@ -29,13 +26,21 @@ public class Notification {
 		
 		NotificationManager.Notify(this);
 	}
+
+	public Notification(Notification n) {
+		this.title = n.title;
+		this.description = n.description;
+		this.type = n.type;
+		this.y = n.y;
+		this.timeStart = n.timeStart;
+		this.length = n.length;
+		this.timeEnd = n.timeStart + n.length;
+	}
 	
 	public boolean check() {
-		if(System.currentTimeMillis() > this.timeEnd) {
-			NotificationManager.notifications.remove(this);
-			return true;
-		}
-		return false;
+		if(System.currentTimeMillis() < this.timeEnd) return false;
+		NotificationManager.notifications.remove(this);
+		return true;
 	}
 	
 	public double getPercent() {

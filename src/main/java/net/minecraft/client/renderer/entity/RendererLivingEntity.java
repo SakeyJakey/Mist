@@ -1,8 +1,16 @@
 package net.minecraft.client.renderer.entity;
 
 import com.google.common.collect.Lists;
+
+import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.util.List;
+
+import dev.sakey.mist.Mist;
+import dev.sakey.mist.events.EventType;
+import dev.sakey.mist.events.impl.render.EventRenderEntity;
+import dev.sakey.mist.utils.render.MaskUtils;
+import dev.sakey.mist.utils.render.ShaderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
@@ -16,6 +24,7 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EnumPlayerModelParts;
@@ -100,6 +109,11 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
 
     public void doRender(T entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
+
+        EventRenderEntity event = new EventRenderEntity(entity);
+		event.setType(EventType.PRE);
+		Mist.instance.getEventManager().handleEvent(event);
+
         if (!Reflector.RenderLivingEvent_Pre_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Pre_Constructor, new Object[] {entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)}))
         {
             if (animateModelLiving)
@@ -278,6 +292,9 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                 Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Post_Constructor, new Object[] {entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)});
             }
         }
+
+		event.setType(EventType.POST);
+		Mist.instance.getEventManager().handleEvent(event);
     }
 
     protected boolean setScoreTeamColor(T entityLivingBaseIn)

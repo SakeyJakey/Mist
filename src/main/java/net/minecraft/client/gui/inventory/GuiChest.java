@@ -1,5 +1,7 @@
 package net.minecraft.client.gui.inventory;
 
+import dev.sakey.mist.Mist;
+import dev.sakey.mist.modules.impl.player.ChestStealer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.ContainerChest;

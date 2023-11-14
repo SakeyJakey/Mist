@@ -3,6 +3,8 @@ package net.minecraft.client.gui;
 import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.util.List;
+
+import dev.sakey.mist.Mist;
 import net.minecraft.network.play.client.C14PacketTabComplete;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
@@ -259,6 +261,9 @@ public class GuiChat extends GuiScreen
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+
+        Mist.instance.getDraggableManager().updateChat(mouseX, mouseY);
+
         drawRect(2, this.height - 14, this.width - 2, this.height - 2, Integer.MIN_VALUE);
         this.inputField.drawTextBox();
         IChatComponent ichatcomponent = this.mc.ingameGUI.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());

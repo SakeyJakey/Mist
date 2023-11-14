@@ -1,5 +1,7 @@
 package net.minecraft.client.renderer;
 
+import dev.sakey.mist.Mist;
+import dev.sakey.mist.modules.impl.render.Animations;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -263,8 +265,8 @@ public class ItemRenderer
         GlStateManager.translate(0.56F, -0.52F, -0.71999997F);
         GlStateManager.translate(0.0F, equipProgress * -0.6F, 0.0F);
         GlStateManager.rotate(45.0F, 0.0F, 1.0F, 0.0F);
-        float f = MathHelper.sin(swingProgress * swingProgress * (float)Math.PI);
-        float f1 = MathHelper.sin(MathHelper.sqrt_float(swingProgress) * (float)Math.PI);
+        float f = MathHelper.sin(swingProgress * swingProgress * (float) Math.PI);
+        float f1 = MathHelper.sin(MathHelper.sqrt_float(swingProgress) * (float) Math.PI);
         GlStateManager.rotate(f * -20.0F, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(f1 * -20.0F, 0.0F, 0.0F, 1.0F);
         GlStateManager.rotate(f1 * -80.0F, 1.0F, 0.0F, 0.0F);
@@ -344,8 +346,27 @@ public class ItemRenderer
                             break;
 
                         case BLOCK:
-                            this.transformFirstPersonItem(f, 0.0F);
-                            this.doBlockTransformations();
+                            if(!Mist.instance.getModuleManager().getModule(Animations.class).isEnabled()) {
+                                this.transformFirstPersonItem(f, 0.0F);
+                                this.doBlockTransformations();
+                            }
+                            else {
+                                float swing = f1;
+                                switch (((Animations)Mist.instance.getModuleManager().getModule(Animations.class)).mode.getMode()) {
+                                    case "Mist":
+                                        this.transformFirstPersonItem(f, 0.0F);
+                                        this.doBlockTransformations();
+                                        GlStateManager.translate(0, Math.sin(swing * 3) * 0.2, 0);
+                                        GlStateManager.rotate(swing * 30, 0, 1, 0);
+                                        break;
+                                    case "Night":
+                                        this.transformFirstPersonItem(f, 0.0F);
+                                        GlStateManager.translate(0, Math.sin(swing * 3) * 0.2, 0);
+                                        GlStateManager.rotate(swing * 30, -1, -1, 0);
+                                        break;
+                                }
+                            }
+
                             break;
 
                         case BOW:
@@ -355,7 +376,8 @@ public class ItemRenderer
                 }
                 else
                 {
-                    this.doItemUsedTransformations(f1);
+                    if(!Mist.instance.getModuleManager().getModule(Animations.class).isEnabled() | ((Animations)Mist.instance.getModuleManager().getModule(Animations.class)).fullSwing.isEnabled())
+                        this.doItemUsedTransformations(f1);
                     this.transformFirstPersonItem(f, f1);
                 }
 

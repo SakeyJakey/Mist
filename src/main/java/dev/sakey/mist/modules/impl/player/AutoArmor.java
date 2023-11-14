@@ -5,19 +5,29 @@ import dev.sakey.mist.events.EventHandler;
 import dev.sakey.mist.events.impl.player.EventMotion;
 import dev.sakey.mist.modules.Category;
 import dev.sakey.mist.modules.Module;
-import dev.sakey.mist.modules.ModuleInfo;
-import net.minecraft.init.Items;
+import dev.sakey.mist.modules.annotations.ModuleInfo;
+import dev.sakey.mist.modules.settings.impl.BoolSetting;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
 import org.lwjgl.input.Keyboard;
+
+import java.util.Arrays;
 
 public class AutoArmor extends Module {
 
-    @ModuleInfo(name = "AutoArmor", description = "Automatically equips armor", key = Keyboard.KEY_O, category = Category.PLAYER)
-    public AutoArmor(){
+	BoolSetting onInv = new BoolSetting("When inv open", true);
 
+    @ModuleInfo(name = "AutoArmor", description = "Automatically equips armor", category = Category.PLAYER)
+    public AutoArmor(){
+		addSettings(onInv);
     }
 
-    protected void onEnable() {
+	private int[] bestArmorSlots;
+
+	protected void onEnable() {
         registerEvent(EventMotion.class, eventMotion);
     }
 
@@ -26,48 +36,77 @@ public class AutoArmor extends Module {
     }
 
     EventHandler<EventMotion> eventMotion = e -> {
-        for (ItemStack i :
-                mc.thePlayer.getInventory()) {
-            if(i == null || i.isStackable()) return;
+		if(onInv.isEnabled() && !(mc.currentScreen instanceof GuiInventory)) return;
+		search();
 
-            if(
-                i.getItem() == Items.diamond_helmet.getContainerItem() ||
-                i.getItem() == Items.iron_helmet.getContainerItem() ||
-                i.getItem() == Items.golden_helmet.getContainerItem() ||
-                i.getItem() == Items.chainmail_helmet.getContainerItem() ||
-                i.getItem() == Items.leather_helmet.getContainerItem()
-            ){
-                mc.thePlayer.inventory.setInventorySlotContents(103, i);
-            }
+		for (int i = 0; i < 4; i++) {
+			if (bestArmorSlots[i] != -1) {
+				int bestSlot = bestArmorSlots[i];
 
-            else if(
-                    i.getItem() == Items.diamond_chestplate.getContainerItem() ||
-                    i.getItem() == Items.iron_chestplate.getContainerItem() ||
-                    i.getItem() == Items.golden_chestplate.getContainerItem() ||
-                    i.getItem() == Items.chainmail_chestplate.getContainerItem() ||
-                    i.getItem() == Items.leather_chestplate.getContainerItem()
-            ){
-                mc.thePlayer.inventory.setInventorySlotContents(102, i);
-            }
+				ItemStack oldArmor = mc.thePlayer.inventory.armorItemInSlot(i);
 
-            else if(
-                i.getItem() == Items.diamond_leggings.getContainerItem() ||
-                i.getItem() == Items.iron_leggings.getContainerItem() ||
-                i.getItem() == Items.golden_leggings.getContainerItem() ||
-                i.getItem() == Items.chainmail_leggings.getContainerItem() ||
-                i.getItem() == Items.leather_leggings.getContainerItem()
-            ){
-                mc.thePlayer.inventory.setInventorySlotContents(101, i);
-            }
-            else if(
-                i.getItem() == Items.diamond_boots.getContainerItem() ||
-                i.getItem() == Items.iron_boots.getContainerItem() ||
-                i.getItem() == Items.golden_boots.getContainerItem() ||
-                i.getItem() == Items.chainmail_boots.getContainerItem()  ||
-                i.getItem() == Items.leather_boots.getContainerItem()
-            ){
-                mc.thePlayer.inventory.setInventorySlotContents(100, i);
-            }
-        }
+				if (oldArmor != null && oldArmor.getItem() != null) {
+					mc.playerController.windowClick(mc.thePlayer.inventoryContainer.windowId, 8 - i, 0, 1, mc.thePlayer);
+				}
+				mc.playerController.windowClick(mc.thePlayer.inventoryContainer.windowId, bestSlot < 9 ? bestSlot + 36 : bestSlot, 0, 1, mc.thePlayer);
+			}
+/*
+		if(bestSwordSlot != -1 && bestSwordDamage != -1) {
+			mc.playerController.windowClick(mc.thePlayer.inventoryContainer.windowId, bestSwordSlot < 9 ? bestSwordSlot + 36 : bestSwordSlot, 0, 2, mc.thePlayer);
+		}*/
+		}
     };
+
+	private void search() {
+		int[] bestArmorDamage = new int[4];
+		bestArmorSlots = new int[4];
+
+		Arrays.fill(bestArmorDamage, -1);
+		Arrays.fill(bestArmorSlots, -1);
+
+		for (int i = 0; i < bestArmorSlots.length; i++) {
+			ItemStack itemStack = mc.thePlayer.getCurrentArmor(i);
+
+			if(itemStack != null && itemStack.getItem() != null) {
+				if(itemStack.getItem() instanceof ItemArmor) {
+					ItemArmor armor = (ItemArmor) itemStack.getItem();
+					bestArmorDamage[i] = armor.damageReduceAmount;
+				}
+			}
+		}
+
+		for (int i = 0; i < 9 * 4; i++) {
+			ItemStack itemStack = mc.thePlayer.inventory.getStackInSlot(i);
+
+			if(itemStack == null || itemStack.getItem() == null) continue;
+
+			if(itemStack.getItem() instanceof ItemArmor) {
+				ItemArmor armor = (ItemArmor) itemStack.getItem();
+
+				int armorType = 3 - armor.armorType;
+
+				if(bestArmorDamage[armorType] < armor.damageReduceAmount) {
+					bestArmorDamage[armorType] = armor.damageReduceAmount;
+					bestArmorSlots[armorType] = i;
+				}
+			}
+		}
+
+		for (int i = 0; i < 9 * 4; i++) {
+			ItemStack itemStack = mc.thePlayer.inventory.getStackInSlot(i);
+
+			if(itemStack == null || itemStack.getItem() == null) continue;
+
+			if(itemStack.getItem() instanceof ItemArmor) {
+				ItemArmor armor = (ItemArmor) itemStack.getItem();
+
+				int armorType = 3 - armor.armorType;
+
+				if(bestArmorDamage[armorType] < armor.damageReduceAmount) {
+					bestArmorDamage[armorType] = armor.damageReduceAmount;
+					bestArmorSlots[armorType] = i;
+				}
+			}
+		}
+	}
 }

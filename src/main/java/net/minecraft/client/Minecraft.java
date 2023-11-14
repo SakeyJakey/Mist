@@ -38,6 +38,8 @@ import javax.imageio.ImageIO;
 
 import dev.sakey.mist.Mist;
 import dev.sakey.mist.events.impl.client.EventKeyPress;
+import dev.sakey.mist.ui.menus.Intro;
+import dev.sakey.mist.ui.menus.LoadingScreen;
 import dev.sakey.mist.ui.menus.MainMenu;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -392,6 +394,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         }
     }
 
+
+    boolean startingUp = true;
+
     private void startGame() throws LWJGLException, IOException
     {
         this.gameSettings = new GameSettings(this, this.mcDataDir);
@@ -419,7 +424,15 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.refreshResources();
         this.renderEngine = new TextureManager(this.mcResourceManager);
         this.mcResourceManager.registerReloadListener(this.renderEngine);
-        this.drawSplashScreen(this.renderEngine);
+
+
+        // MIST HOOK
+        Mist.instance.hook();
+
+
+        LoadingScreen.draw(renderEngine);
+        //this.drawSplashScreen(this.renderEngine);
+
         this.initStream();
         this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
         this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
@@ -491,12 +504,13 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.ingameGUI = new GuiIngame(this);
 
 
-        // Twen hook
+        // Mist hook
 
-        Mist.instance.hook();
+        //Mist.instance.hook();
 
-        // Twen hook
+        // Mist hook
 
+        startingUp = false;
         if (this.serverName != null)
         {
             if(Mist.instance.destructed)
@@ -509,7 +523,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             if(Mist.instance.destructed)
                 this.displayGuiScreen(new GuiMainMenu());
             else
-                this.displayGuiScreen(new MainMenu());
+                this.displayGuiScreen(new Intro());
         }
 
         this.renderEngine.deleteTexture(this.mojangLogo);
@@ -864,6 +878,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         worldrenderer.pos((double)this.displayWidth, 0.0D, 0.0D).tex(0.0D, 0.0D).color(255, 255, 255, 255).endVertex();
         worldrenderer.pos(0.0D, 0.0D, 0.0D).tex(0.0D, 0.0D).color(255, 255, 255, 255).endVertex();
         tessellator.draw();
+        LoadingScreen.draw(getTextureManager());
+
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         int j = 256;
         int k = 256;
@@ -956,6 +972,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
     public void shutdownMinecraftApplet()
     {
+
+        Mist.instance.onClose();
+
         try
         {
             this.stream.shutdownStream();
@@ -989,6 +1008,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     {
         long i = System.nanoTime();
         this.mcProfiler.startSection("root");
+
 
         if (Display.isCreated() && Display.isCloseRequested())
         {

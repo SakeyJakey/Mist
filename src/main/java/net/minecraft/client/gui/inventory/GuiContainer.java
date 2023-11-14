@@ -3,7 +3,12 @@ package net.minecraft.client.gui.inventory;
 import com.google.common.collect.Sets;
 import java.io.IOException;
 import java.util.Set;
+
+import dev.sakey.mist.Mist;
+import dev.sakey.mist.modules.impl.combat.KillAura;
+import dev.sakey.mist.modules.impl.player.ChestStealer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -56,16 +61,32 @@ public abstract class GuiContainer extends GuiScreen
         this.ignoreMouseUp = true;
     }
 
+    protected void actionPerformed(GuiButton button) throws IOException {
+        if(button.id == 0)
+            Mist.instance.getModuleManager().getModule(KillAura.class).disable();
+        else if(button.id == 1)
+            Mist.instance.getModuleManager().getModule(ChestStealer.class).disable();
+    }
+
     public void initGui()
     {
         super.initGui();
         this.mc.thePlayer.openContainer = this.inventorySlots;
         this.guiLeft = (this.width - this.xSize) / 2;
         this.guiTop = (this.height - this.ySize) / 2;
+
+        if(!Mist.instance.destructed) {
+            buttonList.add(new GuiButton(0, 5, 5, 125, 20, "Disable KillAura"));
+            buttonList.add(new GuiButton(1, 5, 20 + 5 + 5, 125, 20, "Disable ChestStealer"));
+        }
+
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+        ChestStealer cs = (ChestStealer) Mist.instance.getModuleManager().getModule(ChestStealer.class);
+        if(cs.stealingGUI.isEnabled() && cs.isEnabled() && cs.hideChestGUI && cs.stage == -1 && this instanceof GuiChest) return;
+
         this.drawDefaultBackground();
         int i = this.guiLeft;
         int j = this.guiTop;

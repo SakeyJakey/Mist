@@ -2,8 +2,11 @@ package net.minecraft.client.renderer.entity;
 
 import dev.sakey.mist.Mist;
 import dev.sakey.mist.modules.impl.render.Chams;
+import dev.sakey.mist.utils.render.MaskUtils;
+import dev.sakey.mist.utils.render.ShaderUtils;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerArrow;
@@ -20,6 +23,8 @@ import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+
+import java.io.IOException;
 
 public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
 {
@@ -60,75 +65,7 @@ public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
 
             this.setModelVisibilities(entity);
 
-            if(Mist.instance.getModuleManager().getModule(Chams.class).isEnabled()) {
-
-                if(((Chams) Mist.instance.getModuleManager().getModule(Chams.class)).mode.getMode() == "Normal") {
-                    GL11.glDisable(GL11.GL_LIGHTING);
-                    GL11.glDisable(GL11.GL_DEPTH_TEST);
-                    GL11.glEnable(GL11.GL_TEXTURE_2D);
-
-
-                    GL11.glEnable(GL11.GL_CULL_FACE);
-                    GL11.glCullFace(GL11.GL_BACK);
-                    GL11.glFrontFace(GL11.GL_CW);
-
-
-                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
-
-
-                    GL11.glCullFace(GL11.GL_BACK);
-                    GL11.glFrontFace(GL11.GL_CCW);
-                    GL11.glDisable(GL11.GL_CULL_FACE);
-
-
-                    GL11.glEnable(GL11.GL_DEPTH_TEST);
-                    GL11.glEnable(GL11.GL_LIGHTING);
-                    GL11.glColor4f(255F, 255F, 255F, 1F);
-                }
-                else if(((Chams) Mist.instance.getModuleManager().getModule(Chams.class)).mode.getMode() == "Solid") {
-                    GL11.glDisable(GL11.GL_LIGHTING);
-                    GL11.glDisable(GL11.GL_DEPTH_TEST);
-                    GL11.glColor4f(255F, 0F, 0F, 1F);
-                    GL11.glDisable(GL11.GL_TEXTURE_2D);
-                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
-                    GL11.glEnable(GL11.GL_LIGHTING);
-                    GL11.glEnable(GL11.GL_TEXTURE_2D);
-                    GL11.glEnable(GL11.GL_DEPTH_TEST);
-                    GL11.glColor4f(255F, 255F, 255F, 1F);
-                }
-
-                else if(((Chams) Mist.instance.getModuleManager().getModule(Chams.class)).mode.getMode() == "Behind") {
-                    GL11.glDisable(GL11.GL_LIGHTING);
-                    GL11.glDisable(GL11.GL_DEPTH_TEST);
-                    GL11.glColor4f(255F, 0F, 0F, 1F);
-                    GL11.glDisable(GL11.GL_TEXTURE_2D);
-                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
-                    GL11.glEnable(GL11.GL_DEPTH_TEST);
-                    GL11.glColor4f(0F, 255F, 0F, 1F);
-                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
-                    GL11.glEnable(GL11.GL_LIGHTING);
-                    GL11.glEnable(GL11.GL_TEXTURE_2D);
-                    GL11.glColor4f(255F, 255F, 255F, 1F);
-                }
-
-                else if(((Chams) Mist.instance.getModuleManager().getModule(Chams.class)).mode.getMode() == "Outline") {
-                    GL11.glDisable(GL11.GL_LIGHTING);
-                    GL11.glDisable(GL11.GL_DEPTH_TEST);
-                    GL11.glColor4f(255F, 255F, 255F, 1F);
-                    GL11.glDisable(GL11.GL_TEXTURE_2D);
-                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
-                    GL11.glEnable(GL11.GL_DEPTH_TEST);
-                    GL11.glEnable(GL11.GL_TEXTURE_2D);
-                    super.doRender(entity, x, d0, z, entityYaw, partialTicks);
-                    GL11.glEnable(GL11.GL_LIGHTING);
-                    GL11.glColor4f(255F, 255F, 255F, 1F);
-                }
-
-            }
-            else {
-                super.doRender(entity, x, d0, z, entityYaw, partialTicks);
-            }
-
+            super.doRender(entity, x, d0, z, entityYaw, partialTicks);
         }
     }
 

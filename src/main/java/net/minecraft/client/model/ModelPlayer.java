@@ -1,7 +1,11 @@
 package net.minecraft.client.model;
 
+import dev.sakey.mist.utils.render.MaskUtils;
+import dev.sakey.mist.utils.render.ShaderUtils;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+
+import java.io.IOException;
 
 public class ModelPlayer extends ModelBiped
 {
@@ -95,7 +99,6 @@ public class ModelPlayer extends ModelBiped
             this.bipedRightArmwear.render(scale);
             this.bipedBodyWear.render(scale);
         }
-
         GlStateManager.popMatrix();
     }
 
