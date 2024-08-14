@@ -1,0 +1,94 @@
+---- Minecraft Crash Report ----
+// I just don't know what went wrong :(
+
+Time: 05/09/23 08:32
+Description: Updating screen events
+
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.String.substring(String.java:1967)
+	at dev.sakey.mist.ui.clickguis.main.MainClickGui.keyTyped(MainClickGui.java:72)
+	at net.minecraft.client.gui.GuiScreen.handleKeyboardInput(GuiScreen.java:553)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:510)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1682)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1041)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:352)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.lang.String.substring(String.java:1967)
+	at dev.sakey.mist.ui.clickguis.main.MainClickGui.keyTyped(MainClickGui.java:72)
+	at net.minecraft.client.gui.GuiScreen.handleKeyboardInput(GuiScreen.java:553)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:510)
+
+-- Affected screen --
+Details:
+	Screen name: dev.sakey.mist.ui.clickguis.main.MainClickGui
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player44'/69, l='MpServer', x=488.25, y=69.00, z=1327.94]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 584.00,64.00,166.00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 479631 game time, 8604 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 31 total; [EntitySkeleton['Skeleton'/128, l='MpServer', x=457.09, y=23.00, z=1308.72], EntityZombie['Zombie'/129, l='MpServer', x=463.50, y=37.00, z=1366.50], EntityEnderman['Enderman'/130, l='MpServer', x=461.50, y=37.00, z=1366.50], EntitySkeleton['Skeleton'/132, l='MpServer', x=467.50, y=24.00, z=1267.50], EntitySkeleton['Skeleton'/133, l='MpServer', x=466.50, y=24.00, z=1264.50], EntityBat['Bat'/134, l='MpServer', x=475.65, y=46.53, z=1297.26], EntityZombie['Zombie'/135, l='MpServer', x=486.31, y=38.00, z=1311.69], EntitySquid['Squid'/140, l='MpServer', x=501.14, y=61.00, z=1272.52], EntityItem['item.tile.sand.default'/141, l='MpServer', x=510.38, y=67.00, z=1331.88], EntityItem['item.tile.sand.default'/142, l='MpServer', x=511.66, y=66.00, z=1328.19], EntityItem['item.tile.sand.default'/149, l='MpServer', x=512.13, y=65.00, z=1329.97], EntityItem['item.tile.sand.default'/150, l='MpServer', x=513.63, y=66.00, z=1331.06], EntityItem['item.tile.sand.default'/151, l='MpServer', x=514.47, y=66.00, z=1328.78], EntityItem['item.tile.sand.default'/152, l='MpServer', x=514.88, y=66.00, z=1330.06], EntityItem['item.tile.sand.default'/153, l='MpServer', x=513.00, y=65.00, z=1330.03], EntityItem['item.tile.sand.default'/154, l='MpServer', x=512.56, y=66.00, z=1331.88], EntityPlayerSP['Player44'/69, l='MpServer', x=488.25, y=69.00, z=1327.94], EntitySkeleton['Skeleton'/161, l='MpServer', x=540.50, y=28.00, z=1254.50], EntitySkeleton['Skeleton'/162, l='MpServer', x=540.50, y=28.00, z=1252.50], EntitySkeleton['Skeleton'/164, l='MpServer', x=545.69, y=29.15, z=1296.38], EntityCreeper['Creeper'/167, l='MpServer', x=562.50, y=31.00, z=1298.50], EntityZombie['Zombie'/168, l='MpServer', x=565.50, y=37.00, z=1310.50], EntityZombie['Zombie'/104, l='MpServer', x=409.31, y=18.00, z=1303.81], EntitySquid['Squid'/109, l='MpServer', x=428.22, y=61.00, z=1285.83], EntitySpider['Spider'/111, l='MpServer', x=417.97, y=14.00, z=1299.25], EntitySkeleton['Skeleton'/112, l='MpServer', x=425.50, y=18.00, z=1321.50], EntityZombie['Zombie'/113, l='MpServer', x=428.69, y=18.00, z=1321.34], EntityZombie['Zombie'/114, l='MpServer', x=425.94, y=35.00, z=1324.66], EntityCreeper['Creeper'/118, l='MpServer', x=419.47, y=12.83, z=1349.39], EntityZombie['Zombie'/126, l='MpServer', x=445.34, y=24.00, z=1326.34], EntitySkeleton['Skeleton'/127, l='MpServer', x=460.81, y=24.00, z=1274.78]]
+	Retry entities: 0 total; []
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:356)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2634)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:373)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Linux (amd64) version 6.4.12-arch1-1
+	Java Version: 1.8.0_382, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 353710648 bytes (337 MB) / 1173356544 bytes (1119 MB) up to 3719299072 bytes (3547 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 99
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 535.104.05, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M6_pre2
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 535.104.05
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

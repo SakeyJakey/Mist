@@ -1,0 +1,10 @@
+package dev.sakey.mist.events.impl.render;
+
+import dev.sakey.mist.events.Event;
+import net.minecraft.client.Minecraft;
+
+public class EventRenderHUD extends Event {
+    public EventRenderHUD() {
+        setCancelled(Minecraft.getMinecraft().gameSettings.showDebugInfo);
+    }
+}

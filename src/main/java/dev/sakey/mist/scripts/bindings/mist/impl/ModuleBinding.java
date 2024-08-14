@@ -25,14 +25,12 @@ import java.util.function.Consumer;
 public class ModuleBinding {
 	ScriptModule module;
 
-	Runnable onEnable = () -> { };
-	Runnable onDisable = () -> { };
+	Runnable onEnable = () -> {};
+	Runnable onDisable = () -> {};
 
 
 	public ModuleBinding(String name, String category) {
-		module = new ScriptModule();
-		module.setName(name);
-		module.setCategory(Category.getCategoryByName(category));
+		module = new ScriptModule(name, Category.getCategoryByName(category));
 		Mist.instance.getModuleManager().addModule(module);
 	}
 
@@ -133,22 +131,18 @@ public class ModuleBinding {
 	}
 
 	private class ScriptModule extends Module {
-		@Override
+
+		public ScriptModule(String name, Category category) {
+			this.name = name;
+			this.category = category;
+		}
+
 		protected void onEnable() {
 			onEnable.run();
 		}
 
-		@Override
 		protected void onDisable() {
 			onDisable.run();
-		}
-
-		public void setCategory(Category category) {
-			this.category = category;
-		}
-
-		public void setName(String name) {
-			this.name = name;
 		}
 
 		public void addSetting(Setting setting) {

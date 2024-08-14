@@ -20,5 +20,9 @@ public class Animations extends Module {
     @ModuleInfo(name = "Animations", description = "Item animations", category = Category.RENDER)
     public Animations() { addSettings(mode, fullSwing); }
 
+    public String getSuffix() {
+        return mode.getMode();
+    }
+
     // ItemRenderer:transformFirstPersonItem
 }

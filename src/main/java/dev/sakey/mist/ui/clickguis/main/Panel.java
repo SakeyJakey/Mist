@@ -75,7 +75,7 @@ public class Panel extends Draggable {
 
 	private boolean wasClicked;
 	public void draw() {
-		final double speed = Minecraft.getDebugFPS() / 8;
+		final double speed = (double) Minecraft.getDebugFPS() / 8;
 
 		tHeight = calculateHeight();
 

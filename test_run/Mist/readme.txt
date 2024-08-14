@@ -1,0 +1,1 @@
+If the client doesn't load, try deleting the '.json' config(the default config)

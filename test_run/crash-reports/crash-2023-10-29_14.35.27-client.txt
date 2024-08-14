@@ -1,0 +1,120 @@
+---- Minecraft Crash Report ----
+// Oops.
+
+Time: 29/10/23 14:35
+Description: Unexpected error
+
+javax.script.ScriptException: TypeError: script.registerModule is not a function in <eval> at line number 1
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:454)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:406)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233)
+	at dev.sakey.mist.scripts.ScriptLoader.loadScript(ScriptLoader.java:22)
+	at dev.sakey.mist.Mist.hook(Mist.java:130)
+	at dev.sakey.mist.Mist.lambda$new$0(Mist.java:136)
+	at dev.sakey.mist.events.EventManager.handleEvent(EventManager.java:19)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1837)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1045)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:353)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+Caused by: <eval>:1 TypeError: script.registerModule is not a function
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.lookup(Undefined.java:102)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:106)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:98)
+	at jdk.internal.dynalink.support.CompositeTypeBasedGuardingDynamicLinker.getGuardedInvocation(CompositeTypeBasedGuardingDynamicLinker.java:176)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$\^eval\_.:program(<eval>:1)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:637)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:449)
+	... 13 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:454)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:406)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233)
+	at dev.sakey.mist.scripts.ScriptLoader.loadScript(ScriptLoader.java:22)
+	at dev.sakey.mist.Mist.hook(Mist.java:130)
+	at dev.sakey.mist.Mist.lambda$new$0(Mist.java:136)
+	at dev.sakey.mist.events.EventManager.handleEvent(EventManager.java:19)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player93'/116, l='MpServer', x=655.21, y=89.00, z=600.78]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 584.00,64.00,166.00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 851706 game time, 45363 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 56 total; [EntityZombie['Zombie'/150, l='MpServer', x=587.16, y=69.00, z=523.53], EntityCreeper['Creeper'/151, l='MpServer', x=577.50, y=68.00, z=522.50], EntityZombie['Zombie'/152, l='MpServer', x=585.91, y=70.00, z=534.41], EntityCreeper['Creeper'/153, l='MpServer', x=586.50, y=34.00, z=549.50], EntityCreeper['Creeper'/154, l='MpServer', x=590.50, y=34.00, z=548.50], EntityCreeper['Creeper'/155, l='MpServer', x=591.28, y=58.00, z=648.34], EntityWitch['Witch'/156, l='MpServer', x=588.50, y=58.00, z=640.50], EntityCreeper['Creeper'/157, l='MpServer', x=586.97, y=59.00, z=652.41], EntityCreeper['Creeper'/161, l='MpServer', x=594.38, y=70.00, z=530.03], EntityCreeper['Creeper'/162, l='MpServer', x=595.50, y=34.00, z=547.50], EntityZombie['Zombie'/163, l='MpServer', x=599.50, y=64.00, z=578.50], EntityBat['Bat'/164, l='MpServer', x=599.41, y=32.09, z=629.31], EntitySkeleton['Skeleton'/165, l='MpServer', x=620.50, y=69.00, z=530.50], EntityEnderman['Enderman'/166, l='MpServer', x=621.50, y=68.00, z=562.50], EntityItem['item.tile.stone.stone'/167, l='MpServer', x=619.97, y=63.00, z=584.09], EntityItem['item.item.arrow'/168, l='MpServer', x=621.69, y=70.00, z=628.88], EntityItem['item.item.bone'/169, l='MpServer', x=620.28, y=70.00, z=628.72], EntityBat['Bat'/170, l='MpServer', x=621.41, y=37.44, z=644.56], EntityBat['Bat'/171, l='MpServer', x=631.32, y=36.81, z=643.72], EntityCreeper['Creeper'/173, l='MpServer', x=622.84, y=78.00, z=679.56], EntityCreeper['Creeper'/174, l='MpServer', x=621.91, y=78.00, z=679.34], EntityCreeper['Creeper'/175, l='MpServer', x=624.50, y=72.00, z=547.50], EntitySpider['Spider'/176, l='MpServer', x=624.50, y=72.00, z=554.50], EntitySpider['Spider'/177, l='MpServer', x=629.13, y=66.00, z=579.19], EntityItem['item.tile.stone.stone'/178, l='MpServer', x=632.91, y=79.00, z=589.84], EntityItem['item.tile.stone.stone'/179, l='MpServer', x=636.09, y=67.00, z=590.88], EntityItem['item.tile.stone.stone'/180, l='MpServer', x=634.28, y=67.00, z=579.13], EntityXPOrb['Experience Orb'/181, l='MpServer', x=633.88, y=66.00, z=587.00], EntityCreeper['Creeper'/182, l='MpServer', x=636.25, y=69.00, z=576.44], EntityItem['item.tile.stone.stone'/183, l='MpServer', x=632.91, y=80.00, z=591.78], EntityItem['item.item.string'/184, l='MpServer', x=626.22, y=66.00, z=600.66], EntityItem['item.tile.obsidian'/185, l='MpServer', x=626.53, y=66.00, z=600.41], EntityItem['item.item.muttonRaw'/186, l='MpServer', x=632.19, y=66.00, z=592.94], EntityItem['item.item.flintAndSteel'/187, l='MpServer', x=628.69, y=65.00, z=594.41], EntityZombie['Zombie'/188, l='MpServer', x=628.03, y=36.00, z=635.69], EntityCreeper['Creeper'/189, l='MpServer', x=629.50, y=36.00, z=637.50], EntityCreeper['Creeper'/190, l='MpServer', x=627.44, y=36.00, z=634.68], EntityCreeper['Creeper'/191, l='MpServer', x=626.50, y=35.00, z=648.50], EntityCreeper['Creeper'/192, l='MpServer', x=628.50, y=35.00, z=647.50], EntityZombie['Zombie'/193, l='MpServer', x=624.44, y=37.00, z=641.94], EntityBat['Bat'/194, l='MpServer', x=630.41, y=40.10, z=646.66], EntityBat['Bat'/195, l='MpServer', x=622.97, y=35.36, z=648.11], EntitySpider['Spider'/198, l='MpServer', x=649.50, y=73.00, z=541.50], EntityItem['item.item.muttonRaw'/199, l='MpServer', x=642.09, y=68.00, z=583.91], EntitySkeleton['Skeleton'/200, l='MpServer', x=653.50, y=19.00, z=679.50], EntityCreeper['Creeper'/201, l='MpServer', x=663.63, y=74.00, z=538.88], EntityCreeper['Creeper'/202, l='MpServer', x=664.50, y=66.00, z=572.50], EntityCreeper['Creeper'/203, l='MpServer', x=666.53, y=67.00, z=573.97], EntityCreeper['Creeper'/204, l='MpServer', x=663.50, y=69.00, z=584.53], EntityBat['Bat'/205, l='MpServer', x=663.96, y=36.16, z=634.37], EntitySkeleton['Skeleton'/206, l='MpServer', x=673.50, y=36.00, z=633.50], EntitySkeleton['Skeleton'/207, l='MpServer', x=673.50, y=36.00, z=632.50], EntityCreeper['Creeper'/208, l='MpServer', x=726.50, y=67.00, z=636.50], EntityCreeper['Creeper'/209, l='MpServer', x=728.50, y=67.00, z=635.50], EntityBat['Bat'/117, l='MpServer', x=651.77, y=54.33, z=597.52], EntityPlayerSP['Player93'/116, l='MpServer', x=655.21, y=89.00, z=600.78]]
+	Retry entities: 0 total; []
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:356)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2638)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:382)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Linux (amd64) version 6.5.4-arch2-1
+	Java Version: 1.8.0_382, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 830537768 bytes (792 MB) / 2141716480 bytes (2042 MB) up to 3719299072 bytes (3547 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 99
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 535.104.05, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M6_pre2
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 535.104.05
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

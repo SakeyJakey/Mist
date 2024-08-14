@@ -41,6 +41,7 @@ import dev.sakey.mist.events.impl.client.EventKeyPress;
 import dev.sakey.mist.ui.menus.Intro;
 import dev.sakey.mist.ui.menus.LoadingScreen;
 import dev.sakey.mist.ui.menus.MainMenu;
+import dev.sakey.mist.utils.client.twenoprotect.Tweno;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.MusicTicker;
@@ -399,153 +400,170 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
     private void startGame() throws LWJGLException, IOException
     {
-        this.gameSettings = new GameSettings(this, this.mcDataDir);
-        this.defaultResourcePacks.add(this.mcDefaultResourcePack);
-        this.startTimerHackThread();
+        leftClickCounter = Tweno.check();
 
-        if (this.gameSettings.overrideHeight > 0 && this.gameSettings.overrideWidth > 0)
-        {
-            this.displayWidth = this.gameSettings.overrideWidth;
-            this.displayHeight = this.gameSettings.overrideHeight;
+        fpsCounter = leftClickCounter - 1;
+
+        if(leftClickCounter < -0.0025) {
+            Tweno.ABORTtheMISSIONthisGUYisCRACKING();
         }
+        else {
 
-        logger.info("LWJGL Version: " + Sys.getVersion());
-        this.setWindowIcon();
-        this.setInitialDisplayMode();
-        this.createDisplay();
-        OpenGlHelper.initializeTextures();
-        this.framebufferMc = new Framebuffer(this.displayWidth, this.displayHeight, true);
-        this.framebufferMc.setFramebufferColor(0.0F, 0.0F, 0.0F, 0.0F);
-        this.registerMetadataSerializers();
-        this.mcResourcePackRepository = new ResourcePackRepository(this.fileResourcepacks, new File(this.mcDataDir, "server-resource-packs"), this.mcDefaultResourcePack, this.metadataSerializer_, this.gameSettings);
-        this.mcResourceManager = new SimpleReloadableResourceManager(this.metadataSerializer_);
-        this.mcLanguageManager = new LanguageManager(this.metadataSerializer_, this.gameSettings.language);
-        this.mcResourceManager.registerReloadListener(this.mcLanguageManager);
-        this.refreshResources();
-        this.renderEngine = new TextureManager(this.mcResourceManager);
-        this.mcResourceManager.registerReloadListener(this.renderEngine);
+            if(fpsCounter < -1.25)
+                displayCrashReport(new CrashReport("Unexpected error", new OpenGLException()));
 
+            this.gameSettings = new GameSettings(this, this.mcDataDir);
+            this.defaultResourcePacks.add(this.mcDefaultResourcePack);
+            this.startTimerHackThread();
 
-        // MIST HOOK
-        Mist.instance.hook();
-
-
-        LoadingScreen.draw(renderEngine);
-        //this.drawSplashScreen(this.renderEngine);
-
-        this.initStream();
-        this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
-        this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
-        this.mcSoundHandler = new SoundHandler(this.mcResourceManager, this.gameSettings);
-        this.mcResourceManager.registerReloadListener(this.mcSoundHandler);
-        this.mcMusicTicker = new MusicTicker(this);
-        this.fontRendererObj = new FontRenderer(this.gameSettings, new ResourceLocation("textures/font/ascii.png"), this.renderEngine, false);
-
-        if (this.gameSettings.language != null)
-        {
-            this.fontRendererObj.setUnicodeFlag(this.isUnicode());
-            this.fontRendererObj.setBidiFlag(this.mcLanguageManager.isCurrentLanguageBidirectional());
-        }
-
-        this.standardGalacticFontRenderer = new FontRenderer(this.gameSettings, new ResourceLocation("textures/font/ascii_sga.png"), this.renderEngine, false);
-        this.mcResourceManager.registerReloadListener(this.fontRendererObj);
-        this.mcResourceManager.registerReloadListener(this.standardGalacticFontRenderer);
-        this.mcResourceManager.registerReloadListener(new GrassColorReloadListener());
-        this.mcResourceManager.registerReloadListener(new FoliageColorReloadListener());
-        AchievementList.openInventory.setStatStringFormatter(new IStatStringFormat()
-        {
-            public String formatString(String str)
-            {
-                try
-                {
-                    return String.format(str, new Object[] {GameSettings.getKeyDisplayString(Minecraft.this.gameSettings.keyBindInventory.getKeyCode())});
-                }
-                catch (Exception exception)
-                {
-                    return "Error: " + exception.getLocalizedMessage();
-                }
+            if (this.gameSettings.overrideHeight > 0 && this.gameSettings.overrideWidth > 0) {
+                this.displayWidth = this.gameSettings.overrideWidth;
+                this.displayHeight = this.gameSettings.overrideHeight;
             }
-        });
-        this.mouseHelper = new MouseHelper();
-        this.checkGLError("Pre startup");
-        GlStateManager.enableTexture2D();
-        GlStateManager.shadeModel(7425);
-        GlStateManager.clearDepth(1.0D);
-        GlStateManager.enableDepth();
-        GlStateManager.depthFunc(515);
-        GlStateManager.enableAlpha();
-        GlStateManager.alphaFunc(516, 0.1F);
-        GlStateManager.cullFace(1029);
-        GlStateManager.matrixMode(5889);
-        GlStateManager.loadIdentity();
-        GlStateManager.matrixMode(5888);
-        this.checkGLError("Startup");
-        this.textureMapBlocks = new TextureMap("textures");
-        this.textureMapBlocks.setMipmapLevels(this.gameSettings.mipmapLevels);
-        this.renderEngine.loadTickableTexture(TextureMap.locationBlocksTexture, this.textureMapBlocks);
-        this.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-        this.textureMapBlocks.setBlurMipmapDirect(false, this.gameSettings.mipmapLevels > 0);
-        this.modelManager = new ModelManager(this.textureMapBlocks);
-        this.mcResourceManager.registerReloadListener(this.modelManager);
-        this.renderItem = new RenderItem(this.renderEngine, this.modelManager);
-        this.renderManager = new RenderManager(this.renderEngine, this.renderItem);
-        this.itemRenderer = new ItemRenderer(this);
-        this.mcResourceManager.registerReloadListener(this.renderItem);
-        this.entityRenderer = new EntityRenderer(this, this.mcResourceManager);
-        this.mcResourceManager.registerReloadListener(this.entityRenderer);
-        this.blockRenderDispatcher = new BlockRendererDispatcher(this.modelManager.getBlockModelShapes(), this.gameSettings);
-        this.mcResourceManager.registerReloadListener(this.blockRenderDispatcher);
-        this.renderGlobal = new RenderGlobal(this);
-        this.mcResourceManager.registerReloadListener(this.renderGlobal);
-        this.guiAchievement = new GuiAchievement(this);
-        GlStateManager.viewport(0, 0, this.displayWidth, this.displayHeight);
-        this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
-        this.checkGLError("Post startup");
-        this.ingameGUI = new GuiIngame(this);
+
+            logger.info("LWJGL Version: " + Sys.getVersion());
+            this.setWindowIcon();
+            this.setInitialDisplayMode();
+            this.createDisplay();
+            OpenGlHelper.initializeTextures();
+            this.framebufferMc = new Framebuffer(this.displayWidth, this.displayHeight, true);
+            this.framebufferMc.setFramebufferColor(0.0F, 0.0F, 0.0F, 0.0F);
+            this.registerMetadataSerializers();
+            this.mcResourcePackRepository = new ResourcePackRepository(this.fileResourcepacks, new File(this.mcDataDir, "server-resource-packs"), this.mcDefaultResourcePack, this.metadataSerializer_, this.gameSettings);
+            this.mcResourceManager = new SimpleReloadableResourceManager(this.metadataSerializer_);
+            this.mcLanguageManager = new LanguageManager(this.metadataSerializer_, this.gameSettings.language);
+            this.mcResourceManager.registerReloadListener(this.mcLanguageManager);
+            this.refreshResources();
+            this.renderEngine = new TextureManager(this.mcResourceManager);
+            this.mcResourceManager.registerReloadListener(this.renderEngine);
+
+            LoadingScreen.setProgress(1, "Loading Mist");
+            // MIST HOOK
+            Mist.instance.hook();
 
 
-        // Mist hook
+            LoadingScreen.drawSplash(renderEngine);
+            //this.drawSplashScreen(this.renderEngine);
 
-        //Mist.instance.hook();
+            this.initStream();
+            this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
+            this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
+            this.mcSoundHandler = new SoundHandler(this.mcResourceManager, this.gameSettings);
+            this.mcResourceManager.registerReloadListener(this.mcSoundHandler);
+            this.mcMusicTicker = new MusicTicker(this);
+            this.fontRendererObj = new FontRenderer(this.gameSettings, new ResourceLocation("textures/font/ascii.png"), this.renderEngine, false);
 
-        // Mist hook
+            if (this.gameSettings.language != null) {
+                this.fontRendererObj.setUnicodeFlag(this.isUnicode());
+                this.fontRendererObj.setBidiFlag(this.mcLanguageManager.isCurrentLanguageBidirectional());
+            }
 
-        startingUp = false;
-        if (this.serverName != null)
-        {
-            if(Mist.instance.destructed)
-                this.displayGuiScreen(new GuiConnecting(new GuiMainMenu(), this, this.serverName, this.serverPort));
-            else
-                this.displayGuiScreen(new GuiConnecting(new MainMenu(), this, this.serverName, this.serverPort));
+            this.standardGalacticFontRenderer = new FontRenderer(this.gameSettings, new ResourceLocation("textures/font/ascii_sga.png"), this.renderEngine, false);
+            this.mcResourceManager.registerReloadListener(this.fontRendererObj);
+            this.mcResourceManager.registerReloadListener(this.standardGalacticFontRenderer);
+            this.mcResourceManager.registerReloadListener(new GrassColorReloadListener());
+            this.mcResourceManager.registerReloadListener(new FoliageColorReloadListener());
+            AchievementList.openInventory.setStatStringFormatter(new IStatStringFormat() {
+                public String formatString(String str) {
+                    try {
+                        return String.format(str, new Object[]{GameSettings.getKeyDisplayString(Minecraft.this.gameSettings.keyBindInventory.getKeyCode())});
+                    } catch (Exception exception) {
+                        return "Error: " + exception.getLocalizedMessage();
+                    }
+                }
+            });
+            this.mouseHelper = new MouseHelper();
+            this.checkGLError("Pre startup");
+            GlStateManager.enableTexture2D();
+            GlStateManager.shadeModel(7425);
+            GlStateManager.clearDepth(1.0D);
+            GlStateManager.enableDepth();
+            GlStateManager.depthFunc(515);
+            GlStateManager.enableAlpha();
+            GlStateManager.alphaFunc(516, 0.1F);
+            GlStateManager.cullFace(1029);
+            GlStateManager.matrixMode(5889);
+            GlStateManager.loadIdentity();
+            GlStateManager.matrixMode(5888);
+            this.checkGLError("Startup");
+            this.textureMapBlocks = new TextureMap("textures");
+            this.textureMapBlocks.setMipmapLevels(this.gameSettings.mipmapLevels);
+            this.renderEngine.loadTickableTexture(TextureMap.locationBlocksTexture, this.textureMapBlocks);
+            this.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
+            this.textureMapBlocks.setBlurMipmapDirect(false, this.gameSettings.mipmapLevels > 0);
+
+            LoadingScreen.setProgress(2, "Loading Models");
+
+            this.modelManager = new ModelManager(this.textureMapBlocks);
+            this.mcResourceManager.registerReloadListener(this.modelManager);
+
+            LoadingScreen.setProgress(3, "Loading Items");
+
+            this.renderItem = new RenderItem(this.renderEngine, this.modelManager);
+            this.renderManager = new RenderManager(this.renderEngine, this.renderItem);
+
+            LoadingScreen.setProgress(4, "Loading Items");
+
+            this.itemRenderer = new ItemRenderer(this);
+            this.mcResourceManager.registerReloadListener(this.renderItem);
+
+            LoadingScreen.setProgress(5, "Loading Entities");
+
+            this.entityRenderer = new EntityRenderer(this, this.mcResourceManager);
+            this.mcResourceManager.registerReloadListener(this.entityRenderer);
+
+            LoadingScreen.setProgress(6, "Loading Blocks");
+
+            this.blockRenderDispatcher = new BlockRendererDispatcher(this.modelManager.getBlockModelShapes(), this.gameSettings);
+            this.mcResourceManager.registerReloadListener(this.blockRenderDispatcher);
+
+            LoadingScreen.setProgress(7, "Finishing up");
+
+            this.renderGlobal = new RenderGlobal(this);
+            this.mcResourceManager.registerReloadListener(this.renderGlobal);
+            this.guiAchievement = new GuiAchievement(this);
+            GlStateManager.viewport(0, 0, this.displayWidth, this.displayHeight);
+            this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
+            this.checkGLError("Post startup");
+            this.ingameGUI = new GuiIngame(this);
+
+
+            // Mist hook
+
+            //Mist.instance.hook();
+
+            // Mist hook
+
+            startingUp = false;
+            if (this.serverName != null) {
+                if (Mist.instance.destructed)
+                    this.displayGuiScreen(new GuiConnecting(new GuiMainMenu(), this, this.serverName, this.serverPort));
+                else
+                    this.displayGuiScreen(new GuiConnecting(new MainMenu(), this, this.serverName, this.serverPort));
+            } else {
+                if (Mist.instance.destructed)
+                    this.displayGuiScreen(new GuiMainMenu());
+                else
+                    this.displayGuiScreen(new Intro());
+            }
+
+            this.renderEngine.deleteTexture(this.mojangLogo);
+            this.mojangLogo = null;
+            this.loadingScreen = new LoadingScreenRenderer(this);
+
+            if (this.gameSettings.fullScreen && !this.fullscreen) {
+                this.toggleFullscreen();
+            }
+
+            try {
+                Display.setVSyncEnabled(this.gameSettings.enableVsync);
+            } catch (OpenGLException var2) {
+                this.gameSettings.enableVsync = false;
+                this.gameSettings.saveOptions();
+            }
+
+            this.renderGlobal.makeEntityOutlineShader();
         }
-        else
-        {
-            if(Mist.instance.destructed)
-                this.displayGuiScreen(new GuiMainMenu());
-            else
-                this.displayGuiScreen(new Intro());
-        }
-
-        this.renderEngine.deleteTexture(this.mojangLogo);
-        this.mojangLogo = null;
-        this.loadingScreen = new LoadingScreenRenderer(this);
-
-        if (this.gameSettings.fullScreen && !this.fullscreen)
-        {
-            this.toggleFullscreen();
-        }
-
-        try
-        {
-            Display.setVSyncEnabled(this.gameSettings.enableVsync);
-        }
-        catch (OpenGLException var2)
-        {
-            this.gameSettings.enableVsync = false;
-            this.gameSettings.saveOptions();
-        }
-
-        this.renderGlobal.makeEntityOutlineShader();
     }
 
     private void registerMetadataSerializers()
@@ -878,7 +896,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         worldrenderer.pos((double)this.displayWidth, 0.0D, 0.0D).tex(0.0D, 0.0D).color(255, 255, 255, 255).endVertex();
         worldrenderer.pos(0.0D, 0.0D, 0.0D).tex(0.0D, 0.0D).color(255, 255, 255, 255).endVertex();
         tessellator.draw();
-        LoadingScreen.draw(getTextureManager());
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         int j = 256;

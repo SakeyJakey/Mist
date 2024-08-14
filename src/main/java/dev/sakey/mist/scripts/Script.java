@@ -1,6 +1,7 @@
 package dev.sakey.mist.scripts;
-import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
+import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -10,8 +11,7 @@ public class Script {
 
 
 	@Getter private String name;
-	@Getter private ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-
+	@Getter private ScriptEngine engine = new ScriptEngineManager().getEngineByName("js");
 	Invocable invocable = (Invocable) engine;
 	public Script(String name) {
 		this.name = name;

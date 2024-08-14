@@ -13,6 +13,8 @@ import java.util.concurrent.Callable;
 
 import dev.sakey.mist.Mist;
 import dev.sakey.mist.events.impl.render.EventRenderWorld;
+import dev.sakey.mist.modules.Module;
+import dev.sakey.mist.modules.ModuleManager;
 import dev.sakey.mist.modules.impl.combat.Reach;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
@@ -408,6 +410,13 @@ public class EntityRenderer implements IResourceManagerReloadListener
 
         if (entity != null && this.mc.theWorld != null)
         {
+
+            double reach = 3;
+
+            Reach mod = (Reach)Mist.instance.getModuleManager().getModule(Reach.class);
+            if(mod.isEnabled()) reach = mod.reachDistance.getValue();
+
+
             this.mc.mcProfiler.startSection("pick");
             this.mc.pointedEntity = null;
             double d0 = (double)this.mc.playerController.getBlockReachDistance();
@@ -422,7 +431,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 d0 = 6.0D;
                 d1 = 6.0D;
             }
-            else if (d0 > 3.0D)
+            else if (d0 > reach)
             {
                 flag = true;
             }
@@ -493,7 +502,8 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 }
             }
 
-            if (this.pointedEntity != null && flag && vec3.distanceTo(vec33) > 3.0D)
+
+            if (this.pointedEntity != null && flag && vec3.distanceTo(vec33) > reach)
             {
                 this.pointedEntity = null;
                 this.mc.objectMouseOver = new MovingObjectPosition(MovingObjectPosition.MovingObjectType.MISS, vec33, (EnumFacing)null, new BlockPos(vec33));

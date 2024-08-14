@@ -1,0 +1,214 @@
+{
+  "InventoryCleaner": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "ChestStealer": {
+    "enabled": true,
+    "settings": {
+      "Delay": 135.0,
+      "Stealing GUI": true,
+      "Key": 0
+    }
+  },
+  "Notifications": {
+    "enabled": true,
+    "settings": {
+      "Style": "Mist",
+      "Key": 0
+    }
+  },
+  "KillAura": {
+    "enabled": false,
+    "settings": {
+      "APS": 12.0,
+      "Reach": 2.6,
+      "Show Rotations": false,
+      "No Swing": false,
+      "Auto 3rd Person": false,
+      "Smoothing": 2.0,
+      "Through Walls": false,
+      "Track Mode": "Track",
+      "Players": true,
+      "Animals": false,
+      "Mobs": false,
+      "Invisible": false,
+      "Key": 21
+    }
+  },
+  "TargetHUD": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "Animations": {
+    "enabled": false,
+    "settings": {
+      "Mode": "Mist",
+      "Full Swing": true,
+      "Key": 0
+    }
+  },
+  "ShaderESP": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "LongJump": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "AutoArmor": {
+    "enabled": true,
+    "settings": {
+      "When inv open": true,
+      "Key": 0
+    }
+  },
+  "Keystrokes": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "FullBright": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "KillInsults": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "SafeWalk": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "Canceller": {
+    "enabled": true,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "AntiIdiot": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "ClickGUI": {
+    "enabled": false,
+    "settings": {
+      "Key": 54
+    }
+  },
+  "Disabler": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "Scaffold": {
+    "enabled": false,
+    "settings": {
+      "No-swing": true,
+      "Jump": true,
+      "Place Mode": "Post",
+      "Swing Mode": "Pre",
+      "Tower": true,
+      "Tower Timer": 1.0,
+      "Key": 0
+    }
+  },
+  "Velocity": {
+    "enabled": false,
+    "settings": {
+      "Mode": "Reduce",
+      "Reduce X": 0.5,
+      "Reduce Y": 0.5,
+      "Reduce Z": 0.5,
+      "Key": 0
+    }
+  },
+  "Tracers": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "Chams": {
+    "enabled": true,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "NoFall": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "Speed": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "Sprint": {
+    "enabled": true,
+    "settings": {
+      "Omni": false,
+      "Key": 157
+    }
+  },
+  "Phase": {
+    "enabled": false,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "Radar": {
+    "enabled": true,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "HUD": {
+    "enabled": true,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "ESP": {
+    "enabled": true,
+    "settings": {
+      "Mode": "2D",
+      "Key": 0
+    }
+  },
+  "FPS": {
+    "enabled": true,
+    "settings": {
+      "Key": 0
+    }
+  },
+  "Fly": {
+    "enabled": false,
+    "settings": {
+      "Mode": "Motion",
+      "Speed": 2.0,
+      "Key": 0
+    }
+  }
+}

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import org.graalvm.polyglot.Context;
 
 public class ScriptLoader {
 
@@ -22,7 +23,7 @@ public class ScriptLoader {
 	public File SCRIPT_DIR = new File(ROOT_DIR, "Scripts");
 
 	public File CEDOSCRIPT_DIR = new File(SCRIPT_DIR, "cedoscripts");
-	public File NOVOSCRIPT_DIR = new File(SCRIPT_DIR, "NovoScripts");
+	public File NOVOSCRIPT_DIR = new File(SCRIPT_DIR, "novosScripts");
 
 	public void loadScript(Script script) {
 
@@ -41,7 +42,6 @@ public class ScriptLoader {
 		if(!NOVOSCRIPT_DIR.exists())
 			if(!NOVOSCRIPT_DIR.mkdirs())
 				new Notification("Failed to load script", "Could not create cedoscripts folder", NotificationType.WARNING, 5000);
-
 
 		ScriptBindings binder;
 
@@ -73,18 +73,20 @@ public class ScriptLoader {
 			return;
 		}
 
+//		Bindings bindings = binder.bind(script);
 
-
-		Bindings bindings = binder.bind(script);
+		Context context = binder.bind();
 
 		try {
-			CompiledScript compiledScript = ((Compilable) script.getEngine()).compile("console.log('hello world');");
-			compiledScript.eval(bindings);
+//			CompiledScript compiledScript = ((Compilable) script.getEngine()).compile(scriptContents);
+//			compiledScript.eval(bindings);
 
-/*			script.getEngine().eval(
-					scriptContents,
-					bindings
-			);*/
+//			script.getEngine().eval(
+//					scriptContents,
+//					bindings
+//			);
+
+			context.eval("js", scriptContents);
 		}
 
 		catch (Exception e) {

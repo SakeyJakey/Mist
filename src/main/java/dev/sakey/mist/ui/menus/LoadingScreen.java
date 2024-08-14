@@ -1,8 +1,10 @@
 package dev.sakey.mist.ui.menus;
 
 import dev.sakey.mist.Mist;
+import dev.sakey.mist.utils.render.RenderUtils;
 import dev.sakey.mist.utils.render.ShaderUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -14,77 +16,93 @@ import java.io.IOException;
 
 public class LoadingScreen {
 
-        public static void draw(TextureManager tm) {
-                ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-                int scale = sr.getScaleFactor();
+        private static final int MAX = 7;
+        private static int PROGRESS = 0;
+        private static String CURRENT = "";
+        private static ResourceLocation splash;
 
-                Framebuffer framebuffer = new Framebuffer(
-                        sr.getScaledWidth() * scale,
-                        sr.getScaledHeight() * scale,
-                        true);
-                framebuffer.bindFramebuffer(false);
+        public static void update() {
+                if(Minecraft.getMinecraft() == null || Minecraft.getMinecraft().getLanguageManager() == null) return;
+
+                drawSplash(Minecraft.getMinecraft().getTextureManager());
+        }
+
+        public static void setProgress(int progress, String text) {
+                PROGRESS = progress;
+                CURRENT = text;
+                update();
+        }
+
+        public static void drawSplash(TextureManager tm) {
+                Minecraft mc = Minecraft.getMinecraft();
+
+                ScaledResolution sr = new ScaledResolution(mc);
+                int scaleFactor = sr.getScaleFactor();
+
+                Framebuffer fb = new Framebuffer(sr.getScaledWidth() * scaleFactor, sr.getScaledHeight() * scaleFactor, true);
+                fb.bindFramebuffer(false);
 
                 GlStateManager.matrixMode(GL11.GL_PROJECTION);
                 GlStateManager.loadIdentity();
-                GlStateManager.ortho(
-                        0,
-                        sr.getScaledWidth(),
-                        sr.getScaledHeight(),
-                        0,
-                        1000,
-                        3000
-                );
+                GlStateManager.ortho(0d, sr.getScaledWidth_double(), sr.getScaledHeight_double(), 0d, 1000d, 3000d);
                 GlStateManager.matrixMode(GL11.GL_MODELVIEW);
                 GlStateManager.loadIdentity();
-                GlStateManager.translate(0, 0, -2000);
+                GlStateManager.translate(0f, 0f, -2000f);
                 GlStateManager.disableLighting();
                 GlStateManager.disableFog();
                 GlStateManager.disableDepth();
                 GlStateManager.enableTexture2D();
-                GlStateManager.resetColor();
-                GlStateManager.color(1, 1, 1, 1);
 
-/*
-        Gui.drawScaledCustomSizeModalRect(
-                0, 0, 0, 0,
-                1920, 1080,
-                sr.getScaledWidth(), sr.getScaledHeight(),
-                1920, 1080
-        );
-*/
-
-
-                try {
-                        ShaderUtils.drawBackgroundShader("loading");
-                } catch (IOException e) {
-                        Mist.instance.getLogger().error("Failed to load background shaders! Falling back to Minecraft background");
+                if(splash == null) {
+                        splash = new ResourceLocation("Mist/splash.png");
                 }
 
+                tm.bindTexture(splash);
 
-                framebuffer.unbindFramebuffer();
-                framebuffer.framebufferRender(
-                        sr.getScaledWidth() * scale,
-                        sr.getScaledHeight() * scale
-                );
+                GlStateManager.resetColor();
+                GlStateManager.color(1f, 1f, 1f, 1f);
+
+                Gui.drawScaledCustomSizeModalRect(0, 0, 0, 0, 1688, 710, sr.getScaledWidth(), sr.getScaledHeight(), 1688, 710);
+                drawProgress();
+                fb.unbindFramebuffer();
+                fb.framebufferRender(sr.getScaledWidth() * scaleFactor, sr.getScaledHeight() * scaleFactor);
 
                 GlStateManager.enableAlpha();
-                GlStateManager.alphaFunc(GL11.GL_GREATER, 0.1f);
+                GlStateManager.alphaFunc(516, 0.1f);
 
                 Minecraft.getMinecraft().updateDisplay();
-
-
-		/*
-		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		GL11.glClearColor(0, 0, 0, 1);
-		try {
-			Mist.instance.getFontRenderer(Mist.Constants.largeFontSize).drawString(
-					"Loading Mist",
-					sr.getScaledWidth() / 2 - Mist.instance.getFontRenderer().getStringWidth("Loading Mist") / 2,
-					sr.getScaledWidth() / 2 - Mist.instance.getFontRenderer().getFontHeight() / 2,
-					Colours.white(),
-					false
-			);
-		} catch(Exception ignored) {}*/
         }
 
+        public static void drawProgress() {
+                if(Minecraft.getMinecraft().gameSettings == null || Minecraft.getMinecraft().getTextureManager() == null) return;
+
+                if(!Mist.instance.isLoadedFontRenderers()) {
+                      Mist.instance.setupFonts();
+                }
+
+                Minecraft mc = Minecraft.getMinecraft();
+
+                ScaledResolution sr = new ScaledResolution(mc);
+
+                double progress = PROGRESS;
+                double calc = (progress / MAX) * (sr.getScaledWidth() - 10);
+
+                GlStateManager.resetColor();
+                resetTextureState();
+
+                Mist.instance.getFontRenderer(20).drawString(CURRENT, 20, sr.getScaledHeight() - 25, 0xffffffff, false);
+
+                String step = PROGRESS + "/" + MAX;
+                Mist.instance.getFontRenderer(20).drawString(step, sr.getScaledWidth() - Mist.instance.getFontRenderer(20).getStringWidth(step), sr.getScaledHeight() - 25, 0xffffffff, false);
+
+                GlStateManager.resetColor();
+                resetTextureState();
+
+                RenderUtils.drawRoundedRect(5, sr.getScaledHeight() - 5 - 3, calc, sr.getScaledHeight() - 5, 2, 0xffffffff);
+
+        }
+
+        public static void resetTextureState() {
+                GlStateManager.textureState[GlStateManager.activeTextureUnit].textureName = -1;
+        }
 }

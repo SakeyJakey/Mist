@@ -37,35 +37,23 @@ public class Tracers extends Module {
             double y = e.posY - mc.getRenderManager().viewerPosY;
             double z = e.posZ - mc.getRenderManager().viewerPosZ;
 
+			boolean wasBobbingEnabled = mc.gameSettings.viewBobbing;
+
 			GL11.glPushMatrix();
+
+			mc.gameSettings.viewBobbing = false;
+			mc.entityRenderer.setupCameraTransform(mc.timer.renderPartialTicks, 2);
 
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glDisable(GL11.GL_DEPTH_TEST);
 			GL11.glEnable(GL11.GL_LINE_SMOOTH);
 
-			GL11.glColor4f(1, 1, 1, 1);
-
-
-			// Counteract viewbobbing
-
-/*			if (mc.getRenderViewEntity() instanceof EntityPlayer)
-			{
-				EntityPlayer entityplayer = (EntityPlayer)mc.getRenderViewEntity();
-				float f = entityplayer.distanceWalkedModified - entityplayer.prevDistanceWalkedModified;
-				float f1 = -(entityplayer.distanceWalkedModified + f * mc.timer.renderPartialTicks);
-				float f2 = entityplayer.prevCameraYaw + (entityplayer.cameraYaw - entityplayer.prevCameraYaw) * mc.timer.renderPartialTicks;
-				float f3 = entityplayer.prevCameraPitch + (entityplayer.cameraPitch - entityplayer.prevCameraPitch) * mc.timer.renderPartialTicks;
-				GlStateManager.translate(MathHelper.sin(-f1 * (float)Math.PI) * f2 * 0.5F, Math.abs(MathHelper.cos(f1 * (float)Math.PI) * f2), 0.0F);
-				GlStateManager.rotate(-MathHelper.sin(f1 * (float)Math.PI) * f2 * 3.0F, 0.0F, 0.0F, 1.0F);
-				GlStateManager.rotate(-Math.abs(MathHelper.cos(f1 * (float)Math.PI - 0.2F) * f2) * 5.0F, 1.0F, 0.0F, 0.0F);
-				GlStateManager.rotate(-f3, 1.0F, 0.0F, 0.0F);
-			}*/
-
-
 			GL11.glBegin(GL11.GL_LINES);
 
+			GL11.glColor4f(1, 1, 1, 1);
 			GL11.glVertex3d(0, mc.thePlayer.getEyeHeight(), 0);
+			GL11.glColor4f(1, 1, 1, 1);
 			GL11.glVertex3d(x, y + e.height / 2, z);
 
 			GL11.glEnd();
@@ -74,6 +62,8 @@ public class Tracers extends Module {
 			GL11.glEnable(GL11.GL_DEPTH_TEST);
 			//GL11.glDisable(GL11.GL_TEXTURE_2D);
 			GL11.glDisable(GL11.GL_BLEND);
+
+			mc.gameSettings.viewBobbing = wasBobbingEnabled;
 
 			GL11.glPopMatrix();
 

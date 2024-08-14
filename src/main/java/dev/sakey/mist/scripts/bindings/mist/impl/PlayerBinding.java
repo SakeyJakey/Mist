@@ -63,5 +63,5 @@ public class PlayerBinding {
 			mc.thePlayer.swingItem();
 	}
 
-	//todo finish
+	// FIXME: finish
 }

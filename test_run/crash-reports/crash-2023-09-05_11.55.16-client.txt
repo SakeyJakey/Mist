@@ -1,0 +1,88 @@
+---- Minecraft Crash Report ----
+// Why is it breaking :(
+
+Time: 05/09/23 11:55
+Description: Unexpected error
+
+java.lang.NullPointerException: Unexpected error
+	at dev.sakey.mist.modules.impl.combat.KillAura.lambda$new$3(KillAura.java:177)
+	at dev.sakey.mist.events.EventManager.handleEvent(EventManager.java:19)
+	at net.minecraft.client.gui.GuiIngame.renderGameOverlay(GuiIngame.java:333)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1277)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1067)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:352)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at dev.sakey.mist.modules.impl.combat.KillAura.lambda$new$3(KillAura.java:177)
+	at dev.sakey.mist.events.EventManager.handleEvent(EventManager.java:19)
+	at net.minecraft.client.gui.GuiIngame.renderGameOverlay(GuiIngame.java:333)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player457'/69, l='MpServer', x=644.94, y=63.00, z=1430.24]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 584.00,64.00,166.00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 486598 game time, 1624 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 21 total; [EntityPlayerSP['Player457'/69, l='MpServer', x=644.94, y=63.00, z=1430.24], EntityBat['Bat'/132, l='MpServer', x=709.50, y=40.84, z=1444.56], EntityBat['Bat'/133, l='MpServer', x=715.63, y=40.06, z=1447.19], EntitySquid['Squid'/102, l='MpServer', x=611.41, y=60.47, z=1451.88], EntitySquid['Squid'/103, l='MpServer', x=595.13, y=62.00, z=1459.97], EntityZombie['Zombie'/135, l='MpServer', x=721.50, y=34.00, z=1466.50], EntityCreeper['Creeper'/109, l='MpServer', x=614.06, y=62.56, z=1446.22], EntityCreeper['Creeper'/110, l='MpServer', x=608.69, y=61.34, z=1442.84], EntitySquid['Squid'/111, l='MpServer', x=610.44, y=59.69, z=1450.28], EntityZombie['Zombie'/113, l='MpServer', x=630.50, y=35.00, z=1382.50], EntitySpider['Spider'/114, l='MpServer', x=635.34, y=26.19, z=1430.69], EntitySquid['Squid'/115, l='MpServer', x=628.50, y=57.97, z=1464.47], EntityZombie['Zombie'/85, l='MpServer', x=570.50, y=34.00, z=1450.50], EntityBat['Bat'/86, l='MpServer', x=565.84, y=37.88, z=1450.59], EntitySpider['Spider'/87, l='MpServer', x=574.28, y=39.00, z=1472.28], EntityZombie['Zombie'/88, l='MpServer', x=565.38, y=37.00, z=1475.84], EntitySpider['Spider'/89, l='MpServer', x=567.00, y=37.00, z=1475.69], EntitySkeleton['Skeleton'/90, l='MpServer', x=572.50, y=33.00, z=1490.50], EntityBat['Bat'/124, l='MpServer', x=680.99, y=20.20, z=1414.27], EntityBat['Bat'/125, l='MpServer', x=674.68, y=17.04, z=1420.52], EntityZombie['Zombie'/126, l='MpServer', x=682.41, y=14.32, z=1482.28]]
+	Retry entities: 0 total; []
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:356)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2634)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:381)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Linux (amd64) version 6.4.12-arch1-1
+	Java Version: 1.8.0_382, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 655162792 bytes (624 MB) / 1520435200 bytes (1450 MB) up to 3719299072 bytes (3547 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 99
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 535.104.05, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M6_pre2
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 535.104.05
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

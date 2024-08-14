@@ -2,6 +2,9 @@ package net.minecraft.client.renderer;
 
 import java.util.BitSet;
 import java.util.List;
+
+import dev.sakey.mist.Mist;
+import dev.sakey.mist.events.impl.render.EventRenderBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;

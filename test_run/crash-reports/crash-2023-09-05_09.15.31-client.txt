@@ -1,0 +1,106 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 05/09/23 09:15
+Description: Unexpected error
+
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at java.util.ArrayList.elementData(ArrayList.java:424)
+	at java.util.ArrayList.get(ArrayList.java:437)
+	at dev.sakey.mist.Mist.getFontRenderer(Mist.java:48)
+	at dev.sakey.mist.ui.clickguis.main.Panel.<init>(Panel.java:29)
+	at dev.sakey.mist.ui.clickguis.main.MainClickGui.initGui(MainClickGui.java:33)
+	at net.minecraft.client.gui.GuiScreen.setWorldAndResolution(GuiScreen.java:483)
+	at net.minecraft.client.Minecraft.displayGuiScreen(Minecraft.java:946)
+	at dev.sakey.mist.modules.impl.render.ClickGuiMod.onEnable(ClickGuiMod.java:14)
+	at dev.sakey.mist.modules.Module.quietToggle(Module.java:106)
+	at dev.sakey.mist.modules.Module.toggle(Module.java:115)
+	at dev.sakey.mist.Mist.lambda$new$0(Mist.java:116)
+	at dev.sakey.mist.events.EventManager.handleEvent(EventManager.java:19)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1833)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1041)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:352)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.util.ArrayList.elementData(ArrayList.java:424)
+	at java.util.ArrayList.get(ArrayList.java:437)
+	at dev.sakey.mist.Mist.getFontRenderer(Mist.java:48)
+	at dev.sakey.mist.ui.clickguis.main.Panel.<init>(Panel.java:29)
+	at dev.sakey.mist.ui.clickguis.main.MainClickGui.initGui(MainClickGui.java:33)
+	at net.minecraft.client.gui.GuiScreen.setWorldAndResolution(GuiScreen.java:483)
+	at net.minecraft.client.Minecraft.displayGuiScreen(Minecraft.java:946)
+	at dev.sakey.mist.modules.impl.render.ClickGuiMod.onEnable(ClickGuiMod.java:14)
+	at dev.sakey.mist.modules.Module.quietToggle(Module.java:106)
+	at dev.sakey.mist.modules.Module.toggle(Module.java:115)
+	at dev.sakey.mist.Mist.lambda$new$0(Mist.java:116)
+	at dev.sakey.mist.events.EventManager.handleEvent(EventManager.java:19)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player15'/69, l='MpServer', x=531.82, y=66.00, z=1327.02]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 584.00,64.00,166.00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 480685 game time, 9658 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 34 total; [EntitySkeleton['Skeleton'/131, l='MpServer', x=540.50, y=28.00, z=1254.09], EntitySkeleton['Skeleton'/132, l='MpServer', x=539.22, y=28.00, z=1252.75], EntityCreeper['Creeper'/70, l='MpServer', x=530.38, y=65.00, z=1320.50], EntitySkeleton['Skeleton'/135, l='MpServer', x=554.28, y=26.84, z=1302.13], EntityBat['Bat'/136, l='MpServer', x=556.94, y=31.91, z=1303.16], EntityBat['Bat'/137, l='MpServer', x=561.38, y=35.56, z=1288.94], EntityCreeper['Creeper'/138, l='MpServer', x=562.50, y=31.00, z=1298.50], EntityZombie['Zombie'/139, l='MpServer', x=571.06, y=37.00, z=1308.56], EntityBat['Bat'/141, l='MpServer', x=578.41, y=40.59, z=1271.59], EntityBat['Bat'/142, l='MpServer', x=583.22, y=44.00, z=1290.47], EntityBat['Bat'/143, l='MpServer', x=590.75, y=33.09, z=1292.66], EntityBat['Bat'/144, l='MpServer', x=584.41, y=50.09, z=1290.28], EntityBat['Bat'/145, l='MpServer', x=586.81, y=35.47, z=1298.78], EntityZombie['Zombie'/147, l='MpServer', x=602.50, y=39.00, z=1278.50], EntityCreeper['Creeper'/148, l='MpServer', x=603.50, y=39.00, z=1275.50], EntityCreeper['Creeper'/149, l='MpServer', x=603.50, y=39.00, z=1276.50], EntityBat['Bat'/150, l='MpServer', x=600.53, y=36.19, z=1287.91], EntityEnderman['Enderman'/155, l='MpServer', x=610.53, y=37.00, z=1276.69], EntityWitch['Witch'/156, l='MpServer', x=608.50, y=59.00, z=1276.50], EntityPlayerSP['Player15'/69, l='MpServer', x=531.82, y=66.00, z=1327.02], EntitySkeleton['Skeleton'/98, l='MpServer', x=462.38, y=24.00, z=1270.78], EntitySkeleton['Skeleton'/99, l='MpServer', x=460.47, y=23.00, z=1275.84], EntityBat['Bat'/100, l='MpServer', x=458.16, y=23.84, z=1286.38], EntitySpider['Spider'/101, l='MpServer', x=452.50, y=24.00, z=1290.50], EntitySkeleton['Skeleton'/102, l='MpServer', x=457.09, y=23.00, z=1308.72], EntityBat['Bat'/104, l='MpServer', x=464.59, y=23.84, z=1306.59], EntityZombie['Zombie'/105, l='MpServer', x=463.47, y=37.00, z=1366.53], EntitySkeleton['Skeleton'/107, l='MpServer', x=465.50, y=24.00, z=1273.09], EntitySkeleton['Skeleton'/108, l='MpServer', x=465.41, y=24.00, z=1301.22], EntityBat['Bat'/109, l='MpServer', x=480.50, y=43.10, z=1317.38], EntityEnderman['Enderman'/110, l='MpServer', x=469.66, y=40.00, z=1358.16], EntityCreeper['Creeper'/112, l='MpServer', x=489.50, y=41.00, z=1262.50], EntityCreeper['Creeper'/113, l='MpServer', x=493.50, y=41.00, z=1261.50], EntityZombie['Zombie'/114, l='MpServer', x=486.31, y=38.00, z=1311.69]]
+	Retry entities: 0 total; []
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:356)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2634)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:381)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Linux (amd64) version 6.4.12-arch1-1
+	Java Version: 1.8.0_382, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 441794312 bytes (421 MB) / 1236795392 bytes (1179 MB) up to 3719299072 bytes (3547 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 99
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 535.104.05, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M6_pre2
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 535.104.05
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

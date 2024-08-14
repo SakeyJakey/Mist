@@ -9,16 +9,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class NotificationStyleClean extends NotificationStyleBase {
 
-	public void drawOnce(ScaledResolution sr, CopyOnWriteArrayList<Notification> n) {
-		int count = n.size();
-
-		RenderUtils.drawRoundedRect(
-				sr.getScaledWidth() / 2 - count * 10,
-				10,
-				sr.getScaledWidth() / 2 + count * 10,
-				30,
-				10, -1
-		);
+	public void drawOnce(ScaledResolution sr, CopyOnWriteArrayList<Notification> notifications) {
+		int width = 0;
+		for (Notification n : notifications) {
+		}
 	}
 
 	public void draw(ScaledResolution sr, ArrayList<Notification> n, int index) {

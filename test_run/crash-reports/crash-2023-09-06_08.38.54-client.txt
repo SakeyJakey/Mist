@@ -1,0 +1,98 @@
+---- Minecraft Crash Report ----
+// This doesn't make any sense!
+
+Time: 06/09/23 08:38
+Description: Unexpected error
+
+java.lang.IllegalArgumentException: Color parameter outside of expected range: Red Green Blue
+	at java.awt.Color.testColorValueRange(Color.java:310)
+	at java.awt.Color.<init>(Color.java:395)
+	at java.awt.Color.<init>(Color.java:490)
+	at dev.sakey.mist.utils.render.ColourUtil.alphaColour(ColourUtil.java:39)
+	at dev.sakey.mist.modules.impl.combat.KillAura.getAlphaColour(KillAura.java:269)
+	at dev.sakey.mist.modules.impl.combat.KillAura.lambda$new$6(KillAura.java:254)
+	at dev.sakey.mist.events.EventManager.handleEvent(EventManager.java:19)
+	at net.minecraft.client.gui.GuiIngame.renderGameOverlay(GuiIngame.java:333)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1277)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1067)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:352)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.awt.Color.testColorValueRange(Color.java:310)
+	at java.awt.Color.<init>(Color.java:395)
+	at java.awt.Color.<init>(Color.java:490)
+	at dev.sakey.mist.utils.render.ColourUtil.alphaColour(ColourUtil.java:39)
+	at dev.sakey.mist.modules.impl.combat.KillAura.getAlphaColour(KillAura.java:269)
+	at dev.sakey.mist.modules.impl.combat.KillAura.lambda$new$6(KillAura.java:254)
+	at dev.sakey.mist.events.EventManager.handleEvent(EventManager.java:19)
+	at net.minecraft.client.gui.GuiIngame.renderGameOverlay(GuiIngame.java:333)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player172'/98, l='MpServer', x=688.83, y=72.00, z=403.55]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 584.00,64.00,166.00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 610161 game time, 9279 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 35 total; [EntitySquid['Squid'/128, l='MpServer', x=688.96, y=60.22, z=451.43], EntitySkeleton['Skeleton'/140, l='MpServer', x=697.47, y=32.00, z=457.03], EntitySquid['Squid'/141, l='MpServer', x=691.09, y=60.03, z=455.05], EntitySquid['Squid'/142, l='MpServer', x=691.64, y=62.31, z=449.33], EntitySkeleton['Skeleton'/143, l='MpServer', x=707.50, y=25.00, z=394.50], EntityBat['Bat'/144, l='MpServer', x=700.63, y=27.76, z=423.40], EntityZombie['Zombie'/145, l='MpServer', x=704.47, y=13.00, z=432.69], EntitySquid['Squid'/146, l='MpServer', x=704.28, y=62.03, z=463.01], EntityZombie['Zombie'/147, l='MpServer', x=731.22, y=22.50, z=437.78], EntityBat['Bat'/148, l='MpServer', x=746.84, y=12.00, z=397.09], EntityBat['Bat'/149, l='MpServer', x=745.94, y=12.03, z=396.84], EntityBat['Bat'/150, l='MpServer', x=751.78, y=11.06, z=402.25], EntityZombie['Zombie'/99, l='MpServer', x=692.50, y=32.00, z=407.50], EntitySkeleton['Skeleton'/35, l='MpServer', x=630.50, y=32.00, z=359.06], EntitySkeleton['Skeleton'/100, l='MpServer', x=689.50, y=36.00, z=408.50], EntitySkeleton['Skeleton'/36, l='MpServer', x=633.50, y=32.00, z=362.50], EntityZombie['Zombie'/101, l='MpServer', x=691.41, y=72.00, z=401.47], EntityZombie['Zombie'/102, l='MpServer', x=691.69, y=72.00, z=403.59], EntityZombie['Zombie'/41, l='MpServer', x=653.50, y=37.00, z=343.50], EntitySquid['Squid'/42, l='MpServer', x=672.50, y=62.44, z=358.45], EntitySquid['Squid'/43, l='MpServer', x=667.87, y=60.72, z=363.01], EntityBat['Bat'/44, l='MpServer', x=684.63, y=31.19, z=332.50], EntityBat['Bat'/45, l='MpServer', x=680.09, y=29.59, z=335.47], EntitySquid['Squid'/46, l='MpServer', x=674.11, y=59.91, z=368.56], EntityZombie['Zombie'/47, l='MpServer', x=735.50, y=15.00, z=329.50], EntityEnderman['Enderman'/112, l='MpServer', x=631.75, y=31.00, z=377.59], EntityEnderman['Enderman'/113, l='MpServer', x=637.28, y=31.00, z=373.50], EntitySpider['Spider'/114, l='MpServer', x=630.50, y=31.00, z=378.50], EntityPlayerSP['Player172'/98, l='MpServer', x=688.83, y=72.00, z=403.55], EntitySquid['Squid'/121, l='MpServer', x=678.35, y=59.22, z=373.78], EntityCreeper['Creeper'/122, l='MpServer', x=684.56, y=44.00, z=399.94], EntityBat['Bat'/124, l='MpServer', x=685.25, y=48.10, z=402.47], EntityZombie['Zombie'/125, l='MpServer', x=687.16, y=72.35, z=401.76], EntityChicken['Chicken'/126, l='MpServer', x=687.06, y=72.00, z=401.75], EntitySquid['Squid'/127, l='MpServer', x=684.19, y=59.34, z=451.52]]
+	Retry entities: 0 total; []
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:356)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2634)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:381)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Linux (amd64) version 6.4.12-arch1-1
+	Java Version: 1.8.0_382, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 673929560 bytes (642 MB) / 1463287808 bytes (1395 MB) up to 3719299072 bytes (3547 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 99
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 535.104.05, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M6_pre2
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 535.104.05
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

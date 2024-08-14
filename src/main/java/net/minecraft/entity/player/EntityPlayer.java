@@ -78,6 +78,9 @@ import net.minecraft.world.WorldSettings;
 @SuppressWarnings("incomplete-switch")
 public abstract class EntityPlayer extends EntityLivingBase
 {
+
+    public int mistViolationLevel = 0;
+
     public InventoryPlayer inventory = new InventoryPlayer(this);
     private InventoryEnderChest theInventoryEnderChest = new InventoryEnderChest();
     public Container inventoryContainer;
