@@ -16,7 +16,7 @@ ao:2
 renderClouds:fast
 resourcePacks:[]
 incompatibleResourcePacks:[]
-lastServer:greev.eu
+lastServer:skyblock.net
 lang:en_US
 chatVisibility:0
 chatColors:true

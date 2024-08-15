@@ -19,8 +19,8 @@ public class TenacityBindings extends ScriptBindings {
 //	}
 
 	public Context bind() {
-		Context context = Context.newBuilder().allowAllAccess(true).build();
-		context.getBindings("js").putMember("initScript", new GlobalBindings.InitScript());
-		return context;
+		//Context context = Context.newBuilder().allowAllAccess(true).build();
+		//context.getBindings("js").putMember("initScript", new GlobalBindings.InitScript());
+		return null;
 	}
 }

@@ -87,6 +87,7 @@ public class ChestStealer extends Module {
 				chest.getDisplayName().getUnformattedText().toLowerCase().contains("wars") ||
 				chest.getDisplayName().getUnformattedText().toLowerCase().contains("server") ||
 				chest.getDisplayName().getUnformattedText().toLowerCase().contains("box") ||
+				chest.getDisplayName().getUnformattedText().toLowerCase().contains("select") ||
 				chest.getDisplayName().getUnformattedText().toLowerCase().contains("?")
 		) {
 			slot = 0;
@@ -138,7 +139,21 @@ public class ChestStealer extends Module {
 			if(slots.length == 0) return;
 			if(!(mc.thePlayer.openContainer instanceof ContainerChest)) return;
 
-			RenderUtils.drawRect(xPos, yPos, xPos + width * total.getTime() / (delay.getValue() * (slots.length + 2)), yPos + 10, -1);
+			for(int i = 0; i < slots.length; i++) {
+				RenderUtils.drawRect(
+					xPos + i * width / slots.length,
+					yPos,
+					xPos + i * width / slots.length + 0.5,
+					yPos + height,
+					-1
+				);
+			}
+
+			RenderUtils.drawRect(
+					xPos, yPos,
+					//xPos + width * (total.getTime() / ((delay.getValue()) * slots.length)),
+					xPos + width * ((float)slot / (float)slots.length),
+					yPos + 10, -1);
 		}
 	}
 

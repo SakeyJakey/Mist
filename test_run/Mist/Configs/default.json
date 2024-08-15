@@ -6,7 +6,7 @@
     }
   },
   "Animations": {
-    "enabled": false,
+    "enabled": true,
     "settings": {
       "Mode": "Night",
       "Full Swing": true,
@@ -14,9 +14,9 @@
     }
   },
   "ChestStealer": {
-    "enabled": false,
+    "enabled": true,
     "settings": {
-      "Delay": 0.0,
+      "Delay": 105.0,
       "Stealing GUI": true,
       "Key": 0
     }
@@ -29,11 +29,11 @@
     }
   },
   "KillAura": {
-    "enabled": true,
+    "enabled": false,
     "settings": {
       "APS": 12.0,
       "Reach": 3.08,
-      "Show Rotations": true,
+      "Show Rotations": false,
       "No Swing": false,
       "Auto 3rd Person": false,
       "Smoothing": 4.0,
@@ -90,9 +90,9 @@
     }
   },
   "Reach": {
-    "enabled": false,
+    "enabled": true,
     "settings": {
-      "Distance": 3.3,
+      "Distance": 4.5,
       "Key": 22
     }
   },
@@ -121,7 +121,7 @@
     }
   },
   "Scaffold": {
-    "enabled": true,
+    "enabled": false,
     "settings": {
       "No-swing": true,
       "Jump": true,
@@ -216,14 +216,8 @@
       "Key": 0
     }
   },
-  "Test": {
-    "enabled": false,
-    "settings": {
-      "Key": 0
-    }
-  },
   "ESP": {
-    "enabled": false,
+    "enabled": true,
     "settings": {
       "Mode": "2D",
       "Key": 0
