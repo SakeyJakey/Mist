@@ -8,7 +8,6 @@ import dev.sakey.mist.modules.annotations.DisableOnLagback;
 import dev.sakey.mist.modules.annotations.DisableOnWorldChange;
 import dev.sakey.mist.modules.annotations.ModuleInfo;
 import dev.sakey.mist.modules.annotations.SearchTags;
-import dev.sakey.mist.modules.impl.misc.AntiIdiot;
 import dev.sakey.mist.modules.settings.Setting;
 import dev.sakey.mist.modules.settings.impl.KeySetting;
 import dev.sakey.mist.ui.notifications.Notification;
@@ -24,169 +23,171 @@ import java.util.List;
 
 public class Module {
 
-    public Animation arrayAnimationX;
-    public Animation arrayAnimationY;
+	protected static Minecraft mc = Minecraft.getMinecraft();
+	private final List<Setting> settings = new ArrayList<Setting>();
+	public Animation arrayAnimationX;
+	public Animation arrayAnimationY;
+	protected String name = "Unnamed Module";
+	protected Category category = Category.MISC;
+	protected String description = "";
+	private boolean enabled = false;
+	EventHandler<EventLagback> eventLagback = e -> {
+		if (!enabled) return;
+		quietToggle();
+		new Notification(name, "Disabled " + name + " due to lagback.", NotificationType.INFO, 3000);
+	};
+	EventHandler<EventWorldChange> eventWorldChange = e -> {
+		if (!enabled) return;
+		quietToggle();
+		new Notification(name, "Disabled " + name + " due to world change.", NotificationType.INFO, 3000);
+	};
+	private final KeySetting keyCode = new KeySetting(0);
+	private String[] searchTags = {};
+	private boolean hiddenInArray = false, settingsOpen = false;
+	private boolean disableOnLagback = false,
+			disableOnWorldChange = false;
 
-    protected String name = "Unnamed Module";
-    private boolean enabled = false;
-    private KeySetting keyCode = new KeySetting(0);
-    protected Category category = Category.MISC;
-    protected String description = "";
-    private String[] searchTags = {};
-    private boolean hiddenInArray = false, settingsOpen = false;
-    protected static Minecraft mc = Minecraft.getMinecraft();
-    private final List<Setting> settings = new ArrayList<Setting>();
+	public Module() {
+		try {
 
-    public List<Setting> getSettings() {
-        return settings;
-    }
+			if (getClass().getConstructor().getDeclaredAnnotationsByType(ModuleInfo.class).length > 0) {
+				ModuleInfo mi = getClass().getConstructor().getAnnotation(ModuleInfo.class);
 
-    private boolean disableOnLagback = false,
-            disableOnWorldChange = false;
+				name = mi.name();
 
-    public Module() {
-        try {
+				if (mi.enabledByDefault()) //todo make own annotation
+					enable();
 
-            if(getClass().getConstructor().getDeclaredAnnotationsByType(ModuleInfo.class).length > 0) {
-                ModuleInfo mi = getClass().getConstructor().getAnnotation(ModuleInfo.class);
+				keyCode.setCode(mi.key());
+				category = mi.category();
+				description = mi.description();
+				hiddenInArray = mi.hiddenInArrayList();
 
-                name = mi.name();
+				if (category.equals(Category.HUD)) // hide hud mods
+					hiddenInArray = true;
+			}
 
-                if(mi.enabledByDefault()) //todo make own annotation
-                    enable();
+			if (getClass().getConstructor().getDeclaredAnnotationsByType(SearchTags.class).length > 0) {
+				SearchTags st = getClass().getConstructor().getAnnotation(SearchTags.class);
+				searchTags = st.tags();
+			}
 
-                keyCode.setCode(mi.key());
-                category = mi.category();
-                description = mi.description();
-                hiddenInArray = mi.hiddenInArrayList();
+			if (getClass().getConstructor().getDeclaredAnnotationsByType(DisableOnLagback.class).length > 0)
+				disableOnLagback = true;
 
-                if(category.equals(Category.HUD)) // hide hud mods
-						hiddenInArray = true;
-            }
+			if (getClass().getConstructor().getDeclaredAnnotationsByType(DisableOnWorldChange.class).length > 0)
+				disableOnWorldChange = true;
 
-            if(getClass().getConstructor().getDeclaredAnnotationsByType(SearchTags.class).length > 0) {
-                SearchTags st = getClass().getConstructor().getAnnotation(SearchTags.class);
-                searchTags = st.tags();
-            }
+		} catch (Exception e) {
+			Mist.instance.getLogger().error("Failed to load modules! Please report this to the staff: " + e);
+		}
 
-            if(getClass().getConstructor().getDeclaredAnnotationsByType(DisableOnLagback.class).length > 0)
-                disableOnLagback = true;
+		if (disableOnLagback)
+			registerEvent(EventLagback.class, eventLagback);
 
-            if(getClass().getConstructor().getDeclaredAnnotationsByType(DisableOnWorldChange.class).length > 0)
-                disableOnWorldChange = true;
+		if (disableOnWorldChange)
+			registerEvent(EventWorldChange.class, eventWorldChange);
 
-        } catch (Exception e) {
-            Mist.instance.getLogger().error("Failed to load modules! Please report this to the staff: " + e);
-        }
+		addSettings(keyCode);
+	}
 
-        if(disableOnLagback)
-            registerEvent(EventLagback.class, eventLagback);
+	public List<Setting> getSettings() {
+		return settings;
+	}
 
-        if(disableOnWorldChange)
-            registerEvent(EventWorldChange.class, eventWorldChange);
+	public String getSuffix() {
+		return "";
+	} // Default
 
-        addSettings(keyCode);
-    }
+	public boolean isSearched(String term) {
+		term = term.toLowerCase().replace(" ", "");
+		for (String tag :
+				searchTags) {
+			tag = tag.toLowerCase();
 
-    EventHandler<EventLagback> eventLagback = e -> {
-        if(!enabled) return;
-        quietToggle();
-        new Notification(name, "Disabled " + name + " due to lagback.", NotificationType.INFO, 3000);
-    };
+			if (tag.contains(term) || term.contains(tag))
+				return true;
+		}
+		return getName().toLowerCase().contains(term) || term.contains(getName().toLowerCase()) || term.isEmpty();
+	}
 
-    EventHandler<EventWorldChange> eventWorldChange = e -> {
-        if(!enabled) return;
-        quietToggle();
-        new Notification(name, "Disabled " + name + " due to world change.", NotificationType.INFO, 3000);
-    };
+	protected void addSettings(Setting... settings) {
+		this.settings.addAll(Arrays.asList(settings));
+		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
+	}
 
-    public String getSuffix() { return ""; } // Default
+	public void quietToggle() {
+		enabled = !enabled;
+		if (enabled) onEnable();
+		if (!enabled) onDisable();
+	}
 
-    public boolean isSearched(String term) {
-        term = term.toLowerCase().replace(" ", "");
-        for (String tag :
-                searchTags) {
-            tag = tag.toLowerCase();
+	public void toggle() {
+		if (enabled)
+			new Notification(name, "Disabled " + name, NotificationType.ERROR, 3000);
+		else
+			new Notification(name, "Enabled " + name, NotificationType.SUCCESS, 3000);
+		quietToggle();
+	}
 
-            if(tag.contains(term) || term.contains(tag))
-                return true;
-        }
-        return getName().toLowerCase().contains(term) || term.contains(getName().toLowerCase()) || term.isEmpty();
-    }
+	protected void registerEvent(Type type, EventHandler eventHandler) {
+		Mist.instance.getEventManager().registerEventHandler(type, eventHandler);
+	}
 
-    protected void addSettings(Setting... settings) {
-        this.settings.addAll(Arrays.asList(settings));
-        this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
-    }
-    public void quietToggle(){
-        enabled = !enabled;
-        if(enabled) onEnable();
-        if(!enabled) onDisable();
-    }
+	protected void unregisterEvent(EventHandler eventHandler) {
+		Mist.instance.getEventManager().unregisterEventHandler(eventHandler);
+	}
 
-    public void toggle(){
-        if(enabled)
-            new Notification(name, "Disabled " + name, NotificationType.ERROR, 3000);
-        else
-            new Notification(name, "Enabled " + name, NotificationType.SUCCESS, 3000);
-        quietToggle();
-    }
+	public void disable() {
+		if (enabled)
+			quietToggle();
+	}
 
-    protected void registerEvent(Type type, EventHandler eventHandler){
-        Mist.instance.getEventManager().registerEventHandler(type, eventHandler);
-    }
+	public void enable() {
+		if (!enabled)
+			quietToggle();
+	}
 
-    protected void unregisterEvent(EventHandler eventHandler){
-        Mist.instance.getEventManager().unregisterEventHandler(eventHandler);
-    }
+	protected void onEnable() {
+	}
 
-    public void disable(){
-        if(enabled)
-            quietToggle();
-    }
+	protected void onDisable() {
+	}
 
-    public void enable(){
-        if(!enabled)
-            quietToggle();
-    }
+	public String getName() {
+		return name;
+	}
 
-    protected void onEnable(){};
-    protected void onDisable(){};
+	public boolean isEnabled() {
+		return enabled;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public boolean isHiddenInArray() {
+		return hiddenInArray;
+	}
 
-    public boolean isEnabled() {
-        return enabled;
-    }
+	public int getKeyCode() {
+		return keyCode.getCode();
+	}
 
-    public boolean isHiddenInArray() {
-        return hiddenInArray;
-    }
+	public Category getCategory() {
+		return category;
+	}
 
-    public int getKeyCode() {
-        return keyCode.getCode();
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public Category getCategory() {
-        return category;
-    }
+	public int getTextLength() {
+		if (getSuffix() == "") return Mist.instance.getFontRenderer().getStringWidth(name);
+		else return Mist.instance.getFontRenderer().getStringWidth(name + " " + getSuffix());
+	}
 
-    public String getDescription() {
-        return description;
-    }
-
-    public int getTextLength(){
-        if(getSuffix() == "") return Mist.instance.getFontRenderer().getStringWidth(name);
-        else return Mist.instance.getFontRenderer().getStringWidth(name + " " + getSuffix());
-    }
-
-    public void toggleSettingsOpen() {
+	public void toggleSettingsOpen() {
 		settingsOpen = !settingsOpen;
-    }
+	}
 
-    public boolean areSettingsOpen() {
-        return settingsOpen;
-    }
+	public boolean areSettingsOpen() {
+		return settingsOpen;
+	}
 }

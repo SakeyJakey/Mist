@@ -1,6 +1,5 @@
 package dev.sakey.mist.modules.impl.player;
 
-
 import dev.sakey.mist.events.EventHandler;
 import dev.sakey.mist.events.impl.player.EventMotion;
 import dev.sakey.mist.modules.Category;
@@ -10,33 +9,15 @@ import dev.sakey.mist.modules.settings.impl.BoolSetting;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
-import org.lwjgl.input.Keyboard;
 
 import java.util.Arrays;
 
 public class AutoArmor extends Module {
 
 	BoolSetting onInv = new BoolSetting("When inv open", true);
-
-    @ModuleInfo(name = "AutoArmor", description = "Automatically equips armor", category = Category.PLAYER)
-    public AutoArmor(){
-		addSettings(onInv);
-    }
-
 	private int[] bestArmorSlots;
-
-	protected void onEnable() {
-        registerEvent(EventMotion.class, eventMotion);
-    }
-
-    protected void onDisable() {
-        unregisterEvent(eventMotion);
-    }
-
-    EventHandler<EventMotion> eventMotion = e -> {
-		if(onInv.isEnabled() && !(mc.currentScreen instanceof GuiInventory)) return;
+	EventHandler<EventMotion> eventMotion = e -> {
+		if (onInv.isEnabled() && !(mc.currentScreen instanceof GuiInventory)) return;
 		search();
 
 		for (int i = 0; i < 4; i++) {
@@ -55,7 +36,20 @@ public class AutoArmor extends Module {
 			mc.playerController.windowClick(mc.thePlayer.inventoryContainer.windowId, bestSwordSlot < 9 ? bestSwordSlot + 36 : bestSwordSlot, 0, 2, mc.thePlayer);
 		}*/
 		}
-    };
+	};
+
+	@ModuleInfo(name = "AutoArmor", description = "Automatically equips armor", category = Category.PLAYER)
+	public AutoArmor() {
+		addSettings(onInv);
+	}
+
+	protected void onEnable() {
+		registerEvent(EventMotion.class, eventMotion);
+	}
+
+	protected void onDisable() {
+		unregisterEvent(eventMotion);
+	}
 
 	private void search() {
 		int[] bestArmorDamage = new int[4];
@@ -67,9 +61,8 @@ public class AutoArmor extends Module {
 		for (int i = 0; i < bestArmorSlots.length; i++) {
 			ItemStack itemStack = mc.thePlayer.getCurrentArmor(i);
 
-			if(itemStack != null && itemStack.getItem() != null) {
-				if(itemStack.getItem() instanceof ItemArmor) {
-					ItemArmor armor = (ItemArmor) itemStack.getItem();
+			if (itemStack != null && itemStack.getItem() != null) {
+				if (itemStack.getItem() instanceof ItemArmor armor) {
 					bestArmorDamage[i] = armor.damageReduceAmount;
 				}
 			}
@@ -78,14 +71,13 @@ public class AutoArmor extends Module {
 		for (int i = 0; i < 9 * 4; i++) {
 			ItemStack itemStack = mc.thePlayer.inventory.getStackInSlot(i);
 
-			if(itemStack == null || itemStack.getItem() == null) continue;
+			if (itemStack == null || itemStack.getItem() == null) continue;
 
-			if(itemStack.getItem() instanceof ItemArmor) {
-				ItemArmor armor = (ItemArmor) itemStack.getItem();
+			if (itemStack.getItem() instanceof ItemArmor armor) {
 
 				int armorType = 3 - armor.armorType;
 
-				if(bestArmorDamage[armorType] < armor.damageReduceAmount) {
+				if (bestArmorDamage[armorType] < armor.damageReduceAmount) {
 					bestArmorDamage[armorType] = armor.damageReduceAmount;
 					bestArmorSlots[armorType] = i;
 				}
@@ -95,14 +87,13 @@ public class AutoArmor extends Module {
 		for (int i = 0; i < 9 * 4; i++) {
 			ItemStack itemStack = mc.thePlayer.inventory.getStackInSlot(i);
 
-			if(itemStack == null || itemStack.getItem() == null) continue;
+			if (itemStack == null || itemStack.getItem() == null) continue;
 
-			if(itemStack.getItem() instanceof ItemArmor) {
-				ItemArmor armor = (ItemArmor) itemStack.getItem();
+			if (itemStack.getItem() instanceof ItemArmor armor) {
 
 				int armorType = 3 - armor.armorType;
 
-				if(bestArmorDamage[armorType] < armor.damageReduceAmount) {
+				if (bestArmorDamage[armorType] < armor.damageReduceAmount) {
 					bestArmorDamage[armorType] = armor.damageReduceAmount;
 					bestArmorSlots[armorType] = i;
 				}

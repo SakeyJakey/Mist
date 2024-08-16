@@ -28,7 +28,7 @@ public class DraggableManager {
 	public void updateChat() {
 		for (Draggable d :
 				draggables) {
-			if(d.isVisible())
+			if (d.isVisible())
 				d.updateChat();
 		}
 	}

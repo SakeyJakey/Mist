@@ -15,7 +15,7 @@ public class NotificationStyleBasic extends NotificationStyleBase {
 				(100 > Mist.instance.getFontRenderer().getStringWidth(n.description) ? 0 :
 						Mist.instance.getFontRenderer().getStringWidth(n.description) - 85);
 
-		if(n.getPercent() >= 90) {
+		if (n.getPercent() >= 90) {
 			x = sr.getScaledWidth() - 100 + ((n.getPercent() - 90) * 10);
 		}
 
@@ -24,8 +24,11 @@ public class NotificationStyleBasic extends NotificationStyleBase {
 				* (index + 1));
 
 
-		if(n.y < ty) { n.y += (ty - n.y) / 4; }
-		else if(n.y > ty) { n.y += (ty - n.y) / 4; }
+		if (n.y < ty) {
+			n.y += (ty - n.y) / 4;
+		} else if (n.y > ty) {
+			n.y += (ty - n.y) / 4;
+		}
 
 		double y = n.y;
 		double h = n.y + 30;
@@ -35,8 +38,7 @@ public class NotificationStyleBasic extends NotificationStyleBase {
 				ColourUtil.white());
 
 
-		switch(n.type)
-		{
+		switch (n.type) {
 			case SUCCESS:
 				Gui.drawRect(x - 3, y, x, h, 0xff00ff00);
 				break;

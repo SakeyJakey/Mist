@@ -7,16 +7,15 @@ import dev.sakey.mist.modules.annotations.ModuleInfo;
 import dev.sakey.mist.ui.draggables.Draggable;
 import dev.sakey.mist.ui.draggables.ResizeMode;
 import net.minecraft.client.Minecraft;
-import org.lwjgl.input.Keyboard;
 
 public class FPS extends Module {
+
+	FPSDraggable draggable = new FPSDraggable();
 
 	@ModuleInfo(name = "FPS", description = "Displays FPS", category = Category.HUD)
 	public FPS() {
 		draggable.add();
 	}
-
-	FPSDraggable draggable = new FPSDraggable();
 
 	protected void onEnable() {
 		draggable.show();

@@ -14,12 +14,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ScriptPanel extends Draggable {
 	private final GlyphPageFontRenderer fr = Mist.instance.getFontRenderer(18);
-
-	private CopyOnWriteArrayList<String> scripts = new CopyOnWriteArrayList<String>();
-
 	private final int settingSize = 3;
-
+	private final CopyOnWriteArrayList<String> scripts = new CopyOnWriteArrayList<String>();
 	private double tHeight;
+	private boolean wasClicked;
 
 	public ScriptPanel(double xPos, double yPos) {
 		super(xPos, yPos, 100, 0);
@@ -50,7 +48,6 @@ public class ScriptPanel extends Draggable {
 		return false;
 	}
 
-	private boolean wasClicked;
 	public void draw() {
 		final double speed = Minecraft.getDebugFPS() / 8;
 
@@ -72,10 +69,10 @@ public class ScriptPanel extends Draggable {
 			h += fr.getFontHeight();
 
 			char[] script = c.toCharArray();
-			if(script.length > 0)
+			if (script.length > 0)
 				script[0] = c.toUpperCase().charAt(0);
 
-			fr.drawString(String.valueOf(script), x,  y, -1, false);
+			fr.drawString(String.valueOf(script), x, y, -1, false);
 
 			if (getMouseButtonOnce(x, y, w, h, 0))
 				Mist.instance.getScriptLoader().loadScript(new Script(c));
@@ -84,20 +81,19 @@ public class ScriptPanel extends Draggable {
 		// Make top and bottom black
 		RenderUtils.drawRect(xPos, yPos, getWPos(), yPos + fr.getFontHeight(), ColourUtil.black());
 
-		fr.drawString("§lScripts", xPos,  yPos, -1, false);
+		fr.drawString("§lScripts", xPos, yPos, -1, false);
 
 		wasClicked = Mouse.isButtonDown(0) || Mouse.isButtonDown(1) || Mouse.isButtonDown(2);
 	}
 
 	public boolean getMouseButtonOnce(double x, double y, double w, double h, int button) {
-		if(RenderUtils.isInside(mouseX, mouseY, x, y, w, h)) {
+		if (RenderUtils.isInside(mouseX, mouseY, x, y, w, h)) {
 			if (Mouse.isButtonDown(button)) {
-				if(!wasClicked) {
+				if (!wasClicked) {
 					wasClicked = true;
 					return true;
 				}
-			}
-			else if(!Mouse.isButtonDown(0) && !Mouse.isButtonDown(1) && !Mouse.isButtonDown(2)) {
+			} else if (!Mouse.isButtonDown(0) && !Mouse.isButtonDown(1) && !Mouse.isButtonDown(2)) {
 				wasClicked = false;
 			}
 		}

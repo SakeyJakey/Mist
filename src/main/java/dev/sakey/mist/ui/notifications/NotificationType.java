@@ -6,5 +6,5 @@ public enum NotificationType {
 	ERROR,
 	WARNING,
 	OTHER,
-	RAINBOW;
+	RAINBOW
 }

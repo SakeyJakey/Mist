@@ -25,8 +25,10 @@ import java.util.function.Consumer;
 public class ModuleBinding {
 	ScriptModule module;
 
-	Runnable onEnable = () -> {};
-	Runnable onDisable = () -> {};
+	Runnable onEnable = () -> {
+	};
+	Runnable onDisable = () -> {
+	};
 
 
 	public ModuleBinding(String name, String category) {
@@ -70,7 +72,7 @@ public class ModuleBinding {
 		}
 
 		EventHandler eventHandler = event -> {
-			if(module.isEnabled())
+			if (module.isEnabled())
 				cons.accept(event);
 		};
 
@@ -99,12 +101,12 @@ public class ModuleBinding {
 		module.addSetting(new ModeSetting(name, defaultMode, modes));
 		return name;
 	}
-	
+
 	public boolean getBoolSetting(String name) {
 		for (Setting s :
 				module.getSettings()) {
 			if (s.getName().equalsIgnoreCase(name))
-				return ((BoolSetting)s).isEnabled();
+				return ((BoolSetting) s).isEnabled();
 		}
 		new Notification("Failed to parse script", "Setting '" + name + "' does not exist", NotificationType.WARNING, 5000);
 		return false;
@@ -114,7 +116,7 @@ public class ModuleBinding {
 		for (Setting s :
 				module.getSettings()) {
 			if (s.getName().equalsIgnoreCase(name))
-				return ((NumberSetting)s).getValue();
+				return ((NumberSetting) s).getValue();
 		}
 		new Notification("Failed to parse script", "Setting '" + name + "' does not exist", NotificationType.WARNING, 5000);
 		return 0;
@@ -124,7 +126,7 @@ public class ModuleBinding {
 		for (Setting s :
 				module.getSettings()) {
 			if (s.getName().equalsIgnoreCase(name))
-				return ((ModeSetting)s).getMode();
+				return ((ModeSetting) s).getMode();
 		}
 		new Notification("Failed to parse script", "Setting '" + name + "' does not exist", NotificationType.WARNING, 5000);
 		return "";
@@ -148,6 +150,6 @@ public class ModuleBinding {
 		public void addSetting(Setting setting) {
 			this.addSettings(setting);
 		}
-	};
+	}
 
 }

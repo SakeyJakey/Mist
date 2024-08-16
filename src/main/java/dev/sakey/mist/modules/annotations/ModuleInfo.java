@@ -11,10 +11,15 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.CONSTRUCTOR)
 public @interface ModuleInfo {
-    String name();
-    String description() default "";
-    int key() default Keyboard.KEY_NONE;
-    Category category();
-    boolean enabledByDefault() default false;
-    boolean hiddenInArrayList() default false;
+	String name();
+
+	String description() default "";
+
+	int key() default Keyboard.KEY_NONE;
+
+	Category category();
+
+	boolean enabledByDefault() default false;
+
+	boolean hiddenInArrayList() default false;
 }

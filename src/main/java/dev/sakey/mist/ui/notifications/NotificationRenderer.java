@@ -11,13 +11,13 @@ public class NotificationRenderer {
 
 	public static void draw(ScaledResolution sr) {
 
-		if(!Mist.instance.getModuleManager().getModule(NotificationsMod.class).isEnabled()) return;
+		if (!Mist.instance.getModuleManager().getModule(NotificationsMod.class).isEnabled()) return;
 
 		NotificationRenderer.sr = sr;
 
 		NotificationManager.renderer.drawOnce(sr, NotificationManager.notifications);
 
-		for(Notification n : NotificationManager.notifications) {
+		for (Notification n : NotificationManager.notifications) {
 			NotificationManager.renderer.draw(sr, n, NotificationManager.notifications.indexOf(n));
 			n.check();
 		}

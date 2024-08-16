@@ -7,22 +7,22 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public abstract class Check {
 
-    protected String name;
+	protected String name;
 
-    public Check(String name) {
-        this.name = name;
-    }
+	public Check(String name) {
+		this.name = name;
+	}
 
-    public abstract void check(EntityPlayer player);
+	public abstract void check(EntityPlayer player);
 
-    public void flag(EntityPlayer player) {
-        player.mistViolationLevel++;
+	public void flag(EntityPlayer player) {
+		player.mistViolationLevel++;
 
-        AntiCheat ac = (AntiCheat) Mist.instance.getModuleManager().getModule(AntiCheat.class);
+		AntiCheat ac = (AntiCheat) Mist.instance.getModuleManager().getModule(AntiCheat.class);
 
-        if(player.mistViolationLevel > ac.threshold.getValue()) {
-            new Notification("AntiCheat", player.getName() + " might be hacking (" + this.name + ")", NotificationType.INFO, 3000);
-            player.mistViolationLevel = (int) ac.resetViolationLevel.getValue();
-        }
-    }
+		if (player.mistViolationLevel > ac.threshold.getValue()) {
+			new Notification("AntiCheat", player.getName() + " might be hacking (" + this.name + ")", NotificationType.INFO, 3000);
+			player.mistViolationLevel = (int) ac.resetViolationLevel.getValue();
+		}
+	}
 }

@@ -8,53 +8,45 @@ import dev.sakey.mist.modules.Module;
 import dev.sakey.mist.modules.annotations.ModuleInfo;
 import dev.sakey.mist.modules.settings.impl.ModeSetting;
 import dev.sakey.mist.modules.settings.impl.NumberSetting;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.server.S12PacketEntityVelocity;
-import org.lwjgl.input.Keyboard;
-
-import java.nio.ByteBuffer;
 
 
 public class Velocity extends Module {
 
-    ModeSetting mode = new ModeSetting("Mode", "Reduce", "Cancel");
-    NumberSetting reduceAmountX = new NumberSetting("Reduce X", 0.5, 0.01, 1, 0.01);
-    NumberSetting reduceAmountY = new NumberSetting("Reduce Y", 0.5, 0.01, 1, 0.01);
-    NumberSetting reduceAmountZ = new NumberSetting("Reduce Z", 0.5, 0.01, 1, 0.01);
+	ModeSetting mode = new ModeSetting("Mode", "Reduce", "Cancel");
+	NumberSetting reduceAmountX = new NumberSetting("Reduce X", 0.5, 0.01, 1, 0.01);
+	NumberSetting reduceAmountY = new NumberSetting("Reduce Y", 0.5, 0.01, 1, 0.01);
+	NumberSetting reduceAmountZ = new NumberSetting("Reduce Z", 0.5, 0.01, 1, 0.01);
+	EventHandler<EventPacket> eventPacket = e -> {
+		if (e.getPacket() instanceof S12PacketEntityVelocity p && e.isPre()) {
+			if (p.getEntityID() != mc.thePlayer.getEntityId()) return;
 
-    @ModuleInfo(name = "Velocity", description = "Negates knockback.", category = Category.PLAYER)
-    public Velocity() {
-        reduceAmountX.addParent(mode, mode -> mode.is("Reduce"));
-        reduceAmountY.addParent(mode, mode -> mode.is("Reduce"));
-        reduceAmountZ.addParent(mode, mode -> mode.is("Reduce"));
-        addSettings(mode, reduceAmountX, reduceAmountY, reduceAmountZ);
-    }
+			if (mode.is("Cancel"))
+				e.setCancelled(true);
 
-    EventHandler<EventPacket> eventPacket = e -> {
-        if(e.getPacket() instanceof S12PacketEntityVelocity && e.isPre()){
-            S12PacketEntityVelocity p = ((S12PacketEntityVelocity)e.getPacket());
-            if(p.getEntityID() != mc.thePlayer.getEntityId()) return;
+			else {
+				p.setMotionX((int) (p.getMotionX() * (1 - reduceAmountX.getValue())));
+				p.setMotionY((int) (p.getMotionY() * (1 - reduceAmountX.getValue())));
+				p.setMotionZ((int) (p.getMotionZ() * (1 - reduceAmountX.getValue())));
+				e.setPacket(p);
+			}
+		}
+	};
 
-            if(mode.is("Cancel"))
-                e.setCancelled(true);
+	@ModuleInfo(name = "Velocity", description = "Negates knockback.", category = Category.PLAYER)
+	public Velocity() {
+		reduceAmountX.addParent(mode, mode -> mode.is("Reduce"));
+		reduceAmountY.addParent(mode, mode -> mode.is("Reduce"));
+		reduceAmountZ.addParent(mode, mode -> mode.is("Reduce"));
+		addSettings(mode, reduceAmountX, reduceAmountY, reduceAmountZ);
+	}
 
-            else {
-                p.setMotionX((int) (p.getMotionX() * (1 - reduceAmountX.getValue())));
-                p.setMotionY((int) (p.getMotionY() * (1 - reduceAmountX.getValue())));
-                p.setMotionZ((int) (p.getMotionZ() * (1 - reduceAmountX.getValue())));
-                e.setPacket(p);
-            }
-        }
-    };
-
-
-    public void onDisable() {
-        Mist.instance.getEventManager().unregisterEventHandler(eventPacket);
-    }
+	public void onDisable() {
+		Mist.instance.getEventManager().unregisterEventHandler(eventPacket);
+	}
 
 
-    public void onEnable() {
-        Mist.instance.getEventManager().registerEventHandler(EventPacket.class, eventPacket);
-    }
+	public void onEnable() {
+		Mist.instance.getEventManager().registerEventHandler(EventPacket.class, eventPacket);
+	}
 }

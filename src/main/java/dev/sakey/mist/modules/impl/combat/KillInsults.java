@@ -8,32 +8,30 @@ import dev.sakey.mist.modules.annotations.ModuleInfo;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
-import net.optifine.util.MathUtils;
-import org.lwjgl.input.Keyboard;
 
 import java.util.List;
 import java.util.Random;
 
 public class KillInsults extends Module {
-    @ModuleInfo(name = "KillInsults", description = "Insults players when they die.", category = Category.COMBAT)
-    public KillInsults() {
-    }
+	EventHandler<EventMotion> motionEventHandler = event -> {
+		if (event.isPost()) return;
+		for (Entity e :
+				(List<Entity>) mc.theWorld.loadedEntityList) {
+			if (e.isDead && e instanceof EntityPlayer && e != mc.thePlayer) {
+				mc.thePlayer.sendChatMessage(MathHelper.randomFloatClamp(new Random(), 0, 1) + e.getName() + " " + " died. What an L!");
+			}
+		}
+	};
 
-    protected void onEnable() {
-        registerEvent(EventMotion.class, motionEventHandler);
-    }
+	@ModuleInfo(name = "KillInsults", description = "Insults players when they die.", category = Category.COMBAT)
+	public KillInsults() {
+	}
 
-    protected void onDisable() {
-        unregisterEvent(motionEventHandler);
-    }
+	protected void onEnable() {
+		registerEvent(EventMotion.class, motionEventHandler);
+	}
 
-    EventHandler<EventMotion> motionEventHandler = event -> {
-        if(event.isPost()) return;
-        for (Entity e :
-                (List<Entity>)mc.theWorld.loadedEntityList) {
-            if(e.isDead && e instanceof EntityPlayer && e != mc.thePlayer) {
-                mc.thePlayer.sendChatMessage(MathHelper.randomFloatClamp(new Random(), 0, 1) + e.getName() + " " + " died. What an L!");
-            }
-        }
-    };
+	protected void onDisable() {
+		unregisterEvent(motionEventHandler);
+	}
 }

@@ -3,7 +3,7 @@ package dev.sakey.mist.modules.settings.impl;
 import dev.sakey.mist.modules.settings.Setting;
 
 public class NumberSetting extends Setting {
-	
+
 	private double value, min, max, inc;
 
 	public NumberSetting(String name, double value, double min, double max, double inc) {
@@ -22,7 +22,7 @@ public class NumberSetting extends Setting {
 		double precision = 1 / inc;
 		this.value = Math.round(Math.max(min, Math.min(max, value) * precision)) / precision;
 	}
-	
+
 	public void increment(boolean positive) {
 		setValue(getValue() + (positive ? 1 : -1) * inc);
 	}
@@ -50,5 +50,5 @@ public class NumberSetting extends Setting {
 	public void setInc(double inc) {
 		this.inc = inc;
 	}
-	
+
 }

@@ -5,11 +5,11 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class KillAuraA extends Check {
 
-    public KillAuraA() {
-        super("killaura");
-    }
+	public KillAuraA() {
+		super("killaura");
+	}
 
-    public void check(EntityPlayer player) {
+	public void check(EntityPlayer player) {
 
-    }
+	}
 }

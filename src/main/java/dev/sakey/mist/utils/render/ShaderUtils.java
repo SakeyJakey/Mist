@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class ShaderUtils {
 
-	private static long initTime = System.currentTimeMillis();
+	private static final long initTime = System.currentTimeMillis();
 
 	public static void use(String shader) throws IOException {
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());

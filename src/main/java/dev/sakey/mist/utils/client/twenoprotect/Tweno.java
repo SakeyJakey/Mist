@@ -1,19 +1,6 @@
 package dev.sakey.mist.utils.client.twenoprotect;
 
-import asyc.hwid.HWID;
-import dev.sakey.mist.Mist;
-import dev.sakey.mist.utils.MiscUtils;
-import dev.sakey.mist.utils.network.NonMinecraftNetworkUtils;
 import net.minecraft.client.Minecraft;
-import org.lwjgl.opengl.Display;
-
-import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Objects;
 
 public class Tweno {
 	public static int check() {
@@ -64,27 +51,27 @@ public class Tweno {
     }
 	*/
 
-    public static void ABORTtheMISSIONthisGUYisCRACKING() {
-        Minecraft mc = Minecraft.getMinecraft();
-        mc.thePlayer = null;
-        mc.timer = null;
-        mc.renderGlobal = null;
-        mc.entityRenderer = null;
-        mc.gameSettings = null;
-        System.exit(0);
-    }
+	public static void ABORTtheMISSIONthisGUYisCRACKING() {
+		Minecraft mc = Minecraft.getMinecraft();
+		mc.thePlayer = null;
+		mc.timer = null;
+		mc.renderGlobal = null;
+		mc.entityRenderer = null;
+		mc.gameSettings = null;
+		System.exit(0);
+	}
 
-    public static String getOSIdentifier() {
-        String osName = System.getProperty("os.name").toLowerCase();
+	public static String getOSIdentifier() {
+		String osName = System.getProperty("os.name").toLowerCase();
 
-        if(osName.contains("win")){
-            return "W";
-        }else if(osName.contains("mac")){
-            return "M";
-        }else if(osName.contains("nix") || osName.contains("nux") || osName.contains("aix")){
-            return "N";
-        }else{
-            return "U";
-        }
-    }
+		if (osName.contains("win")) {
+			return "W";
+		} else if (osName.contains("mac")) {
+			return "M";
+		} else if (osName.contains("nix") || osName.contains("nux") || osName.contains("aix")) {
+			return "N";
+		} else {
+			return "U";
+		}
+	}
 }

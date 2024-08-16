@@ -5,7 +5,7 @@ import net.minecraft.entity.Entity;
 
 public class EventRenderEntity extends Event {
 
-	private Entity entity;
+	private final Entity entity;
 
 	public EventRenderEntity(Entity entity) {
 		this.entity = entity;

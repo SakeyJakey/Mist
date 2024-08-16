@@ -21,43 +21,41 @@ package dev.sakey.mist.utils.client.openauth.model.request;
 /**
  * JSON Model of an validate request
  *
- * @version 1.0.4
  * @author Litarvan
+ * @version 1.0.4
  */
 public class ValidateRequest {
 
-    /**
-     * The access token that you want to validate
-     */
-    private String accessToken;
+	/**
+	 * The access token that you want to validate
+	 */
+	private String accessToken;
 
-    /**
-     * Validate Request constructor
-     *
-     * @param accessToken
-     *            The access token that you want to validate
-     */
-    public ValidateRequest(String accessToken) {
-        this.accessToken = accessToken;
-    }
+	/**
+	 * Validate Request constructor
+	 *
+	 * @param accessToken The access token that you want to validate
+	 */
+	public ValidateRequest(String accessToken) {
+		this.accessToken = accessToken;
+	}
 
-    /**
-     * Sets a new access token
-     *
-     * @param accessToken
-     *            The new access token
-     */
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
+	/**
+	 * Returns the access token (Given by the constructor or the setter)
+	 *
+	 * @return The given access token
+	 */
+	public String getAccessToken() {
+		return accessToken;
+	}
 
-    /**
-     * Returns the access token (Given by the constructor or the setter)
-     *
-     * @return The given access token
-     */
-    public String getAccessToken() {
-        return accessToken;
-    }
+	/**
+	 * Sets a new access token
+	 *
+	 * @param accessToken The new access token
+	 */
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
 
 }

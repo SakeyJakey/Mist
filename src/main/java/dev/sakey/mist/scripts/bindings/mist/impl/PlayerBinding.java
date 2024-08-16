@@ -6,7 +6,7 @@ import net.minecraft.util.ChatComponentText;
 
 public class PlayerBinding {
 
-	private static Minecraft mc = Minecraft.getMinecraft();
+	private static final Minecraft mc = Minecraft.getMinecraft();
 
 	public boolean isOnGround() {
 		return mc.thePlayer.onGround;
@@ -57,7 +57,7 @@ public class PlayerBinding {
 	}
 
 	public void swing(boolean silent) {
-		if(silent)
+		if (silent)
 			mc.thePlayer.sendQueue.addToSendQueue(new C0APacketAnimation());
 		else
 			mc.thePlayer.swingItem();

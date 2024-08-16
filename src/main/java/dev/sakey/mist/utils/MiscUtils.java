@@ -1,9 +1,5 @@
 package dev.sakey.mist.utils;
 
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-
 import net.minecraft.client.gui.GuiScreen;
 
 public class MiscUtils {

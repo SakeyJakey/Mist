@@ -5,7 +5,7 @@ import dev.sakey.mist.modules.settings.Setting;
 public class KeySetting extends Setting {
 
 	private int code;
-	
+
 	public KeySetting(int keyCode) {
 		this.name = "Key";
 		this.code = keyCode;

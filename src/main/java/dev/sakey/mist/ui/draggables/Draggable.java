@@ -10,15 +10,18 @@ import org.lwjgl.input.Mouse;
 
 public abstract class Draggable {
 
+	private static Draggable otherIsDragging, otherIsResizing;
+	private final double defaultWidth, defaultHeight; //TODO add resize modes so lock, none, any, vert for cgui
 	protected double xPos, yPos,
 			defaultX, defaultY,
 			minWidth = 5, minHeight = 5,
 			width, height;
-	private final double defaultWidth, defaultHeight; //TODO add resize modes so lock, none, any, vert for cgui
 	protected boolean isRounded = true;
-	private boolean isVisible;
 	protected ResizeMode resizeMode = ResizeMode.FREE; //TODO: add gsetters
-	private static Draggable otherIsDragging, otherIsResizing;
+	protected int mouseX, mouseY, // for the draggables like cgui
+			bgColour = 0x80000000;
+	private boolean isVisible;
+	private int prevMX, prevMY;
 
 	public Draggable(double xPos, double yPos, double width, double height) {
 		this.defaultX = this.xPos = xPos;
@@ -27,10 +30,6 @@ public abstract class Draggable {
 		this.defaultHeight = this.height = height;
 	}
 
-	private int prevMX, prevMY;
-
-	protected int mouseX, mouseY, // for the draggables like cgui
-	bgColour = 0x80000000;
 	public void updateChat(int mX, int mY) { //todo min size & right bottom anchors
 
 		mouseX = mX;
@@ -42,8 +41,7 @@ public abstract class Draggable {
 			if (Mouse.isButtonDown(0)) {
 				otherIsDragging = this;
 				drag(mX, mY);
-			}
-			else {
+			} else {
 				otherIsDragging = null;
 			}
 		}
@@ -51,7 +49,7 @@ public abstract class Draggable {
 		isHovering = getHoveringResize(mX, mY);
 
 		if (((isHovering && otherIsResizing == null) || otherIsResizing == this) && resizeMode != ResizeMode.NONE) {
-			if(Mouse.isButtonDown(1)) {
+			if (Mouse.isButtonDown(1)) {
 				otherIsResizing = this;
 
 				width = Math.max(minWidth, mX - xPos);
@@ -60,20 +58,19 @@ public abstract class Draggable {
 				width += 1;
 				height += 1;
 
-				if(resizeMode == ResizeMode.HORIZONTAL)
+				if (resizeMode == ResizeMode.HORIZONTAL)
 					height = defaultHeight;
-				else if(resizeMode == ResizeMode.VERTICAL)
+				else if (resizeMode == ResizeMode.VERTICAL)
 					width = defaultWidth;
-				else if(resizeMode == ResizeMode.EQUAL)
+				else if (resizeMode == ResizeMode.EQUAL)
 					height = width = (height + width) / 2;
 
 				onResize();
-			}
-			else
+			} else
 				otherIsResizing = null;
 		}
 
-		if(isHovering && Mouse.isButtonDown(2) && resizeMode != ResizeMode.NONE ) {
+		if (isHovering && Mouse.isButtonDown(2) && resizeMode != ResizeMode.NONE) {
 			xPos = defaultX;
 			yPos = defaultY;
 
@@ -88,9 +85,9 @@ public abstract class Draggable {
 
 		isHovering = RenderUtils.isInside(mX, mY, xPos, yPos, getWPos(), getHPos());
 		// Selection box
-		if(
+		if (
 				isHovering && otherIsDragging == null && otherIsResizing == null ||
-				otherIsDragging == this || otherIsResizing == this
+						otherIsDragging == this || otherIsResizing == this
 		) // prevent if another dragable is being dragged or resized
 			RenderUtils.drawOutlineRoundedRect(xPos, yPos, xPos + width, yPos + height, isRounded ? 5 : 0, 2, -1);
 	}
@@ -129,14 +126,13 @@ public abstract class Draggable {
 	private void fillBackground(int colour) {
 
 
-
 		RenderUtils.drawRoundedRect(xPos, yPos, xPos + width, yPos + height, isRounded ? 5 : 0, colour);
 		MaskUtils.UI.beginDrawContent();
 		RenderUtils.drawRoundedRect(xPos, yPos, xPos + width, yPos + height, isRounded ? 5 : 0, colour);
 	}
 
 	private void Draw() {
-		if(Minecraft.getMinecraft().gameSettings.showDebugInfo) return;
+		if (Minecraft.getMinecraft().gameSettings.showDebugInfo) return;
 
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
 
@@ -171,18 +167,18 @@ public abstract class Draggable {
 		return isVisible;
 	}
 
-	public void toggleVisible() {
-		if(isVisible)
-			hide();
-		else
+	public void setVisible(boolean visible) {
+		if (visible)
 			show();
+		else
+			hide();
 	}
 
-	public void setVisible(boolean visible) {
-		if(visible)
-			show();
-		else
+	public void toggleVisible() {
+		if (isVisible)
 			hide();
+		else
+			show();
 	}
 
 	public void show() {

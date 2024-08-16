@@ -13,10 +13,8 @@ import java.io.IOException;
 
 public class ConfigName extends GuiScreen {
 
-	TuiTextField name;
-
 	private final MainClickGui cgui;
-
+	TuiTextField name;
 	double x, y, w, h;
 
 	public ConfigName(double x, double y, double w, double h, MainClickGui owner) {
@@ -47,14 +45,13 @@ public class ConfigName extends GuiScreen {
 
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 
-		if(keyCode == Keyboard.KEY_ESCAPE)
+		if (keyCode == Keyboard.KEY_ESCAPE)
 			Minecraft.getMinecraft().displayGuiScreen(cgui);
 
-		if(keyCode == Keyboard.KEY_RETURN && !name.getText().isEmpty()) {
+		if (keyCode == Keyboard.KEY_RETURN && !name.getText().isEmpty()) {
 			Mist.instance.getConfigManager().saveConfig(name.getText());
 			Minecraft.getMinecraft().displayGuiScreen(cgui);
-		}
-		else
+		} else
 			name.textboxKeyTyped(typedChar, keyCode);
 	}
 

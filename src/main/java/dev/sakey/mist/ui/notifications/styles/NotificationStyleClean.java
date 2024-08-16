@@ -1,7 +1,6 @@
 package dev.sakey.mist.ui.notifications.styles;
 
 import dev.sakey.mist.ui.notifications.Notification;
-import dev.sakey.mist.utils.render.RenderUtils;
 import net.minecraft.client.gui.ScaledResolution;
 
 import java.util.ArrayList;

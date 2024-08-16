@@ -5,7 +5,6 @@ import dev.sakey.mist.modules.settings.Setting;
 import dev.sakey.mist.modules.settings.impl.KeySetting;
 import dev.sakey.mist.ui.components.ClickGUISearch;
 import dev.sakey.mist.ui.draggables.Draggable;
-import dev.sakey.mist.utils.render.ColourUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
@@ -16,6 +15,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainClickGui extends GuiScreen {
+
+	private final ArrayList<Draggable> panels = new ArrayList<Draggable>();
+	public Setting currentlyTyping;
+	ClickGUISearch search = new ClickGUISearch(0, 0, 0, 200, 20);
+	double tGradX = 2,
+			gradX = 0.001;
 
 	public MainClickGui() {
 		int count = 0;
@@ -34,11 +39,6 @@ public class MainClickGui extends GuiScreen {
 		panels.add(new ScriptPanel(sGapX + 100 + gap, 150));
 	}
 
-	private final ArrayList<Draggable> panels = new ArrayList<Draggable>();
-
-	public Setting currentlyTyping;
-	ClickGUISearch search = new ClickGUISearch(0, 0, 0, 200, 20);
-
 	public void initGui() {
 		Minecraft.getMinecraft().entityRenderer.loadShader(new ResourceLocation("Twen/Shaders/blur.json"));
 		panels.forEach(Draggable::show);
@@ -51,9 +51,6 @@ public class MainClickGui extends GuiScreen {
 		Keyboard.enableRepeatEvents(false);
 		panels.forEach(Draggable::hide);
 	}
-
-	double tGradX = 2,
-			gradX = 0.001;
 
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		ScaledResolution sr = new ScaledResolution(mc);
@@ -76,25 +73,21 @@ public class MainClickGui extends GuiScreen {
 					((KeySetting) currentlyTyping).setCode(keyCode);
 					currentlyTyping = null;
 				}
-			}
-			else {
+			} else {
 				((KeySetting) currentlyTyping).setCode(Keyboard.KEY_NONE);
 				currentlyTyping = null;
 			}
-		}
-		else if (keyCode == Keyboard.KEY_ESCAPE) {
-			if(search.getText().isEmpty()) {
+		} else if (keyCode == Keyboard.KEY_ESCAPE) {
+			if (search.getText().isEmpty()) {
 				this.mc.displayGuiScreen(null);
 
 				if (this.mc.currentScreen == null) {
 					this.mc.setIngameFocus();
 				}
-			}
-			else {
+			} else {
 				search.setText("");
 			}
-		}
-		else {
+		} else {
 			search.textboxKeyTyped(typedChar, keyCode);
 		}
 	}

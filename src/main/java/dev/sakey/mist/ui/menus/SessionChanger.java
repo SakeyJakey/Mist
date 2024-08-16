@@ -1,23 +1,30 @@
 package dev.sakey.mist.ui.menus;
 
-import java.util.UUID;
-
 import com.mojang.authlib.Agent;
 import com.mojang.authlib.AuthenticationService;
 import com.mojang.authlib.UserAuthentication;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.util.UUIDTypeAdapter;
-
 import dev.sakey.mist.utils.client.openauth.microsoft.MicrosoftAuthResult;
 import dev.sakey.mist.utils.client.openauth.microsoft.MicrosoftAuthenticationException;
 import dev.sakey.mist.utils.client.openauth.microsoft.MicrosoftAuthenticator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Session;
 
+import java.util.UUID;
+
 public class SessionChanger {
 
 	private static SessionChanger instance;
 	private final UserAuthentication auth;
+
+	//Creates a new Authentication Service.
+	private SessionChanger() {
+		UUID notSureWhyINeedThis = UUID.randomUUID(); //Idk, needs a UUID. Seems to be fine making it random
+		AuthenticationService authService = new YggdrasilAuthenticationService(Minecraft.getMinecraft().getProxy(), notSureWhyINeedThis.toString());
+		auth = authService.createUserAuthentication(Agent.MINECRAFT);
+		authService.createMinecraftSessionService();
+	}
 
 	public static SessionChanger getInstance() {
 		if (instance == null) {
@@ -26,20 +33,11 @@ public class SessionChanger {
 
 		return instance;
 	}
-	
-	//Creates a new Authentication Service. 
-	private SessionChanger() {
-		UUID notSureWhyINeedThis = UUID.randomUUID(); //Idk, needs a UUID. Seems to be fine making it random
-		AuthenticationService authService = new YggdrasilAuthenticationService(Minecraft.getMinecraft().getProxy(), notSureWhyINeedThis.toString());
-		auth = authService.createUserAuthentication(Agent.MINECRAFT);
-		authService.createMinecraftSessionService();
-	}
 
-	
 	//Online mode
 	//Checks if your already loggin in to the account.
 	public String setUser(String email, String password) {
-		if(!Minecraft.getMinecraft().getSession().getUsername().equals(email) || Minecraft.getMinecraft().getSession().getToken().equals("0")){
+		if (!Minecraft.getMinecraft().getSession().getUsername().equals(email) || Minecraft.getMinecraft().getSession().getToken().equals("0")) {
 
 			this.auth.logOut();
 			this.auth.setUsername(email);
@@ -48,8 +46,7 @@ public class SessionChanger {
 				this.auth.logIn();
 				Session session = new Session(this.auth.getSelectedProfile().getName(), UUIDTypeAdapter.fromUUID(auth.getSelectedProfile().getId()), this.auth.getAuthenticatedToken(), this.auth.getUserType().getName());
 				setSession(session);
-			} 
-			catch (Exception e) {
+			} catch (Exception e) {
 				return "§cFailed to login! Check your email and password.";
 			}
 			return "§2Logged in as " + Minecraft.getMinecraft().getSession().getProfile().getName() + "!";

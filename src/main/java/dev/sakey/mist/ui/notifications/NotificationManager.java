@@ -2,7 +2,7 @@ package dev.sakey.mist.ui.notifications;
 
 import dev.sakey.mist.Mist;
 import dev.sakey.mist.ui.notifications.styles.NotificationStyleBase;
-import dev.sakey.mist.ui.notifications.styles.*;
+import dev.sakey.mist.ui.notifications.styles.NotificationStyleModern;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 
@@ -21,5 +21,5 @@ public class NotificationManager {
 	public static void Notify(Notification n) {
 		notifications.add(n);
 	}
-	
+
 }

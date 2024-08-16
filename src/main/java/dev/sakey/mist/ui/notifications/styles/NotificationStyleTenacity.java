@@ -18,7 +18,7 @@ public class NotificationStyleTenacity extends NotificationStyleBase {
 
 		double x = sr.getScaledWidth() - Math.min(n.getPercent() * 10, length);
 
-		if(n.getPercent() >= 90) {
+		if (n.getPercent() >= 90) {
 			x = sr.getScaledWidth() - length + ((n.getPercent() - 90) * 10);
 		}
 
@@ -28,8 +28,11 @@ public class NotificationStyleTenacity extends NotificationStyleBase {
 		double ty = (sr.getScaledHeight() - (30 + 5) * (index + 1));
 
 
-		if(n.y < ty) { n.y += (ty - n.y) / 2; }
-		else if(n.y > ty) { n.y += (ty - n.y) / 2; }
+		if (n.y < ty) {
+			n.y += (ty - n.y) / 2;
+		} else if (n.y > ty) {
+			n.y += (ty - n.y) / 2;
+		}
 
 		double y = n.y;
 		double h = y + 30;
@@ -37,8 +40,7 @@ public class NotificationStyleTenacity extends NotificationStyleBase {
 
 		int colour;
 
-		switch(n.type)
-		{
+		switch (n.type) {
 			case SUCCESS:
 				colour = getDarkColour(0xff00ff00);
 				break;

@@ -1,7 +1,5 @@
 package dev.sakey.mist.modules.impl.HUD;
 
-import java.awt.Color;
-
 import dev.sakey.mist.modules.Category;
 import dev.sakey.mist.modules.Module;
 import dev.sakey.mist.modules.annotations.ModuleInfo;
@@ -9,21 +7,20 @@ import dev.sakey.mist.ui.draggables.Draggable;
 import dev.sakey.mist.ui.draggables.ResizeMode;
 import dev.sakey.mist.utils.render.ColourUtil;
 import dev.sakey.mist.utils.render.RenderUtils;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import org.lwjgl.input.Keyboard;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.Entity;
 import org.lwjgl.opengl.GL11;
 
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.entity.Entity;
+import java.awt.*;
 
 public class Radar extends Module {
-	
-	@ModuleInfo(name = "Radar", description = "Shows the players near you on a map.", category = Category.HUD)
-	public Radar() { draggable.add(); }
 
 	RadarDraggable draggable = new RadarDraggable();
+
+	@ModuleInfo(name = "Radar", description = "Shows the players near you on a map.", category = Category.HUD)
+	public Radar() {
+		draggable.add();
+	}
 
 	protected void onEnable() {
 		draggable.show();
@@ -32,6 +29,12 @@ public class Radar extends Module {
 
 	protected void onDisable() {
 		draggable.hide();
+	}
+
+	public double getDistanceSqToEntityXZ(Entity entityIn) {
+		double d0 = mc.thePlayer.posX - entityIn.posX;
+		double d2 = mc.thePlayer.posZ - entityIn.posZ;
+		return d0 * d0 + d2 * d2;
 	}
 
 	class RadarDraggable extends Draggable {
@@ -53,9 +56,9 @@ public class Radar extends Module {
 //	                continue;
 //	            }
 				if (en == mc.thePlayer) continue;
-				double dist_sq = getDistanceSqToEntityXZ((Entity)en);
+				double dist_sq = getDistanceSqToEntityXZ((Entity) en);
 
-				double x = ((Entity)en).posX - mc.thePlayer.posX, z = ((Entity)en).posZ - mc.thePlayer.posZ;
+				double x = ((Entity) en).posX - mc.thePlayer.posX, z = ((Entity) en).posZ - mc.thePlayer.posZ;
 				double calc = Math.atan2(x, z) * 57.2957795131f;
 				double angle = ((mc.thePlayer.rotationYaw + calc) % 360) * 0.01745329251f;
 				double hypotenuse = dist_sq / 5;
@@ -70,13 +73,6 @@ public class Radar extends Module {
 			GL11.glPopMatrix();
 			GlStateManager.disableBlend();
 		}
-	}
-
-	public double getDistanceSqToEntityXZ(Entity entityIn)
-	{
-		double d0 = mc.thePlayer.posX - entityIn.posX;
-		double d2 = mc.thePlayer.posZ - entityIn.posZ;
-		return d0 * d0 + d2 * d2;
 	}
 
 }

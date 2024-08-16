@@ -6,8 +6,11 @@ import net.minecraft.client.gui.ScaledResolution;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public abstract class NotificationStyleBase {
-	public void draw(ScaledResolution sr, Notification n, int index){}
-	public void drawOnce(ScaledResolution sr, CopyOnWriteArrayList<Notification> n){}
+	public void draw(ScaledResolution sr, Notification n, int index) {
+	}
+
+	public void drawOnce(ScaledResolution sr, CopyOnWriteArrayList<Notification> n) {
+	}
 
 	public abstract double initY();
 }

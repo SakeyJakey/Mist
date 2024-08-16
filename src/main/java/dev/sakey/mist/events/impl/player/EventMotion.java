@@ -5,20 +5,21 @@ import dev.sakey.mist.events.EventType;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 public class EventMotion extends Event {
 
-    private double x, y, z;
-    private float yaw, pitch;
-    private boolean onGround;
+	private double x, y, z;
+	private float yaw, pitch;
+	private boolean onGround;
 
-    public EventMotion(EventType type, double x, double y, double z, float yaw, float pitch, boolean onGround) {
-        setType(type);
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.yaw = yaw;
-        this.pitch = pitch;
-        this.onGround = onGround;
-    }
+	public EventMotion(EventType type, double x, double y, double z, float yaw, float pitch, boolean onGround) {
+		setType(type);
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.yaw = yaw;
+		this.pitch = pitch;
+		this.onGround = onGround;
+	}
 }

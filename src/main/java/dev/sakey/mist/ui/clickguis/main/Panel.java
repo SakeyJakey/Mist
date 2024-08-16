@@ -11,11 +11,10 @@ import dev.sakey.mist.modules.settings.impl.ModeSetting;
 import dev.sakey.mist.modules.settings.impl.NumberSetting;
 import dev.sakey.mist.ui.draggables.Draggable;
 import dev.sakey.mist.ui.draggables.ResizeMode;
-import dev.sakey.mist.utils.render.ColourUtil;
 import dev.sakey.mist.utils.client.font.GlyphPageFontRenderer;
+import dev.sakey.mist.utils.render.ColourUtil;
 import dev.sakey.mist.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -25,14 +24,15 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Panel extends Draggable {
 
 	private final Category category;
-	private CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<Module>();
 	private final GlyphPageFontRenderer fr = Mist.instance.getFontRenderer(18);
 	private final GlyphPageFontRenderer sfr = Mist.instance.getFontRenderer(9);
-
 	private final MainClickGui cgui;
-
-	private double tHeight;
 	private final int index;
+	private CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<Module>();
+	private double tHeight;
+	private NumberSetting numberSettingEditing;
+	private boolean wasClicked;
+
 	public Panel(double xPos, double yPos, Category c, MainClickGui cgui, int index) {
 		super(xPos, yPos, 100, 0);
 		this.cgui = cgui;
@@ -51,13 +51,14 @@ public class Panel extends Draggable {
 		int count = 1; // 1 for title
 		for (Module m :
 				modules) {
-			if(!m.isSearched(cgui.search.getText()) && ((ClickGuiMod)Mist.instance.getModuleManager().getModule(ClickGuiMod.class)).hideNonSearch.isEnabled()) continue;
+			if (!m.isSearched(cgui.search.getText()) && ((ClickGuiMod) Mist.instance.getModuleManager().getModule(ClickGuiMod.class)).hideNonSearch.isEnabled())
+				continue;
 
 			count++;
 
-			if(!m.areSettingsOpen()) continue;
-			for(Setting s : m.getSettings())
-				if(!s.isHidden())
+			if (!m.areSettingsOpen()) continue;
+			for (Setting s : m.getSettings())
+				if (!s.isHidden())
 					count++;
 		}
 		return count * fr.getFontHeight();
@@ -71,9 +72,6 @@ public class Panel extends Draggable {
 		return false;
 	}
 
-	private NumberSetting numberSettingEditing;
-
-	private boolean wasClicked;
 	public void draw() {
 		final double speed = (double) Minecraft.getDebugFPS() / 8;
 
@@ -86,7 +84,8 @@ public class Panel extends Draggable {
 		int count = 0;
 		for (Module m :
 				modules) {
-			if(!m.isSearched(cgui.search.getText()) && ((ClickGuiMod)Mist.instance.getModuleManager().getModule(ClickGuiMod.class)).hideNonSearch.isEnabled()) continue;
+			if (!m.isSearched(cgui.search.getText()) && ((ClickGuiMod) Mist.instance.getModuleManager().getModule(ClickGuiMod.class)).hideNonSearch.isEnabled())
+				continue;
 
 			count++;
 
@@ -96,13 +95,13 @@ public class Panel extends Draggable {
 			h = yPos + (count + 1) * fr.getFontHeight();
 
 			if (m.isEnabled())
-				RenderUtils.drawRect(x, y, w, h + (m.areSettingsOpen() ? m.getSettings().size() * fr.getFontHeight() : 0), ColourUtil.dim(ColourUtil.getRainbow(4, (count + index) * 50), 1));
+				RenderUtils.drawRect(x, y, w, h + (m.areSettingsOpen() ? m.getSettings().size() * fr.getFontHeight() : 0), ColourUtil.dim(ColourUtil.getRainbow(4, (count + index) * 50L), 1));
 			else if (m.areSettingsOpen()) {
 				RenderUtils.drawRect(x, y, w, h, 0x80000000);
 				RenderUtils.drawRect(x, y, w, h, 0x80000000);
 			}
 
-			fr.drawString((m.isEnabled() ? "§l" : "") + m.getName(), x,  y, m.isSearched(cgui.search.getText()) ? -1 : ColourUtil.grey(), false);
+			fr.drawString((m.isEnabled() ? "§l" : "") + m.getName(), x, y, m.isSearched(cgui.search.getText()) ? -1 : ColourUtil.grey(), false);
 
 /*			if(RenderUtils.isInside(mouseX, mouseY, x, y, w, h)) {
 				if (Mouse.isButtonDown(0)) {
@@ -129,12 +128,12 @@ public class Panel extends Draggable {
 				m.toggleSettingsOpen();
 
 
-			if(!m.areSettingsOpen()) continue;
+			if (!m.areSettingsOpen()) continue;
 
 			for (Setting s :
 					m.getSettings()) {
-				
-				if(s.isHidden()) continue;
+
+				if (s.isHidden()) continue;
 
 				count++;
 
@@ -146,8 +145,7 @@ public class Panel extends Draggable {
 				RenderUtils.drawRect(x, y, w, h, 0x80000000);
 
 
-				if (s instanceof BoolSetting) {
-					BoolSetting setting = (BoolSetting) s;
+				if (s instanceof BoolSetting setting) {
 					if (!setting.isEnabled())
 						RenderUtils.drawOutlineRoundedRect(w - fr.getFontHeight() - 2 + 1, y + 1, w - 2 - 1, h - 1, 2, 2, -1);
 					else
@@ -158,33 +156,29 @@ public class Panel extends Draggable {
 
 				}
 
-				if (s instanceof KeySetting) {
-					KeySetting setting = (KeySetting) s;
+				if (s instanceof KeySetting setting) {
 
-
-					if(getMouseButtonOnce(x, y, w, h, 0))
+					if (getMouseButtonOnce(x, y, w, h, 0))
 						if (cgui.currentlyTyping == setting)
 							cgui.currentlyTyping = null;
 						else
 							cgui.currentlyTyping = setting;
 
 					fr.drawStringRight(
-						cgui.currentlyTyping != setting ? Keyboard.getKeyName(setting.getCode()) : "...", w - 2, y, -1, false
+							cgui.currentlyTyping != setting ? Keyboard.getKeyName(setting.getCode()) : "...", w - 2, y, -1, false
 					);
 				}
 
-				if (s instanceof ModeSetting) {
-					ModeSetting setting = (ModeSetting) s;
+				if (s instanceof ModeSetting setting) {
 					fr.drawStringRight(
-						setting.getMode(), w - 2, y, -1, false
+							setting.getMode(), w - 2, y, -1, false
 					);
 
-					if(getMouseButtonOnce(x, y, w, h, 0))
+					if (getMouseButtonOnce(x, y, w, h, 0))
 						setting.cycle();
 				}
 
-				if (s instanceof NumberSetting) {
-					NumberSetting setting = (NumberSetting) s;
+				if (s instanceof NumberSetting setting) {
 
 					RenderUtils.drawRect(x, y, x + ((w - x) / setting.getMax()) * (setting.getValue() - setting.getMin()), h, 0x80ffffff);
 
@@ -198,27 +192,26 @@ public class Panel extends Draggable {
 							setting.setValue(
 									MathHelper.clamp_double(
 											((mouseX - xPos) / width) *
-												(setting.getMax() - setting.getMin())
-												+ setting.getMin(),
+													(setting.getMax() - setting.getMin())
+													+ setting.getMin(),
 											setting.getMin(),
 											setting.getMax()
 									)
 							);
 						}
-					}
-					else if (numberSettingEditing == setting) {
+					} else if (numberSettingEditing == setting) {
 						numberSettingEditing = null;
 					}
 				}
 
-				fr.drawString(s.getName(), x,  y, -1, false);
+				fr.drawString(s.getName(), x, y, -1, false);
 			}
 		}
 
 		// Make top black
 		RenderUtils.drawRect(xPos, yPos, getWPos(), yPos + fr.getFontHeight(), ColourUtil.black());
 
-		fr.drawString("§l" + category.name, xPos,  yPos, -1, false);
+		fr.drawString("§l" + category.name, xPos, yPos, -1, false);
 
 		wasClicked = Mouse.isButtonDown(0) || Mouse.isButtonDown(1) || Mouse.isButtonDown(2);
 	}
@@ -228,26 +221,23 @@ public class Panel extends Draggable {
 	}
 
 	public int getMouseButtonOnce(double x, double y, double w, double h) {
-		if(RenderUtils.isInside(mouseX, mouseY, x, y, w, h)) {
+		if (RenderUtils.isInside(mouseX, mouseY, x, y, w, h)) {
 			if (Mouse.isButtonDown(0)) {
-				if(!wasClicked) {
+				if (!wasClicked) {
 					wasClicked = true;
 					return 0;
 				}
-			}
-			else if (Mouse.isButtonDown(1)) {
-				if(!wasClicked) {
+			} else if (Mouse.isButtonDown(1)) {
+				if (!wasClicked) {
 					wasClicked = true;
 					return 1;
 				}
-			}
-			else if (Mouse.isButtonDown(2)) {
-				if(!wasClicked) {
+			} else if (Mouse.isButtonDown(2)) {
+				if (!wasClicked) {
 					wasClicked = true;
 					return 2;
 				}
-			}
-			else {
+			} else {
 				wasClicked = false;
 			}
 		}
@@ -255,14 +245,13 @@ public class Panel extends Draggable {
 	}
 
 	public boolean getMouseButtonOnce(double x, double y, double w, double h, int button) {
-		if(RenderUtils.isInside(mouseX, mouseY, x, y, w, h)) {
+		if (RenderUtils.isInside(mouseX, mouseY, x, y, w, h)) {
 			if (Mouse.isButtonDown(button)) {
-				if(!wasClicked) {
+				if (!wasClicked) {
 					wasClicked = true;
 					return true;
 				}
-			}
-			else if(!Mouse.isButtonDown(0) && !Mouse.isButtonDown(1) && !Mouse.isButtonDown(2)) {
+			} else if (!Mouse.isButtonDown(0) && !Mouse.isButtonDown(1) && !Mouse.isButtonDown(2)) {
 				wasClicked = false;
 			}
 		}
@@ -271,12 +260,11 @@ public class Panel extends Draggable {
 
 	public boolean getMouseButtonOnce(int button) {
 		if (Mouse.isButtonDown(button)) {
-			if(!wasClicked) {
+			if (!wasClicked) {
 				wasClicked = true;
 				return true;
 			}
-		}
-		else if(!Mouse.isButtonDown(0) && !Mouse.isButtonDown(1) && !Mouse.isButtonDown(2)) {
+		} else if (!Mouse.isButtonDown(0) && !Mouse.isButtonDown(1) && !Mouse.isButtonDown(2)) {
 			wasClicked = false;
 		}
 		return false;

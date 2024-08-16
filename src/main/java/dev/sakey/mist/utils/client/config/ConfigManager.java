@@ -1,13 +1,7 @@
 package dev.sakey.mist.utils.client.config;
 
-import java.io.*;
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 import com.google.common.collect.Sets;
 import com.google.gson.*;
-
 import dev.sakey.mist.Mist;
 import dev.sakey.mist.modules.Module;
 import dev.sakey.mist.modules.settings.Setting;
@@ -19,15 +13,22 @@ import dev.sakey.mist.ui.notifications.Notification;
 import dev.sakey.mist.ui.notifications.NotificationType;
 import lombok.Getter;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 public class ConfigManager {
 	private final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 	private final JsonParser jsonParser = new JsonParser();
-
+	private final HashSet<String> modBlacklist = Sets.newHashSet("ClickGUI");
 	public File ROOT_DIR = new File(Mist.instance.getPermName());
 	public File CONFIG_DIR = new File(ROOT_DIR, "Configs");
 	public File config = new File(CONFIG_DIR, "default.json");
 	public File readme = new File(ROOT_DIR, "readme.txt");
-
 	@Getter
 	public String currentlySelected;
 
@@ -36,9 +37,13 @@ public class ConfigManager {
 	}
 
 	public void init() {
-		if(!ROOT_DIR.exists()) { ROOT_DIR.mkdirs(); }
-		if(!CONFIG_DIR.exists()) { CONFIG_DIR.mkdirs(); }
-		
+		if (!ROOT_DIR.exists()) {
+			ROOT_DIR.mkdirs();
+		}
+		if (!CONFIG_DIR.exists()) {
+			CONFIG_DIR.mkdirs();
+		}
+
 		try {
 			readme.createNewFile();
 			PrintWriter pw = new PrintWriter(new FileWriter(readme));
@@ -47,8 +52,8 @@ public class ConfigManager {
 		} catch (IOException e) {
 			Mist.instance.getLogger().warn(Mist.instance.name + " couldn't create readme. Please report this to the devs: " + e);
 		}
-		
-		if(!config.exists())
+
+		if (!config.exists())
 			saveConfig();
 		else
 			loadConfig();
@@ -88,22 +93,22 @@ public class ConfigManager {
 	private void saveConfig(String name, boolean alreadyHasExt) {
 		try {
 			File currentConfig = new File(CONFIG_DIR, name.toLowerCase() + (alreadyHasExt ? "" : ".json"));
-			if(!currentConfig.exists()) currentConfig.createNewFile();
-			
+			if (!currentConfig.exists()) currentConfig.createNewFile();
+
 			JsonObject json = new JsonObject();
-			for(Module m : Mist.instance.getModuleManager().getModules()) {
+			for (Module m : Mist.instance.getModuleManager().getModules()) {
 				JsonObject jsonMod = new JsonObject();
 				jsonMod.addProperty("enabled", m.isEnabled());
 				JsonObject jsonSettings = new JsonObject();
-				for(Setting s : m.getSettings()) {
-					if(s instanceof BoolSetting)
-						jsonSettings.addProperty(s.getName(), ((BoolSetting)s).isEnabled());
-					if(s instanceof NumberSetting)
-						jsonSettings.addProperty(s.getName(), ((NumberSetting)s).getValue());
-					if(s instanceof ModeSetting)
-						jsonSettings.addProperty(s.getName(), ((ModeSetting)s).getMode());
-					if(s instanceof KeySetting)
-						jsonSettings.addProperty(s.getName(), ((KeySetting)s).getCode());
+				for (Setting s : m.getSettings()) {
+					if (s instanceof BoolSetting)
+						jsonSettings.addProperty(s.getName(), ((BoolSetting) s).isEnabled());
+					if (s instanceof NumberSetting)
+						jsonSettings.addProperty(s.getName(), ((NumberSetting) s).getValue());
+					if (s instanceof ModeSetting)
+						jsonSettings.addProperty(s.getName(), ((ModeSetting) s).getMode());
+					if (s instanceof KeySetting)
+						jsonSettings.addProperty(s.getName(), ((KeySetting) s).getCode());
 				}
 				jsonMod.add("settings", jsonSettings);
 				json.add(m.getName(), jsonMod);
@@ -111,14 +116,10 @@ public class ConfigManager {
 			PrintWriter save = new PrintWriter(new FileWriter(currentConfig));
 			save.println(prettyGson.toJson(json));
 			save.close();
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			Mist.instance.getLogger().error(Mist.instance.name + " couldn't save config. Please report this to the devs: " + e.getMessage());
 		}
 	}
-
-	
-	private final HashSet<String> modBlacklist = Sets.newHashSet("ClickGUI");
 
 	public boolean isModBlacklisted(String m) {
 		return modBlacklist.contains(m);
@@ -127,7 +128,7 @@ public class ConfigManager {
 	public boolean isModBlacklisted(Module m) {
 		return modBlacklist.contains(m.getName());
 	}
-	
+
 	public void loadConfig() {
 		currentlySelected = "default";
 		loadConfig(config.getName(), true);
@@ -142,7 +143,7 @@ public class ConfigManager {
 		try {
 			File currentConfig = new File(CONFIG_DIR, name.toLowerCase() + (alreadyHasExt ? "" : ".json"));
 
-			if(!currentConfig.exists()) return;
+			if (!currentConfig.exists()) return;
 
 			BufferedReader load = new BufferedReader(new FileReader(currentConfig));
 			JsonObject json = jsonParser.parse(load).getAsJsonObject();
@@ -167,7 +168,7 @@ public class ConfigManager {
 						if (s instanceof ModeSetting) { //GREAT code!!!11!!1!!
 							int cap = 0;
 							while (!((ModeSetting) s).is(jsonModule.get("settings").getAsJsonObject().get(s.getName()).getAsString())) {
-								if(cap > ((ModeSetting) s).getCap()) {
+								if (cap > ((ModeSetting) s).getCap()) {
 									new Notification("Faild to load config", "This config has an invalid mode.", NotificationType.WARNING, 5000);
 									break;
 								}
@@ -181,8 +182,7 @@ public class ConfigManager {
 					}
 				}
 			}
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			Mist.instance.getLogger().error(Mist.instance.name + " couldn't load config. Please report this to the devs: " + e.getMessage());
 			new Notification("Faild to load config", "This config may be corrupted.", NotificationType.WARNING, 5000);
 		}
