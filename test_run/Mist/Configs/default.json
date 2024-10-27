@@ -29,17 +29,17 @@
     }
   },
   "KillAura": {
-    "enabled": false,
+    "enabled": true,
     "settings": {
       "APS": 12.0,
-      "Reach": 3.08,
+      "Reach": 4.34,
       "Show Rotations": false,
       "No Swing": false,
       "Auto 3rd Person": false,
       "Smoothing": 4.0,
       "Through Walls": true,
       "Track Mode": "Track",
-      "Players": false,
+      "Players": true,
       "Animals": true,
       "Mobs": true,
       "Invisible": false,
@@ -127,7 +127,7 @@
       "Jump": true,
       "Place Mode": "Post",
       "Swing Mode": "Pre",
-      "Tower": true,
+      "Tower": false,
       "Tower Timer": 1.2,
       "Key": 33
     }
@@ -168,7 +168,7 @@
     }
   },
   "Chams": {
-    "enabled": false,
+    "enabled": true,
     "settings": {
       "Key": 0
     }
@@ -180,7 +180,7 @@
     }
   },
   "Sprint": {
-    "enabled": true,
+    "enabled": false,
     "settings": {
       "Omni": false,
       "Key": 157

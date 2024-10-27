@@ -10,13 +10,13 @@ bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:2
+difficulty:0
 fancyGraphics:false
 ao:2
 renderClouds:fast
 resourcePacks:[]
 incompatibleResourcePacks:[]
-lastServer:skyblock.net
+lastServer:play.volcanware.xyz
 lang:en_US
 chatVisibility:0
 chatColors:true
@@ -24,7 +24,7 @@ chatLinks:true
 chatLinksPrompt:true
 chatOpacity:1.0
 snooperEnabled:false
-fullscreen:false
+fullscreen:true
 enableVsync:false
 useVbo:false
 hideServerAddress:false

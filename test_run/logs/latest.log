@@ -1,193 +1,610 @@
-[13:07:42] [Client thread/INFO]: Setting user: Player154
-[13:07:42] [Client thread/INFO]: (Session ID is token:0:Player154)
-[13:07:45] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
-[13:07:45] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
-[13:07:45] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
-[13:07:45] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
-[13:07:45] [Client thread/INFO]: LWJGL Version: 2.9.4
-[13:07:46] [Client thread/INFO]: [OptiFine] 
-[13:07:46] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M6_pre2
-[13:07:46] [Client thread/INFO]: [OptiFine] Build: null
-[13:07:46] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
-[13:07:46] [Client thread/INFO]: [OptiFine] Java: 22.0.2, GraalVM Community
-[13:07:46] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode, sharing), GraalVM Community
-[13:07:46] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
-[13:07:46] [Client thread/INFO]: [OptiFine] OpenGL: Intel(R) HD Graphics 5500, version 4.4.0 - Build 20.19.15.4531, Intel
-[13:07:46] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.4.0
-[13:07:46] [Client thread/INFO]: [OptiFine] OpenGL Fancy fog: Not available (GL_NV_fog_distance)
-[13:07:46] [Client thread/INFO]: [OptiFine] Maximum texture size: 16384x16384
-[13:07:46] [VersionCheck/INFO]: [OptiFine] Checking for new version
-[13:07:46] [Client thread/INFO]: [Shaders] OpenGL Version: 4.4.0 - Build 20.19.15.4531
-[13:07:46] [Client thread/INFO]: [Shaders] Vendor:  Intel
-[13:07:46] [Client thread/INFO]: [Shaders] Renderer: Intel(R) HD Graphics 5500
-[13:07:46] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
-[13:07:46] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
-[13:07:46] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
-[13:07:46] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
-[13:07:46] [Client thread/INFO]: [Shaders] Load shaders configuration.
-[13:07:46] [Client thread/INFO]: [Shaders] No shaderpack loaded.
-[13:07:46] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
-[13:07:46] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
-[13:07:46] [VersionCheck/INFO]: [OptiFine] Version found: M5
-[13:07:46] [Client thread/INFO]: Reloading ResourceManager: Default
-[13:07:46] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
-[13:07:47] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
-[13:07:47] [Client thread/INFO]: [OptiFine] Resource packs: Default
-[13:07:47] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
-[13:07:47] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
-[13:07:47] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
-[13:07:53] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[13:07:54] [Thread-5/INFO]: Initializing LWJGL OpenAL
-[13:07:54] [Thread-5/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[13:07:54] [Thread-5/INFO]: OpenAL initialized.
-[13:07:54] [Sound Library Loader/INFO]: Sound engine started
-[13:07:56] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
-[13:07:58] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
-[13:07:58] [Client thread/INFO]: [OptiFine] Multitexture: false
-[13:07:58] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[13:07:58] [Client thread/ERROR]: Using missing texture, unable to load minecraft:mcpatcher/ctm/default/empty.png, java.io.FileNotFoundException
-[13:07:58] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
-[13:07:59] [Client thread/INFO]: Created: 512x512 textures-atlas
-[13:07:59] [Client thread/INFO]: [OptiFine] Animated sprites: 11
-[13:07:59] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
-[13:07:59] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
-[13:07:59] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
-[13:07:59] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
-[13:08:00] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
-[13:08:00] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
-[13:08:00] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
-[13:08:07] [Server thread/INFO]: Starting integrated minecraft server version 1.9
-[13:08:07] [Server thread/INFO]: Generating keypair
-[13:08:07] [Server thread/INFO]: Preparing start region for level 0
-[13:08:08] [Server thread/INFO]: Preparing spawn area: 55%
-[13:08:09] [Server thread/INFO]: Changing view distance to 8, from 10
-[13:08:09] [Server thread/INFO]: Player154[local:E:37e79441] logged in with entity id 170 at (565.7540604152786, 69.0, 192.9363034932729)
-[13:08:09] [Server thread/INFO]: Player154 joined the game
-[13:08:10] [Server thread/INFO]: Saving and pausing game...
-[13:08:10] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:08:10] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:08:10] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:08:13] [Server thread/INFO]: Saving and pausing game...
-[13:08:13] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:08:13] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:08:13] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:08:16] [Server thread/INFO]: Saving and pausing game...
-[13:08:16] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:08:16] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:08:16] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:08:24] [Server thread/INFO]: Saving and pausing game...
-[13:08:24] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:08:24] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:08:24] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:08:39] [Server thread/INFO]: Saving and pausing game...
-[13:08:39] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:08:39] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:08:39] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:08:54] [Server thread/INFO]: Saving and pausing game...
-[13:08:54] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:08:54] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:08:54] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:09:09] [Server thread/INFO]: Saving and pausing game...
-[13:09:09] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:09:09] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:09:09] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:09:27] [Server thread/INFO]: Saving and pausing game...
-[13:09:27] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:09:27] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:09:27] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:09:28] [Server thread/INFO]: Player154 has just earned the achievement [Taking Inventory]
-[13:09:28] [Client thread/INFO]: [CHAT] Player154 has just earned the achievement [Taking Inventory]
-[13:09:38] [Server thread/INFO]: Saving and pausing game...
-[13:09:38] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:09:38] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:09:38] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:09:40] [Server thread/INFO]: Saving and pausing game...
-[13:09:40] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:09:40] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:09:40] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:10:04] [Server thread/INFO]: Saving and pausing game...
-[13:10:04] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:10:04] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:10:04] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:10:06] [Server thread/INFO]: Saving and pausing game...
-[13:10:06] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:10:06] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:10:06] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:10:07] [Server thread/INFO]: Stopping server
-[13:10:07] [Server thread/INFO]: Saving players
-[13:10:07] [Server thread/INFO]: Saving worlds
-[13:10:07] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[13:10:07] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[13:10:07] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[13:10:09] [Client thread/INFO]: Stopping!
-[13:10:09] [Client thread/INFO]: SoundSystem shutting down...
-[13:10:09] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[09:27:17] [Client thread/INFO]: Setting user: Player515
+[09:27:17] [Client thread/INFO]: (Session ID is token:0:Player515)
+[09:27:19] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
+[09:27:19] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
+[09:27:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
+[09:27:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
+[09:27:19] [Client thread/INFO]: LWJGL Version: 2.9.4
+[09:27:20] [Client thread/INFO]: [OptiFine] 
+[09:27:20] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M6_pre2
+[09:27:20] [Client thread/INFO]: [OptiFine] Build: null
+[09:27:20] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[09:27:20] [Client thread/INFO]: [OptiFine] Java: 22.0.2, GraalVM Community
+[09:27:20] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode, sharing), GraalVM Community
+[09:27:20] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
+[09:27:20] [Client thread/INFO]: [OptiFine] OpenGL: Intel(R) HD Graphics 5500, version 4.4.0 - Build 20.19.15.4531, Intel
+[09:27:20] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.4.0
+[09:27:20] [Client thread/INFO]: [OptiFine] OpenGL Fancy fog: Not available (GL_NV_fog_distance)
+[09:27:20] [Client thread/INFO]: [OptiFine] Maximum texture size: 16384x16384
+[09:27:20] [VersionCheck/INFO]: [OptiFine] Checking for new version
+[09:27:20] [Client thread/INFO]: [Shaders] OpenGL Version: 4.4.0 - Build 20.19.15.4531
+[09:27:20] [Client thread/INFO]: [Shaders] Vendor:  Intel
+[09:27:20] [Client thread/INFO]: [Shaders] Renderer: Intel(R) HD Graphics 5500
+[09:27:20] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[09:27:20] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[09:27:20] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[09:27:20] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[09:27:20] [Client thread/INFO]: [Shaders] Load shaders configuration.
+[09:27:20] [Client thread/INFO]: [Shaders] No shaderpack loaded.
+[09:27:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
+[09:27:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
+[09:27:20] [Client thread/INFO]: Reloading ResourceManager: Default
+[09:27:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
+[09:27:20] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
+[09:27:20] [Client thread/INFO]: [OptiFine] Resource packs: Default
+[09:27:20] [VersionCheck/INFO]: [OptiFine] Version found: M5
+[09:27:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
+[09:27:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
+[09:27:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
+[09:27:25] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[09:27:26] [Thread-5/INFO]: Initializing LWJGL OpenAL
+[09:27:26] [Thread-5/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[09:27:26] [Thread-5/INFO]: OpenAL initialized.
+[09:27:26] [Sound Library Loader/INFO]: Sound engine started
+[09:27:27] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[09:27:29] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
+[09:27:29] [Client thread/INFO]: [OptiFine] Multitexture: false
+[09:27:29] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[09:27:29] [Client thread/ERROR]: Using missing texture, unable to load minecraft:mcpatcher/ctm/default/empty.png, java.io.FileNotFoundException
+[09:27:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
+[09:27:30] [Client thread/INFO]: Created: 512x512 textures-atlas
+[09:27:30] [Client thread/INFO]: [OptiFine] Animated sprites: 11
+[09:27:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
+[09:27:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[09:27:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[09:27:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
+[09:27:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[09:27:31] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
+[09:27:31] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
+[09:27:58] [Client thread/WARN]: Unable to start LAN server detection: Network interface not configured for IPv4
+[09:28:00] [Client thread/INFO]: Connecting to play.volcanware.xyz., 25595
+[09:28:02] [Client thread/INFO]: [CHAT]  [StrikeAC] Reminder: StrikeAC is still in Development!!
+[09:28:02] [Client thread/INFO]: [CHAT] SakeyJakey joined the game.
+[09:28:11] [Client thread/INFO]: [CHAT] [Vivecraft] SakeyJakey has joined as a Muggle!
+[09:28:20] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b1§7]
+[09:28:20] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b1§7]
+[09:28:20] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b2§7]
+[09:28:20] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b3§7]
+[09:28:20] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b4§7]
+[09:28:20] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b9§7]
+[09:28:20] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b10§7]
+[09:28:24] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b5§7]
+[09:28:24] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b12§7]
+[09:28:24] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b6§7]
+[09:28:24] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b13§7]
+[09:28:25] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b9§7]
+[09:28:25] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b16§7]
+[09:28:25] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b10§7]
+[09:28:25] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b11§7]
+[09:28:25] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b18§7]
+[09:28:25] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b1§7]
+[09:28:25] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b19§7]
+[09:28:25] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bStep (A) §7[x§b1§7]
+[09:28:25] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b20§7]
+[09:28:25] [Client thread/INFO]: [CHAT] --------------------------------------------------
+✗ KARHU CHEAT DETECTION
+Karhu has removed a player from the network due to cheating
+--------------------------------------------------
+[09:28:28] [Client thread/INFO]: Connecting to play.volcanware.xyz., 25595
+[09:28:29] [Client thread/INFO]: [CHAT]  [StrikeAC] Reminder: StrikeAC is still in Development!!
+[09:28:29] [Client thread/INFO]: [CHAT] SakeyJakey joined the game.
+[09:28:39] [Client thread/INFO]: [CHAT] [Vivecraft] SakeyJakey has joined as a Muggle!
+[09:28:42] [Client thread/INFO]: [CHAT] <SakeyJakey> karhu?
+[09:28:52] [Client thread/INFO]: [CHAT] <SakeyJakey> i thought it was strikeac
+[09:28:57] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b1§7]
+[09:28:57] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bAimAssist (C)§aΔ §7[x§b1§7]
+[09:28:57] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b1§7]
+[09:28:57] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bStep (A) §7[x§b1§7]
+[09:28:57] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b2§7]
+[09:28:58] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b4§7]
+[09:28:58] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b5§7]
+[09:28:58] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b7§7]
+[09:28:58] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b10§7]
+[09:28:58] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b14§7]
+[09:28:59] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b18§7]
+[09:28:59] [Client thread/INFO]: [CHAT] --------------------------------------------------
+✗ KARHU CHEAT DETECTION
+Karhu has removed a player from the network due to cheating
+--------------------------------------------------
+[09:29:01] [Client thread/INFO]: Connecting to play.volcanware.xyz., 25595
+[09:29:02] [Client thread/INFO]: [CHAT]  [StrikeAC] Reminder: StrikeAC is still in Development!!
+[09:29:02] [Client thread/INFO]: [CHAT] SakeyJakey joined the game.
+[09:29:12] [Client thread/INFO]: [CHAT] [Vivecraft] SakeyJakey has joined as a Muggle!
+[09:29:20] [Client thread/INFO]: Connecting to play.volcanware.xyz., 25595
+[09:29:21] [Client thread/INFO]: [CHAT]  [StrikeAC] Reminder: StrikeAC is still in Development!!
+[09:29:21] [Client thread/INFO]: [CHAT] SakeyJakey joined the game.
+[09:29:31] [Client thread/INFO]: [CHAT] [Vivecraft] SakeyJakey has joined as a Muggle!
+[09:29:48] [Client thread/INFO]: [CHAT] <SO_Volcan> yo
+[09:29:51] [Client thread/INFO]: [CHAT] <SakeyJakey> yo
+[09:30:03] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:30:08] [Client thread/INFO]: [CHAT] SakeyJakey has made the advancement [Cover Me With Diamonds]
+[09:30:12] [Client thread/INFO]: [CHAT] <SakeyJakey> ty
+[09:30:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:30:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:30:19] [Client thread/INFO]: [CHAT] <SO_Volcan> keep inv is on btw
+[09:30:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:30:32] [Client thread/INFO]: [CHAT] <SakeyJakey> lemme test autoarmor
+[09:30:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:30:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:30:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:30:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:30:44] [Client thread/INFO]: [CHAT] <SO_Volcan> alerts are public as well
+[09:30:52] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bBadPackets (E) §7[x§b1§7]
+[09:31:06] [Client thread/INFO]: [CHAT] <SO_Volcan> you can switch between combat modes with "/ocm mode <new/old>"
+[09:31:31] [Client thread/INFO]: [CHAT] SakeyJakey has reached the goal [Sky's the Limit]
+[09:31:38] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b1§7]
+[09:31:38] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b2§7]
+[09:31:38] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b1§7]
+[09:31:43] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b1§7]
+[09:31:44] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b2§7]
+[09:31:44] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b2§7]
+[09:31:44] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b3§7]
+[09:31:44] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b3§7]
+[09:31:44] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b4§7]
+[09:31:44] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b4§7]
+[09:31:48] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b5§7]
+[09:31:48] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b4§7]
+[09:31:49] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b6§7]
+[09:31:49] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b5§7]
+[09:31:49] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b7§7]
+[09:31:49] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b6§7]
+[09:31:57] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b1§7]
+[09:31:57] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b3§7]
+[09:31:57] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bStep (A) §7[x§b1§7]
+[09:32:11] [Client thread/INFO]: [CHAT] <SakeyJakey> why does it say karhu?
+[09:32:13] [Client thread/INFO]: [CHAT] <SO_Volcan> you can also do "/matrix verbose"
+[09:32:20] [Client thread/INFO]: [CHAT] <SakeyJakey> it thogutht it was strike ac
+[09:32:21] [Client thread/INFO]: [CHAT] <SO_Volcan> I use a combo of anticheats
+[09:32:29] [Client thread/INFO]: [CHAT] [Matrix] You have enabled verbose message output
+[09:32:42] [Client thread/INFO]: [CHAT] <SakeyJakey> so which is ur ac?
+[09:32:45] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed Move check | unexpected vertical movement (motion: 0.0/-0.078, hor: 0.083, buffer: 0.196/true, ground: +,+, setback: -, vel: none, from: 219.0, past: 0.0, p_tags: , tags: )() | vl:5(+5) ping:233 tps:20.0 component: move.vert ver: 1.8.x
+[09:32:45] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b4§7]
+[09:32:45] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b1§7]
+[09:32:45] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 21.250641ms, server: 49.946848ms)() | vl:29(+1) ping:285 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:45] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed Move check | ground spoof (expect: --, move: 0.000,0.000,0.000, at: -42.890,216.305,-95.595, type: air, pkt: false)() | vl:5(+5) ping:285 tps:20.0 component: move.gf ver: 1.8.x
+[09:32:45] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 46.079962ms, server: 99.776110ms)() | vl:30(+1) ping:285 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:45] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed Move check | unexpected vertical movement (motion: 0.0/-0.652, hor: 0.0, buffer: 1.955/true, ground: -,-, setback: -, vel: none, from: 216.305, past: -0.585, p_tags: , tags: )() | vl:10(+5) ping:285 tps:20.0 component: move.vert ver: 1.8.x
+[09:32:45] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b3§7]
+[09:32:45] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b6§7]
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b5§7]
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b8§7]
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 13.162813ms, server: 49.926228ms)() | vl:31(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 37.884679ms, server: 99.648048ms)() | vl:32(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 62.807838ms, server: 149.571172ms)() | vl:33(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 87.701209ms, server: 199.464474ms)() | vl:34(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 112.531597ms, server: 249.294818ms)() | vl:35(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 137.376065ms, server: 299.139249ms)() | vl:36(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 162.301396ms, server: 349.064478ms)() | vl:37(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 187.212802ms, server: 398.975824ms)() | vl:38(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 212.129449ms, server: 448.892432ms)() | vl:39(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT]  ▪ SakeyJakey failed BadPackets check | timer (advantage: 237.056546ms, server: 498.819493ms)() | vl:40(+1) ping:215 tps:20.0 component: bp.timer ver: 1.8.x
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bStep (A) §7[x§b2§7]
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b8§7]
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b6§7]
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bTimer (A) §7[x§b1§7]
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b10§7]
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b13§7]
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b16§7]
+[09:32:46] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bGround (C) §7[x§b18§7]
+[09:32:46] [Client thread/INFO]: [CHAT] --------------------------------------------------
+✗ KARHU CHEAT DETECTION
+Karhu has removed a player from the network due to cheating
+--------------------------------------------------
+[09:32:48] [Client thread/INFO]: Connecting to play.volcanware.xyz., 25595
+[09:32:49] [Client thread/INFO]: [CHAT]  [StrikeAC] Reminder: StrikeAC is still in Development!!
+[09:32:49] [Client thread/INFO]: [CHAT] SakeyJakey joined the game.
+[09:32:59] [Client thread/INFO]: [CHAT] [Vivecraft] SakeyJakey has joined as a Muggle!
+[09:33:03] [Client thread/INFO]: [CHAT] [Matrix] SakeyJakey tried to move abnormally (Move) #1
+[09:33:04] [Client thread/INFO]: [CHAT] <SO_Volcan> i use a combo of "Matrix, Karhu, StrikeAC, AnticheatAdditions"
+[09:33:16] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:33:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:33:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:33:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:33:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:33:34] [Client thread/INFO]: [CHAT] SakeyJakey fell from a high place
+[09:33:34] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:20) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1052) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:354) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:113) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at net.minecraft.entity.player.EntityPlayer.setCurrentItemOrArmor(EntityPlayer.java:1973) ~[classes/:?]
+	at net.minecraft.client.network.NetHandlerPlayClient.handleEntityEquipment(NetHandlerPlayClient.java:1159) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:42) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:9) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:19) ~[classes/:?]
+	... 4 more
+[09:33:34] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b1§7]
+[09:33:36] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bStep (A) §7[x§b1§7]
+[09:33:38] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bStep (A) §7[x§b2§7]
+[09:33:38] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b2§7]
+[09:33:38] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b3§7]
+[09:33:38] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b1§7]
+[09:33:38] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b4§7]
+[09:33:38] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b5§7]
+[09:33:39] [Client thread/INFO]: [CHAT] [Matrix] SakeyJakey tried to move abnormally (Move) #1
+[09:33:39] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b2§7]
+[09:33:39] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b4§7]
+[09:33:39] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bFly (F)§c≠ §7[x§b7§7]
+[09:33:39] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b5§7]
+[09:33:39] [Client thread/INFO]: [CHAT] [Matrix] SakeyJakey tried to move abnormally (Move) #2
+[09:33:56] [Client thread/INFO]: [CHAT] <SakeyJakey> how can you fly with elytra in viaversion lol
+[09:34:01] [Client thread/INFO]: [CHAT] SakeyJakey fell from a high place
+[09:34:01] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:20) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1052) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:354) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:113) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at net.minecraft.entity.player.EntityPlayer.setCurrentItemOrArmor(EntityPlayer.java:1973) ~[classes/:?]
+	at net.minecraft.client.network.NetHandlerPlayClient.handleEntityEquipment(NetHandlerPlayClient.java:1159) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:42) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:9) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:19) ~[classes/:?]
+	... 4 more
+[09:34:02] [Client thread/INFO]: [CHAT] <SO_Volcan> you cant lol
+[09:34:20] [Client thread/INFO]: [CHAT] <SO_Volcan> call?
+[09:34:31] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 1048576 bytes, new size 3145728 bytes.
+[09:34:39] [Client thread/INFO]: [CHAT] <SakeyJakey> my setup is currently in shambles
+[09:34:41] [Client thread/INFO]: [CHAT] <SO_Volcan> lol
+[09:34:44] [Client thread/INFO]: [CHAT] <SakeyJakey> i am buying new pc
+[09:34:50] [Client thread/INFO]: [CHAT] <SakeyJakey> but selling parts of old pc
+[09:34:58] [Client thread/INFO]: [CHAT] <SakeyJakey> so i don't have a mic
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:35:21] [Client thread/INFO]: [CHAT] <SO_Volcan> btw turboweeb is a pvp bot
+[09:35:30] [Client thread/INFO]: [CHAT] Unknown command. Type "/help" for help.
+[09:35:31] [Client thread/INFO]: [CHAT] Turbo_weeb fell out of the world
+[09:35:32] [Client thread/INFO]: [CHAT] Unknown command. Type "/help" for help.
+[09:35:33] [Client thread/INFO]: [CHAT] Unknown command. Type "/help" for help.
+[09:35:36] [Client thread/INFO]: [CHAT] Unknown command. Type "/help" for help.
+[09:35:39] [Client thread/INFO]: [CHAT] --------- Help: Index (1/13) --------------------
+[09:35:39] [Client thread/INFO]: [CHAT] Use /help [n] to get page n of help.
+[09:35:39] [Client thread/INFO]: [CHAT] Aliases: Lists command aliases
+[09:35:39] [Client thread/INFO]: [CHAT] AnarchyExploitFixes: All commands for AnarchyExp...
+[09:35:39] [Client thread/INFO]: [CHAT] AntiAFKPlus: All commands for AntiAFKPlus
+[09:35:39] [Client thread/INFO]: [CHAT] AntiCheatAddition: All commands for AntiCheatAdd...
+[09:35:39] [Client thread/INFO]: [CHAT] BetterPlaytime: All commands for BetterPlaytime
+[09:35:39] [Client thread/INFO]: [CHAT] Bukkit: All commands for Bukkit
+[09:35:39] [Client thread/INFO]: [CHAT] CMILib: All commands for CMILib
+[09:35:39] [Client thread/INFO]: [CHAT] FarmLimiter: All commands for FarmLimiter
+[09:36:05] [Client thread/INFO]: [CHAT] <SO_Volcan> you might want to put the chestplate on
+[09:36:09] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:44] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:36:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:51] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:51] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:51] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:51] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:53] [Client thread/INFO]: [CHAT] <SO_Volcan> lol its flagging C
+[09:36:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:36:56] [Client thread/INFO]: [CHAT] SakeyJakey was doomed to fall by Turbo_weeb
+[09:36:56] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:20) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1052) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:354) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:113) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at net.minecraft.entity.player.EntityPlayer.setCurrentItemOrArmor(EntityPlayer.java:1973) ~[classes/:?]
+	at net.minecraft.client.network.NetHandlerPlayClient.handleEntityEquipment(NetHandlerPlayClient.java:1159) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:42) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:9) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:19) ~[classes/:?]
+	... 4 more
+[09:37:01] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bStep (A) §7[x§b3§7]
+[09:37:09] [Client thread/INFO]: [CHAT] <SO_Volcan> it can also waterbucket clutch
+[09:37:09] [Client thread/INFO]: [CHAT] SakeyJakey fell from a high place
+[09:37:09] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:20) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1052) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:354) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:113) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at net.minecraft.entity.player.EntityPlayer.setCurrentItemOrArmor(EntityPlayer.java:1973) ~[classes/:?]
+	at net.minecraft.client.network.NetHandlerPlayClient.handleEntityEquipment(NetHandlerPlayClient.java:1159) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:42) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:9) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:19) ~[classes/:?]
+	... 4 more
+[09:37:11] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bStep (A) §7[x§b4§7]
+[09:37:21] [Client thread/INFO]: [CHAT] <SO_Volcan> what client you on rn?
+[09:37:25] [Client thread/INFO]: [CHAT] <SakeyJakey> mine
+[09:37:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:37:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:38:03] [Chunk Batcher 1/WARN]: Needed to grow BufferBuilder buffer: Old size 1048576 bytes, new size 3145728 bytes.
+[09:38:04] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 1048576 bytes, new size 3145728 bytes.
+[09:38:12] [Client thread/INFO]: [CHAT] Turbo_weeb fell out of the world
+[09:38:17] [Client thread/INFO]: [CHAT] <SakeyJakey> lol
+[09:38:22] [Client thread/INFO]: [CHAT] SakeyJakey has made the advancement [Take Aim]
+[09:38:39] [Client thread/INFO]: [CHAT] <SakeyJakey> i am going to try to hack that game
+[09:38:43] [Client thread/INFO]: [CHAT] <SakeyJakey> redmatch
+[09:38:46] [Client thread/INFO]: [CHAT] <SO_Volcan> based
+[09:39:16] [Client thread/INFO]: [CHAT] <SakeyJakey> annoying i have to use my windows laptop not my pc bc it doesn't work on linux
+[09:39:19] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b1§7]
+[09:39:19] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b3§7]
+[09:39:19] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b4§7]
+[09:39:19] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b5§7]
+[09:39:19] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b6§7]
+[09:39:20] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b7§7]
+[09:39:25] [Client thread/INFO]: [CHAT] <SO_Volcan> F
+[09:39:26] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:39:26] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:39:26] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:39:30] [Client thread/INFO]: [CHAT] [Matrix] SakeyJakey tried to bridge blocks quickly (Scaffold)
+[09:39:30] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b1§7]
+[09:39:31] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b2§7]
+[09:39:31] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b3§7]
+[09:39:31] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b8§7]
+[09:39:31] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bSpeed (C) §7[x§b4§7]
+[09:39:31] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b9§7]
+[09:39:35] [Client thread/INFO]: [CHAT] [Matrix] SakeyJakey tried to bridge blocks quickly (Scaffold) #2
+[09:39:40] [Chunk Batcher 1/WARN]: Needed to grow BufferBuilder buffer: Old size 1048576 bytes, new size 3145728 bytes.
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/INFO]: [CHAT] SakeyJakey was slain by Turbo_weeb
+[09:39:43] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:20) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1052) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:354) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:113) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at net.minecraft.entity.player.EntityPlayer.setCurrentItemOrArmor(EntityPlayer.java:1973) ~[classes/:?]
+	at net.minecraft.client.network.NetHandlerPlayClient.handleEntityEquipment(NetHandlerPlayClient.java:1159) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:42) ~[classes/:?]
+	at net.minecraft.network.play.server.S04PacketEntityEquipment.processPacket(S04PacketEntityEquipment.java:9) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:19) ~[classes/:?]
+	... 4 more
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:
+[09:39:45] [Client thread/INFO]: [CHAT] Chat disabled in client options
+[09:39:47] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bStep (A) §7[x§b3§7]
+[09:39:47] [Client thread/INFO]: [CHAT] §7[§b§l❀§7] §fSakeyJakey §7failed §bOmniSprint (A)§aΔ §7[x§b10§7]
+[09:39:48] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:39:49] [Client thread/INFO]: [CHAT] <SakeyJakey> anyway bye
+[09:39:50] [Client thread/INFO]: [CHAT] [StrikeAC] Turbo_weeb has been flagged for Sprint [C]
+[09:39:51] [Client thread/WARN]: Unable to start LAN server detection: Network interface not configured for IPv4
+[09:39:51] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "net.minecraft.client.multiplayer.WorldClient.doPreChunk(int, int, boolean)" because "this.clientWorldController" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:20) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1052) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:354) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:113) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException: Cannot invoke "net.minecraft.client.multiplayer.WorldClient.doPreChunk(int, int, boolean)" because "this.clientWorldController" is null
+	at net.minecraft.client.network.NetHandlerPlayClient.handleChunkData(NetHandlerPlayClient.java:671) ~[classes/:?]
+	at net.minecraft.network.play.server.S21PacketChunkData.processPacket(S21PacketChunkData.java:52) ~[classes/:?]
+	at net.minecraft.network.play.server.S21PacketChunkData.processPacket(S21PacketChunkData.java:12) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:19) ~[classes/:?]
+	... 4 more
+[09:39:51] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot read field "inventoryContainer" because "entityplayer" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:20) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1052) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:354) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:113) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException: Cannot read field "inventoryContainer" because "entityplayer" is null
+	at net.minecraft.client.network.NetHandlerPlayClient.handleConfirmTransaction(NetHandlerPlayClient.java:1053) ~[classes/:?]
+	at net.minecraft.network.play.server.S32PacketConfirmTransaction.processPacket(S32PacketConfirmTransaction.java:27) ~[classes/:?]
+	at net.minecraft.network.play.server.S32PacketConfirmTransaction.processPacket(S32PacketConfirmTransaction.java:8) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.runTask(Util.java:19) ~[classes/:?]
+	... 4 more
+[09:39:52] [Client thread/INFO]: Stopping!
+[09:39:52] [Client thread/INFO]: SoundSystem shutting down...
+[09:39:53] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

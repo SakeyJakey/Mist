@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class KillAura extends Module {
+public class 	KillAura extends Module {
 
 	public EntityLivingBase target;
 	public TimerUtil timer = new TimerUtil();

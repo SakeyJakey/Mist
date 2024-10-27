@@ -7,10 +7,12 @@ import dev.sakey.mist.modules.Category;
 import dev.sakey.mist.modules.Module;
 import dev.sakey.mist.modules.annotations.ModuleInfo;
 import dev.sakey.mist.ui.notifications.NotificationRenderer;
+import dev.sakey.mist.utils.client.Image;
 import dev.sakey.mist.utils.client.animation.impl.EaseOut;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
@@ -20,6 +22,8 @@ public class HUD extends Module {
 
 
 	EventHandler<EventRenderHUD> renderHUD = e -> draw();
+	Image real = new Image("Mist/hentai/real.png", 2316, 3088);
+	Image monerochan = new Image("Mist/hentai/monerochan.png", 3507, 2480);
 
 	@ModuleInfo(name = "HUD", description = "Heads up display.", category = Category.RENDER, enabledByDefault = true, hiddenInArrayList = true)
 	public HUD() {
@@ -59,6 +63,9 @@ public class HUD extends Module {
 	}
 
 	void drawOverlay(ScaledResolution sr) {
+		//real.drawImageTopLeft(10, 10, 0.25, 0.25);
+		//monerochan.drawImageTopLeft(60, 10, 0.25, 0.25);
+
 		GlStateManager.pushMatrix();
 		GlStateManager.enableAlpha();
 
